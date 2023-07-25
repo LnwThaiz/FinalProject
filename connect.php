@@ -1,11 +1,11 @@
 <?php
 $host = "localhost";
-$username = "root";
-$password = "";
-$database = "leavedata";
+$username = "planetco_it65-4";
+$password = "it65-4";
+$dbname = "planetco_it65-4";
 
 // สร้างการเชื่อมต่อ
-$conn = new mysqli($host, $username, $password, $database);
+$connect = mysqli_connect($host, $username, $password,$dbname);
 
 // ตรวจสอบการเชื่อมต่อ
 /*if ($conn->connect_error) {
