@@ -1,11 +1,11 @@
 <?php
-$servername = "localhost";
+$host = "localhost";
 $username = "root";
 $password = "";
 $database = "leavedata";
 
 // สร้างการเชื่อมต่อ
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($host, $username, $password, $database);
 
 // ตรวจสอบการเชื่อมต่อ
 /*if ($conn->connect_error) {
