@@ -23,7 +23,7 @@
 
         // ตรวจสอบข้อมูลในฐานข้อมูล
         $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
-        $result = $conn->query($sql);
+        $result = $connect->query($sql);
 
         if ($result->num_rows == 1) {
 
@@ -32,7 +32,7 @@
 
             // ดึงข้อมูล fullname จากฐานข้อมูล
             $row = $result->fetch_assoc();
-            $_SESSION["fullname"] = $row["fullname"];
+            $_SESSION["name"] = $row["name"];
 
             header("Location: index.php");
             exit;
@@ -44,7 +44,7 @@
     }
 
     // ปิดการเชื่อมต่อฐานข้อมูล
-    $conn->close();
+    $connect->close();
     ?>
             <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
                 <section class="vh-100 ">
