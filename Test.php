@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ข้อมูลส่วนตัว</title>
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-
 <body>
 <?php
     include "navbar.php"
@@ -63,19 +60,12 @@
                 </div>
             </div>
         </div>
-
-
-        <div>
-            <button onclick="window.location.href = 'EditUser.php';"
-                style="width:150px; height: 50px; left: 1179px; top: 700px; position: absolute; background: #00FF0A; border-radius: 20px; color: white;
-                font-size: 20px; font-family: K2D;font-weight: 400;word-wrap: break-word" > แก้ไขข้อมูล</button>
+        <div class="row mt-3">
+            <div class="col-12 text-center">
+                <button class="btn btn-success mr-3" onclick="window.location.href = 'EditUser.php';">แก้ไขข้อมูล</button>
+                <button class="btn btn-danger" onclick="window.location.href = 'index.php';">กลับหน้าหลัก</button>
             </div>
-        <div>
-        <button onclick="window.location.href = 'index.php';" style="width:150px; height: 50px; left: 1017px; top: 700px; position: absolute; background: #FF0000; border-radius: 20px; color: white;
-                font-size: 20px; font-family: K2D;font-weight: 400;word-wrap: break-word">กลับหน้าหลัก</button>
-            
         </div>
     </div>
-    
 </body>
 </html>

@@ -32,7 +32,7 @@
 
             // ดึงข้อมูล fullname จากฐานข้อมูล
             $row = $result->fetch_assoc();
-            $_SESSION["name"] = $row["name"];
+            $_SESSION["fullname"] = $row["fullname"];
 
             header("Location: index.php");
             exit;
