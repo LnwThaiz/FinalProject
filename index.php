@@ -32,7 +32,7 @@
         </div>
         <div
             style="width: 180px; height: 33px; left: 189px; top: 380px; position: absolute; color: white; font-size: 23px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            <a href="EditPage.jsp" class="text-white">ประวัติการลา</a>
+            <a href="LeaveHistory.php" class="text-white">ประวัติการลา</a>
         </div>
         <!--ตารางเรียน -->
         <div style="width: 180px; height: 33px; left: 100px; top: 450px; position: absolute; "><i
