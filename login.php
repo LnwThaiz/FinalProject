@@ -8,44 +8,50 @@
 </head>
 
 <body>
-    <?php
-    include "boostrapCss.html";
-    include "connect.php";
-    session_start();
-    $txt = "";
-    // การตรวจสอบการส่งแบบฟอร์ม
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // รับค่าจากฟอร์มล็อกอิน
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        
+<?php
+include "boostrapCss.html";
+include "connect.php";
+session_start();
+$txt = "";
 
+// การตรวจสอบการส่งแบบฟอร์ม
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // รับค่าจากฟอร์มล็อกอิน
+    $STD_ID  = $_POST["STD_ID"];
+    $Password = $_POST["Password"];
 
-        // ตรวจสอบข้อมูลในฐานข้อมูล
-        $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
-        $result = $connect->query($sql);
+    // ตรวจสอบข้อมูลในฐานข้อมูล
+    $sql = "SELECT * FROM std WHERE STD_ID ='$STD_ID' AND Password='$Password'";
+    $result = $connect->query($sql);
 
-        if ($result->num_rows == 1) {
+    if ($result->num_rows == 1) {
+        // ล็อกอินสำเร็จ
+        $_SESSION["STD_ID"] = $STD_ID;
 
-            // ล็อกอินสำเร็จ
-            $_SESSION["username"] = $username;
+        // ดึงข้อมูล fullname จากฐานข้อมูล
+        $row = $result->fetch_assoc();
+        $_SESSION["STD_Name"] = $row["STD_Name"];
+        $_SESSION["STD_Lastname"] = $row["STD_Lastname"];
+        $_SESSION["STD_Birth"] = $row["STD_Birth"];
+        $_SESSION["STD_Phone"] = $row["STD_Phone"];
+        $_SESSION["Classlev_ID"] = $row["Classlev_ID"];
+        $_SESSION["Major_ID"] = $row["Major_ID"];
+        $_SESSION["Parent_Name"] = $row["Parent_Name"];
+        $_SESSION["STD_Address"] = $row["STD_Address"];
+        $_SESSION["Group_ID"] = $row["Group_ID"];
 
-            // ดึงข้อมูล fullname จากฐานข้อมูล
-            $row = $result->fetch_assoc();
-            $_SESSION["fullname"] = $row["fullname"];
-
-            header("Location: index.php");
-            exit;
-           
-        } else {
-            // ล็อกอินไม่สำเร็จ
-            $txt = "This username was not found.";
-        }
+        header("Location: index.php");
+        exit;
+    } else {
+        // ล็อกอินไม่สำเร็จ
+        $txt = "This STD_ID and Password combination was not found.";
     }
+}
 
-    // ปิดการเชื่อมต่อฐานข้อมูล
-    $connect->close();
-    ?>
+// ปิดการเชื่อมต่อฐานข้อมูล
+$connect->close();
+?>
+
             <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
                 <section class="vh-100 ">
                     <div class="container py-5 h-100">
@@ -60,13 +66,13 @@
 
 
                                             <div class="form-outline form-white mb-4">
-                                                <input type="text" class="form-control form-control-lg" name="username" value=""
+                                                <input type="text" class="form-control form-control-lg" name="STD_ID" value=""
                                                     required placeholder="ชื่อผู้ใช้งาน" />
                                             </div>
 
                                             <div class="form-outline form-white mb-4">
-                                                <input type="password" id="typePasswordX" class="form-control form-control-lg"
-                                                    name="password" value="" required placeholder="รหัสผ่าน" />
+                                                <input type="Password" id="typePasswordX" class="form-control form-control-lg"
+                                                    name="Password" value="" required placeholder="รหัสผ่าน" />
                                             </div>
                                             <div>
                                                 <p><?php if($txt == ""){

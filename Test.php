@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ข้อมูลส่วนตัว</title>
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
 <?php
     include "navbar.php"
@@ -22,44 +25,46 @@
             <div class="col-12 col-md-6">
                 <div class="form-group">
                     <label for="student-id">รหัสนักศึกษา :</label>
-                    <input type="text" class="form-control" id="student-id" value="// รหัสนักศึกษา //">
+                    <input type="text" class="form-control" id="student-id" value="// รหัสนักศึกษา //" disabled>
                 </div>
                 <div class="form-group">
                     <label for="student-level">ระดับชั้น :</label>
-                    <input type="text" class="form-control" id="student-level" value="// ระดับชั้น //">
+                    <input type="text" class="form-control" id="student-level" value="// ระดับชั้น //" disabled>
                 </div>
                 <div class="form-group">
                     <label for="student-name">ชื่อ - นามสกุล :</label>
-                    <input type="text" class="form-control" id="student-name" value="// ชื่อนามสกุล //">
+                    <input type="text" class="form-control" id="student-name" value="// ชื่อนามสกุล //" disabled>
                 </div>
                 <div class="form-group">
                     <label for="birthdate">วันเดือนปีเกิด :</label>
-                    <input type="text" class="form-control" id="birthdate" value="// วันเดือนปีเกิด //">
+                    <input type="text" class="form-control" id="birthdate" value="// วันเดือนปีเกิด //" disabled>
                 </div>
                 <div class="form-group">
                     <label for="address">ที่อยู่ :</label>
-                    <input type="text" class="form-control" id="address" value="// ที่อยู่ //">
+                    <input type="text" class="form-control" id="address" value="// ที่อยู่ //" disabled>
                 </div>
             </div>
             <div class="col-12 col-md-6">
                 <div class="form-group">
                     <label for="department">แผนกวิชา :</label>
-                    <input type="text" class="form-control" id="department" value="// แผนกวิชา //">
+                    <input type="text" class="form-control" id="department" value="// แผนกวิชา //" disabled>
                 </div>
                 <div class="form-group">
                     <label for="class-group">กลุ่มเรียน :</label>
-                    <input type="text" class="form-control" id="class-group" value="// กลุ่มเรียน //">
+                    <input type="text" class="form-control" id="class-group" value="// กลุ่มเรียน //" disabled>
                 </div>
                 <div class="form-group">
                     <label for="phone-number">เบอร์โทร :</label>
-                    <input type="text" class="form-control" id="phone-number" value="// เบอร์โทร //">
+                    <input type="text" class="form-control" id="phone-number" value="// เบอร์โทร //" disabled>
                 </div>
                 <div class="form-group">
                     <label for="parent-name">ชื่อผู้ปกครอง :</label>
-                    <input type="text" class="form-control" id="parent-name" value="// ชื่อผู้ปกครอง //">
+                    <input type="text" class="form-control" id="parent-name" value="// ชื่อผู้ปกครอง //" disabled>
                 </div>
             </div>
         </div>
+
+
         <div class="row mt-3">
             <div class="col-12 text-center">
                 <button class="btn btn-success mr-3" onclick="window.location.href = 'EditUser.php';">แก้ไขข้อมูล</button>
@@ -67,5 +72,6 @@
             </div>
         </div>
     </div>
+    
 </body>
 </html>

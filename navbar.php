@@ -13,9 +13,18 @@
     session_start();
 
  // ตรวจสอบว่ามีตัวแปรเซสชัน username และ fullname ถูกตั้งค่าหรือไม่
-    if (isset($_SESSION["username"])) {
-        $username = $_SESSION["username"];
-        $fullname = $_SESSION["fullname"];
+    if (isset($_SESSION["STD_ID"])) {
+        $STD_ID = $_SESSION["STD_ID"];
+        $STD_Name = $_SESSION["STD_Name"];
+        $STD_Lastname = $_SESSION["STD_Lastname"];
+        $STD_Birth = $_SESSION["STD_Birth"];
+        $STD_Phone = $_SESSION["STD_Phone"];
+        $Classlev_ID = $_SESSION["Classlev_ID"];
+        $Major_ID = $_SESSION["Major_ID"];
+        $Parent_Name = $_SESSION["Parent_Name"];
+        $STD_Address = $_SESSION["STD_Address"];
+        $Group_ID = $_SESSION["Group_ID"];
+
     } else {
         // ถ้าไม่มีตัวแปรเซสชัน username แสดงว่ายังไม่ได้ล็อกอิน
         echo "กรุณาล็อกอินก่อนใช้งาน!";
@@ -55,7 +64,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#"><?php echo "$fullname";?></a>
+                        <a class="nav-link text-white" href="#"><?php echo "$STD_Name";?></a>
                     </li>
                     <li class="nav-item">
                         <a href="Login.php" class="nav-link text-white ">Log Out</a>
