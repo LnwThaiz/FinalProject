@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSP Page</title>
+    <title>Leave System</title>
 </head>
 
 <body>
@@ -63,7 +63,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#"><?php echo "$STD_Name";?></a>
+                        <a class="nav-link text-white" href="User.php"><?php echo "$STD_Name $STD_Lastname" ;?></a>
                     </li>
                     <li class="nav-item">
                         <a href="Login.php" class="nav-link text-white ">Log Out</a>

@@ -16,8 +16,7 @@
 
 h3 {
     padding-top : 50px;
-    margin: 50px;
-    margin-bottom: 0;
+    margin: 73px;
 }
 
 .table {
@@ -50,9 +49,9 @@ h3 {
         include "navbar.php"
     ?>
 
-    <H3 class="align-left text-left">ประวัติการลา</H3>
-    <div class="table-container w-100 d-flex justify-content-center">
-        <table class="table table-striped" style="width: 90%;">
+    <H3 class="align-left text-left mb-0">ประวัติการลา</H3>
+    <div class="table-container w-100 d-flex justify-content-center mt-0">
+        <table class="table table-striped m-0" style="width: 90%;">
             <thead>
                 <tr class="align-middle text-center">
                     <th>วันที่ลง</th>
@@ -68,21 +67,35 @@ h3 {
                     <td>ลาป่วย</td>
                     <td>25/05/66 09:00 - 26/05/2566 18:00</td>
                     <td>รออนุมัติ</td>
-                    <td></td>
+                    <td><a href="" class="btn p-0 border-0 shadow-none"><i class="bi bi-info-circle-fill fs-5"></i></a></td>
                 </tr>
                 <tr>
                     <td>23/05/2566</td>
                     <td>ลาป่วย</td>
                     <td>25/05/66 09:00 - 26/05/2566 18:00</td>
                     <td>รออนุมัติ</td>
-                    <td></td>
+                    <td><a href="" class="btn p-0 border-0 shadow-none"><i class="bi bi-info-circle-fill fs-5"></i></a></td>
                 </tr>
                 <tr>
                     <td>23/05/2566</td>
                     <td>ลาป่วย</td>
                     <td>25/05/66 09:00 - 26/05/2566 18:00</td>
                     <td>รออนุมัติ</td>
-                    <td></td>
+                    <td><a href="" class="btn p-0 border-0 shadow-none"><i class="bi bi-info-circle-fill fs-5"></i></a></td>
+                </tr>
+                <tr>
+                    <td>23/05/2566</td>
+                    <td>ลาป่วย</td>
+                    <td>25/05/66 09:00 - 26/05/2566 18:00</td>
+                    <td>รออนุมัติ</td>
+                    <td><a href="" class="btn p-0 border-0 shadow-none"><i class="bi bi-info-circle-fill fs-5"></i></a></td>
+                </tr>
+                <tr>
+                    <td>23/05/2566</td>
+                    <td>ลาป่วย</td>
+                    <td>25/05/66 09:00 - 26/05/2566 18:00</td>
+                    <td>รออนุมัติ</td>
+                    <td><a href="" class="btn p-0 border-0 shadow-none"><i class="bi bi-info-circle-fill fs-5"></i></a></td>
                 </tr>
             </tbody>
         </table>

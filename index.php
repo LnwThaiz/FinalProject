@@ -23,7 +23,7 @@
                 src="./img/Edituser-W.png" width="70"></div>
         <div
             style="width: 180px; height: 33px; left: 189px; top: 280px; position: absolute; color: white; font-size: 23px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            <a href="User.php" class="text-white">ข้อมูลผู้ใช้</a>
+            <a href="User.php" class="text-white text-decoration-none">ข้อมูลผู้ใช้</a>
         </div>
 
         <!--ประวัติการลา  -->
@@ -32,7 +32,7 @@
         </div>
         <div
             style="width: 180px; height: 33px; left: 189px; top: 380px; position: absolute; color: white; font-size: 23px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            <a href="LeaveHistory.php" class="text-white">ประวัติการลา</a>
+            <a href="LeaveHistory.php" class="text-white text-decoration-none">ประวัติการลา</a>
         </div>
         <!--ตารางเรียน -->
         <div style="width: 180px; height: 33px; left: 100px; top: 450px; position: absolute; "><i
@@ -40,7 +40,7 @@
         </div>
         <div
             style="width: 181px; height: 33px; left: 189px; top: 480px; position: absolute; color: white; font-size: 23px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            <a href="schedule.php" class="text-white">ตารางเรียน</a>
+            <a href="schedule.php" class="text-white text-decoration-none">ตารางเรียน</a>
         </div>
         <!--หัวตาราง -->
         <div
