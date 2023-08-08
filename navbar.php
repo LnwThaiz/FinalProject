@@ -74,7 +74,7 @@
         </div>
     </nav>
     <?php
-    include "footerBoostrap.html";
+    include "footerBoostrapLogin.html";
     ?>
 </body>
 
