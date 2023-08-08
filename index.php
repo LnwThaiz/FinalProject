@@ -21,7 +21,7 @@
     </style>
 </head>
 <body>
-    <?php include_once "navbar.php" ?>
+    <?php include_once "navbar.php"  ?>
     <div style="width: 100%; height: 100%; position: relative; background: white"> 
     <div class="box" style="left: 71px; top: 100px;"></div>
     <div class="icon" style="left: 100px; top: 250px;"><img src="./img/Edituser-W.png" width="70"></div>
