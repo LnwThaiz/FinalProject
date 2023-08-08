@@ -16,17 +16,17 @@
 }
 
 .content-table {
-    font-family: MiBlackberry;
+    /* font-family: MiBlackberry; */
     border-collapse : collapse;
     margin: 25px 0;
     font-size: 0.9em;
-    min-width: 400px;
+    width: 90%;
 }
 
 .content-table thead tr {
     background-color: #454ABB;
     color: #ffffff;
-    text-align: left;
+    height: 50px;
     font-weight: bold;
 }
 
@@ -38,10 +38,10 @@
         include "navbar.php"
     ?>
     
-    <div class="table-container">
+    <div class="table-container w-100 d-flex justify-content-center">
         <table class="content-table">
             <thead>
-                <tr>
+                <tr class="align-middle text-center">
                     <th>วันที่ลง</th>
                     <th>การลา</th>
                     <th>วันที่ลา</th>
@@ -49,7 +49,7 @@
                     <th>รายละเอียด</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="align-middle text-center">
                 <tr>
                     <td>23/05/2566</td>
                     <td>ลาป่วย</td>
