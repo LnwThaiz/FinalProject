@@ -2,101 +2,77 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>ข้อมูลส่วนตัว</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-    <?php
+<?php
     include "navbar.php"
+
+    
         ?>
-    <div style="width: 100%; height: 100%; position: relative; background: white">
-
-        <div style="width: 42.84px; height: 48.96px; left: 1081px; top: 25px; position: absolute; background: white">
+    <!-- Your HTML content here -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">ข้อมูลส่วนตัว</h1>
+            </div>
         </div>
-        <div style="width: 45.93px; height: 35px; left: 1343px; top: 39px; position: absolute; background: white"></div>
-        <div style="width: 1257px; height: 748px; left: 91px; top: 91px; position: absolute; background: #EFEFEF"></div>
-        <div
-            style="width: 241px; height: 75px; left: 91px; top: 50px; position: absolute; color: black; font-size: 30px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            แก้ไขข้อมูลส่วนตัว</div>
-        <div
-            style="width: 165px; height: 37px; left: 138px; top: 194px; position: absolute; color: black; font-size: 25px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            รหัสนักศึกษา :</div>
-        <div
-            style="width: 165px; height: 75px; left: 133px; top: 119px; position: absolute; color: black; font-size: 25px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            ประวัตินักศึกษา</div>
-        <div
-            style="width: 111px; height: 37px; left: 731px; top: 194px; position: absolute; color: black; font-size: 25px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            ระดับชั้น :</div>
-        <div
-            style="width: 202px; height: 31px; left: 298px; top: 200px; position: absolute; color: #FF0000; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            // ดึงจากฐานข้อมูล //</div>
-        <div
-            style="width: 211px; height: 32px; left: 846px; top: 200px; position: absolute; color: #FF0000; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            // ดึงจากฐานข้อมูล //</div>
-        <div
-            style="width: 165px; height: 37px; left: 133px; top: 276px; position: absolute; color: black; font-size: 25px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            ชื่อ - นามสกุล :</div>
-        <div
-            style="width: 202px; height: 31px; left: 298px; top: 280px; position: absolute; color: #FF0000; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            // ดึงจากฐานข้อมูล //</div>
-        <div
-            style="width: 154px; height: 37px; left: 133px; top: 362px; position: absolute; color: black; font-size: 25px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            วันเดือนปีเกิด :</div>
-        <div
-            style="width: 64px; height: 37px; left: 222px; top: 443px; position: absolute; color: black; font-size: 25px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            ที่อยู่ :</div>
-        <div
-            style="width: 202px; height: 31px; left: 298px; top: 368px; position: absolute; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            <input class="text" placeholder=" // ดึงจากฐานข้อมูล //"></div>
-        <div
-            style="width: 202px; height: 31px; left: 298px; top: 446px; position: absolute; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            <input class="text" placeholder=" // ดึงจากฐานข้อมูล //"></div>
-        <div
-            style="width: 122px; height: 37px; left: 720px; top: 276px; position: absolute; color: black; font-size: 25px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            แผนกวิชา :</div>
-        <div
-            style="width: 110px; height: 37px; left: 722px; top: 362px; position: absolute; color: black; font-size: 25px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            กลุ่มเรียน :</div>
-        <div
-            style="width: 110px; height: 37px; left: 721px; top: 443px; position: absolute; color: black; font-size: 25px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            เบอร์โทร :</div>
-        <div
-            style="width: 156px; height: 37px; left: 135px; top: 527px; position: absolute; color: black; font-size: 25px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            ชื่อผู้ปกครอง :</div>
-        <div
-            style="width: 200px; height: 32px; left: 846px; top: 285px; position: absolute; color: #FF0000; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            // ดึงจากฐานข้อมูล //</div>
-        <div
-            style="width: 200px; height: 32px; left: 846px; top: 364px; position: absolute; color: #FF0000; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            <input class="text" placeholder=" // ดึงจากฐานข้อมูล //"></div>
-        <div
-            style="width: 200px; height: 32px; left: 846px; top: 446px; position: absolute; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            <input class="text" placeholder=" // ดึงจากฐานข้อมูล //"></div>
-        <div
-            style="width: 200px; height: 32px; left: 298px; top: 532px; position: absolute; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            <input class="text" placeholder=" // ดึงจากฐานข้อมูล //"></div>
-        <div
-            style="width: 200px; height: 32px; left: 110px; top: 630px; position: absolute; color: #FF0000; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            สีแดงไม่สามารถแก้ไขได้</div>
-        <div
-            style="width: 200px; height: 32px; left: 332px; top: 630px; position: absolute; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            สีดำสามารถแก้ไขได้</div>
-        <div style="width: 1001px; height: 0px; left: 310px; top: 145px; position: absolute; border: 1px black solid">
+        <div class="row mt-3">
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <label for="student-id">รหัสนักศึกษา :</label>
+                    <input type="text" class="form-control" id="student-id" value="<?php echo "$STD_ID";?> " disabled>
+                </div>
+                <div class="form-group">
+                    <label for="student-level">ระดับชั้น :</label>
+                    <input type="text" class="form-control" id="student-level" value="<?php echo "$Classlev_ID";?>" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="student-name">ชื่อ - นามสกุล :</label>
+                    <input type="text" class="form-control" id="student-name" value="<?php echo "$STD_Name";?>  <?php echo "$STD_Lastname ";?> " disabled>
+                </div>
+                <div class="form-group">
+                    <label for="birthdate">วันเดือนปีเกิด :</label>
+                    <input type="text" class="form-control" id="birthdate" value="<?php echo "$STD_Birth";?>" >
+                </div>
+                <div class="form-group">
+                    <label for="address">ที่อยู่ :</label>
+                    <input type="text" class="form-control" id="address" value="<?php echo "$STD_Address";?>" >
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <label for="department">แผนกวิชา :</label>
+                    <input type="text" class="form-control" id="department" value="<?php echo "$Major_ID";?>" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="class-group">กลุ่มเรียน :</label>
+                    <input type="text" class="form-control" id="class-group" value="<?php echo "$Group_ID";?>" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="phone-number">เบอร์โทร :</label>
+                    <input type="text" class="form-control" id="phone-number" value="<?php echo "$STD_Phone";?>">
+                </div>
+                <div class="form-group">
+                    <label for="parent-name">ชื่อผู้ปกครอง :</label>
+                    <input type="text" class="form-control" id="parent-name" value="<?php echo "$Parent_Name";?>" >
+                </div>
+            </div>
         </div>
 
-
-        <div>
-            <button onclick="window.location.href = 'User.php';"
-                style="width:150px; height: 50px; left: 1179px; top: 700px; position: absolute; background: #00FF0A; border-radius: 20px; color: white;
-                font-size: 20px; font-family: K2D;font-weight: 400;word-wrap: break-word" >ยืนยัน</button>
-        </div>
-        <div>
-        <button onclick="window.location.href = 'User.php';" style="width:150px; height: 50px; left: 1017px; top: 700px; position: absolute; background: #FF0000; border-radius: 20px; color: white;
-                font-size: 20px; font-family: K2D;font-weight: 400;word-wrap: break-word">ยกเลิก</button>
-            
+        <div class="row mt-3">
+            <div class="col-12 text-center">
+                <button class="btn btn-success mr-3" onclick="window.location.href = 'EditUser.php';">แก้ไขข้อมูล</button>
+                <button class="btn btn-danger" onclick="window.location.href = 'index.php';">กลับหน้าหลัก</button>
+            </div>
         </div>
     </div>
+    
 </body>
 </html>

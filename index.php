@@ -152,7 +152,7 @@
                 font-size: 20px; font-family: K2D;font-weight: 400;word-wrap: break-word"
                 onclick="window.location.href = 'index.php';"> ยืนยันการลา</button>
         </div>
-        <div id="popup" class="popup">
+        <!-- <div id="popup" class="popup">
             <h2>ปฎิทิน</h2>
             <p>วันที่1-31</p>
             <button onclick="closePopup()">ปิด</button>
@@ -179,7 +179,7 @@
                 popup.style.display = "none";
                 overlay.style.display = "none";
             }
-        </script>
+        </script> -->
 
 </body>
 
