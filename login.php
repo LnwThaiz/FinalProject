@@ -9,7 +9,7 @@
 
 <body>
 <?php
-include "boostrapCss.html";
+include "boostrapLogin.html";
 include "connect.php";
 session_start();
 $txt = "";
@@ -100,7 +100,7 @@ $connect->close();
         </section>
     </form>
     <?php
-    include "footerBoostrap.html"
+    include "footerBoostrapLogin.html"
         ?>
 </body>
 
