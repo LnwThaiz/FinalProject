@@ -37,7 +37,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav">
                 <li class="nav-item ml-1">
                     <img src="./img/TATC_Logo.png" width="70" class="rounded-circle border-10px">
                 </li>
