@@ -37,12 +37,12 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item ">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item ml-1">
                     <img src="./img/TATC_Logo.png" width="70" class="rounded-circle border-10px">
                 </li>
 
-                <li class="nav-item ">
+                <li class="nav-item mt-2 ml">
                     <a class="nav-link text-white"  href="index.php">วิทยาลัยเทคนิคสัตหีบ</a>
                 </li>
 
@@ -52,13 +52,13 @@
 
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
 
                 </ul>
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mt-1">
                     <li class="nav-item">
                         <a href="" class="nav-link text-white">
-                            <i class="bi bi-person-circle"></i>
+                            <i class="bi bi-person-circle fs-5"></i>
                         </a>
 
                     </li>
@@ -66,7 +66,7 @@
                         <a class="nav-link text-white" href="User.php"><?php echo "$STD_Name $STD_Lastname" ;?></a>
                     </li>
                     <li class="nav-item">
-                        <a href="Login.php" class="nav-link text-white ">Log Out</a>
+                        <a href="Login.php" class="nav-link text-white ">Logout</a>
                     </li>
                 </ul>
             </div>

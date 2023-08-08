@@ -22,7 +22,7 @@
         <div style="width: 180px; height: 33px; left: 100px; top: 250px; position: absolute; "><img
                 src="./img/Edituser-W.png" width="70"></div>
         <div
-            style="width: 180px; height: 33px; left: 189px; top: 280px; position: absolute; color: white; font-size: 23px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 180px; height: 33px; left: 189px; top: 280px; position: absolute; color: white; font-size: 23px;  font-weight: 400; word-wrap: break-word">
             <a href="User.php" class="text-white text-decoration-none">ข้อมูลผู้ใช้</a>
         </div>
 
@@ -31,7 +31,7 @@
                 class="fas fa-history"></i>
         </div>
         <div
-            style="width: 180px; height: 33px; left: 189px; top: 380px; position: absolute; color: white; font-size: 23px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 180px; height: 33px; left: 189px; top: 380px; position: absolute; color: white; font-size: 23px;  font-weight: 400; word-wrap: break-word">
             <a href="LeaveHistory.php" class="text-white text-decoration-none">ประวัติการลา</a>
         </div>
         <!--ตารางเรียน -->
@@ -39,12 +39,12 @@
                 class="bi bi-calendar-fill icon-calendar"></i>
         </div>
         <div
-            style="width: 181px; height: 33px; left: 189px; top: 480px; position: absolute; color: white; font-size: 23px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 181px; height: 33px; left: 189px; top: 480px; position: absolute; color: white; font-size: 23px;  font-weight: 400; word-wrap: break-word">
             <a href="schedule.php" class="text-white text-decoration-none">ตารางเรียน</a>
         </div>
         <!--หัวตาราง -->
         <div
-            style="width: 293px; height: 65px; left: 105px; top: 160px; position: absolute; color: white; font-size: 25px; font-family: K2D; font-weight: 700; word-wrap: break-word">
+            style="width: 293px; height: 65px; left: 105px; top: 160px; position: absolute; color: white; font-size: 25px;  font-weight: 700; word-wrap: break-word">
             ระบบการใช้งานใบลา</div>
 
         <div style="width: 263px; height: 0px; left: 92px; top: 220px; position: absolute; border: 1px white solid">
@@ -54,7 +54,7 @@
         <div
             style="width: 918px; height: 512px; left: 442px; top: 100px; position: absolute; background: #F4F4F4; border-radius: 35px">
         </div>
-        <textarea style="width: 497px; height: 183px; left: 479px; top: 290px;  position: absolute;  resize: none;"
+        <textarea style="width: 497px; height: 183px; left: 479px; top: 290px;  position: absolute;  resize: none; border-radius: 20px"
             name="annotation" rows="6" cols="50">
                 </textarea>
         <div
@@ -65,46 +65,46 @@
         </div>
         <!--หัวตาราง-->
         <div
-            style="width: 165px; height: 75px; left: 818px; top: 50px; position: absolute; color: black; font-size: 30px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 165px; height: 75px; left: 818px; top: 50px; position: absolute; color: black; font-size: 30px; font-weight: 400; word-wrap: break-word">
             บันทึกการลา</div>
         <div
-            style="width: 89px; height: 30px; left: 486px; top: 130px; position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 89px; height: 30px; left: 486px; top: 130px; position: absolute; color: #9F9F9F; font-size: 20px;  font-weight: 400; word-wrap: break-word">
             วันที่เริ่มลา</div>
         <div
-            style="width: 136px; height: 30px; left: 486px; top: 260px; position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 136px; height: 30px; left: 486px; top: 260px; position: absolute; color: #9F9F9F; font-size: 20px;  font-weight: 400; word-wrap: break-word">
             เหตุผลการลา</div>
         <div
-            style="width: 300px; height: 30px; left: 486px; top: 480px; position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 300px; height: 30px; left: 486px; top: 480px; position: absolute; color: #9F9F9F; font-size: 20px;  font-weight: 400; word-wrap: break-word">
             แนบไฟล์ ใบรับรองแพทย์</div>
         <div
-            style="width: 300px; height: 30px; left: 486px; top: 530px; position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 300px; height: 30px; left: 486px; top: 530px; position: absolute; color: #9F9F9F; font-size: 20px;  font-weight: 400; word-wrap: break-word">
             <input type="file">
         </div>
         <div
-            style="width: 136px; height: 30px; left: 1044px; top: 260px; position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 136px; height: 30px; left: 1044px; top: 260px; position: absolute; color: #9F9F9F; font-size: 20px;  font-weight: 400; word-wrap: break-word">
             ประเภทการลา</div>
         <div
-            style="width: 136px; height: 30px; left: 1044px; top: 371px; position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 136px; height: 30px; left: 1044px; top: 371px; position: absolute; color: #9F9F9F; font-size: 20px;  font-weight: 400; word-wrap: break-word">
             วิชาที่ลาได้</div>
         <div
-            style="width: 89px; height: 30px; left: 964px; top: 130px; position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 89px; height: 30px; left: 964px; top: 130px; position: absolute; color: #9F9F9F; font-size: 20px;  font-weight: 400; word-wrap: break-word">
             ตั้งแต่เวลา</div>
         <div
-            style="width: 89px; height: 30px; left: 1180px; top: 130px; position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 89px; height: 30px; left: 1180px; top: 130px; position: absolute; color: #9F9F9F; font-size: 20px;  font-weight: 400; word-wrap: break-word">
             ถึงเวลา</div>
         <div
-            style="width: 89px; height: 30px; left: 725px; top: 130px; position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 89px; height: 30px; left: 725px; top: 130px; position: absolute; color: #9F9F9F; font-size: 20px;  font-weight: 400; word-wrap: break-word">
             ถึงวันที่</div>
         <!--วันที่เริ่มลา-->
         <div>
             <button
-                style="width: 187px; height: 72px; left: 479px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word"
+                style="width: 187px; height: 72px; left: 479px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px;  font-weight: 400; word-wrap: break-word"
                 onclick="openPopup()">28/06/2565</button>
 
         </div>
         <!--สิ้นสุดวันลา-->
         <div>
-        <input  style="width: 187px; height: 72px; left: 720px; top: 159px; position: absolute; background: white; border-radius: 15px;  color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word"
+        <input  style="width: 187px; height: 72px; left: 720px; top: 159px; position: absolute; background: white; border-radius: 15px;  color: black; font-size: 20px;  font-weight: 400; word-wrap: break-word"
                 type="text" id="datepicker">
         </div>
 
@@ -112,7 +112,7 @@
         <!--เวลาที่เริ่มลา-->
         <div>
             <select
-                style="width: 159px; height: 72px; left: 956px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word"
+                style="width: 159px; height: 72px; left: 956px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px;  font-weight: 400; word-wrap: break-word"
                 name="Type_of_eave">
                 <option>10.00 - 11.00</option>
                 <option>11.00 - 12.00</option>
@@ -122,7 +122,7 @@
         <!--สิ้นสุดเวลาการลา-->
         <div>
             <select name="Type_of_eave"
-                style="width: 159px; height: 72px; left: 1169px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+                style="width: 159px; height: 72px; left: 1169px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px;  font-weight: 400; word-wrap: break-word">
                 <option>11.00 - 12.00</option>
                 <option>12.00 - 13.00</option>
             </select>
@@ -130,7 +130,7 @@
         <!--ประเภทการลา-->
         <div>
             <select
-                style="width: 159px; height: 50px; left: 1050px; top: 310px; position: absolute; background: white; border-radius: 15px; font-size: 20px; font-family: K2D; font-weight: 50; word-wrap: break-word"
+                style="width: 159px; height: 50px; left: 1050px; top: 310px; position: absolute; background: white; border-radius: 15px; font-size: 20px;  font-weight: 50; word-wrap: break-word"
                 name="Type_of_eave">
                 <option>ลากิจ</option>
                 <option>ลาป่วย</option>
@@ -139,7 +139,7 @@
         <!--วิชาที่ลาได้-->
         <div>
             <select
-                style="width: 159px; height: 50px; left: 1050px; top: 424px; position: absolute;  background: white; border-radius: 15px;  font-size: 20px; font-family: K2D; font-weight: 50; word-wrap: break-word"
+                style="width: 159px; height: 50px; left: 1050px; top: 424px; position: absolute;  background: white; border-radius: 15px;  font-size: 20px;  font-weight: 50; word-wrap: break-word"
                 name="Leaving_subjects">
                 <option>คณิตศาสตร์</option>
                 <option>วิทยาศาสตร์</option>
@@ -148,8 +148,8 @@
 
         <!--ปุ่มยินยันการลา-->
         <div>
-            <button style="width:150px; height: 50px; left: 1050px; top: 530px; position: absolute; background:#00FF0A; border-radius: 20px; color: white;
-                font-size: 20px; font-family: K2D;font-weight: 400;word-wrap: break-word"
+            <button style="width:150px; height: 50px; left: 1050px; top: 530px; position: absolute; background-color: green; border-radius: 20px; color: white;
+                font-size: 20px; font-weight: 400;word-wrap: break-word; border: 1px solid white"
                 onclick="window.location.href = 'index.php';"> ยืนยันการลา</button>
         </div>
         <!-- <div id="popup" class="popup">
