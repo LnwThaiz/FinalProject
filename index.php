@@ -40,7 +40,7 @@
     <div
             style="width: 165px; height: 75px; left: 818px; top: 50px; position: absolute; color: black; font-size: 30px; font-family: K2D; font-weight: 400; word-wrap: break-word">
             บันทึกการลา</div>
-    <div class="file-input" style="left: 486px; top: 480px;">แนบไฟล์ ใบรับรองแพทย์</div>
+    <div class="file-input" style="left: 486px; top: 480px;">แนบไฟล์  ใบรับรองแพทย์</div>
     <div class="file" style="left: 486px; top: 530px;" ><input type="file"></div>
     <div class="file-input" style="left: 1044px; top: 260px;">ประเภทการลา</div>
     <div>
