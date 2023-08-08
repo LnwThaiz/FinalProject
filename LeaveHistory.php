@@ -8,21 +8,26 @@
 <style>
 
 .table-container {
-    padding-top : 50px;
-    width : 59%;
+    padding-top : 10px;
     display: block;
     margin-left: auto;
     margin-right: auto
 }
 
-.content-table {
+h3 {
+    padding-top : 50px;
+    margin: 50px;
+    margin-bottom: 0;
+}
+
+.table {
     border-collapse : collapse;
     margin: 25px 0;
     font-size: 0.9em;
     width: 90%;
 }
 
-.content-table thead tr th{
+.table thead tr th{
     background-color: #454ABB;
     color: #ffffff;
     border: 1px solid white;
@@ -30,7 +35,7 @@
     font-weight: bold;
 }
 
-.content-table tbody tr td{
+.table tbody tr td{
     background-color: white;
     border: 1px solid white;
 }
@@ -44,9 +49,10 @@
     <?php 
         include "navbar.php"
     ?>
-    
+
+    <H3 class="align-left text-left">ประวัติการลา</H3>
     <div class="table-container w-100 d-flex justify-content-center">
-        <table class="content-table table table-striped">
+        <table class="table table-striped" style="width: 90%;">
             <thead>
                 <tr class="align-middle text-center">
                     <th>วันที่ลง</th>
