@@ -23,7 +23,7 @@
 </style>
 <body>
 <?php
-    include "navbar.php"
+    include_once "navbar.php"
         ?>
          <h1>ตารางเรียน</h1>
     <table>

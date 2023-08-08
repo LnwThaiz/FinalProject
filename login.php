@@ -9,8 +9,8 @@
 
 <body>
 <?php
-include "boostrapLogin.html";
-include "connect.php";
+include_once "boostrapLogin.html";
+include_once "connect.php";
 session_start();
 $txt = "";
 
@@ -100,7 +100,7 @@ $connect->close();
         </section>
     </form>
     <?php
-    include "footerBoostrapLogin.html"
+    include_once "footerBoostrapLogin.html"
         ?>
 </body>
 

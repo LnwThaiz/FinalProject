@@ -12,7 +12,7 @@
 
 <body>
 <?php
-    include "navbar.php"
+    include_once "navbar.php"
         ?>
     <!-- Your HTML content here -->
     <div class="container mt-4">

@@ -11,7 +11,7 @@
 
 <body>
 <?php
-   include "navbar.php";
+   include_once "navbar.php";
 // Assuming you have already fetched data from the database and stored it in variables.
 // For example:
 // $STD_ID = ...;
