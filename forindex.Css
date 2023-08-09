@@ -1,0 +1,13 @@
+body { background: white; }
+.box { width: 307px; height: 520px; position: absolute; background: #454ABB; border-radius: 35px; }
+.icon { width: 180px; height: 33px; position: absolute; font-size: 23px; font-family: K2D; font-weight: 400; word-wrap: break-word; color: white; }
+.icon i { margin-right: 5px; }
+.title { width: 293px; height: 65px; position: absolute; color: white; font-size: 25px; font-family: K2D; font-weight: 700; word-wrap: break-word; }
+.divider { width: 263px; height: 0px; position: absolute; border: 1px white solid; }
+.form-box { width: 918px; height: 512px; position: absolute; background: #F4F4F4; border-radius: 35px; }
+textarea { width: 497px; height: 183px; position: absolute; resize: none; }
+.file-input { width: 300px; height: 30px; position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word; }
+.file { width: 300px; height: 30px; position: absolute; }
+.submit-button { width: 150px; height: 50px; position: absolute; background:#00FF0A; border-radius: 20px; color: white; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word; }
+.no-underline { text-decoration: none; }
+.textlabel {  position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word}
