@@ -103,9 +103,12 @@
         </div>
         <!--สิ้นสุดวันลา-->
         <div>
-        <input  style="width: 187px; height: 72px; left: 720px; top: 159px; position: absolute; background: white; border-radius: 15px;  color: black; font-size: 20px;  font-weight: 400; word-wrap: break-word"
-                type="text" id="datepicker">
+            <button
+                style="width: 187px; height: 72px;left: 720px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px;  font-weight: 400; word-wrap: break-word"
+                onclick="openPopup()">28/06/2565</button>
+
         </div>
+
 
 
         <!--เวลาที่เริ่มลา-->
