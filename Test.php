@@ -1,100 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <style>
-        body { background: white; }
-        .box { width: 307px; height: 520px; position: absolute; background: #454ABB; border-radius: 35px; }
-        .icon { width: 180px; height: 33px; position: absolute; font-size: 23px; font-family: K2D; font-weight: 400; word-wrap: break-word; color: white; }
-        .icon i { margin-right: 5px; }
-        .title { width: 293px; height: 65px; position: absolute; color: white; font-size: 25px; font-family: K2D; font-weight: 700; word-wrap: break-word; }
-        .divider { width: 263px; height: 0px; position: absolute; border: 1px white solid; }
-        .form-box { width: 918px; height: 512px; position: absolute; background: #F4F4F4; border-radius: 35px; }
-        textarea { width: 497px; height: 183px; position: absolute; resize: none; }
-        .file-input { width: 300px; height: 30px; position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word; }
-        .file { width: 300px; height: 30px; position: absolute; }
-        .submit-button { width: 150px; height: 50px; position: absolute; background:#00FF0A; border-radius: 20px; color: white; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word; }
-        .no-underline { text-decoration: none; }
-        .textlabel {  position: absolute; color: #9F9F9F; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word}
-    </style>
+<style>
+  /* สไตล์สำหรับป็อปอัพท์ */
+  .calendar-popup {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .calendar-popup h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .calendar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .calendar-day {
+    width: 14.28%; /* 1/7 ของ 100% */
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  .calendar-day:hover {
+    background-color: #f5f5f5;
+  }
+
+  .calendar-day:nth-child(7n), .calendar-day:last-child {
+    border-right: none;
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  #openPopupButton {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #openPopupButton:hover {
+    background-color: #0056b3;
+  }
+
+  /* สไตล์สำหรับวันที่ที่ถูกคลิก */
+  .selected-day {
+    background-color: #007BFF;
+    color: white;
+  }
+</style>
 </head>
 <body>
-    <?php include_once "navbar.php" ?>
-    <div style="width: 100%; height: 100%; position: relative; background: white"> 
-    <div class="box" style="left: 71px; top: 100px;"></div>
-    <div class="icon" style="left: 100px; top: 250px;"><img src="./img/Edituser-W.png" width="70"></div>
-    <div class="icon" style="left: 189px; top: 280px;"><a href="User.php" class="text-white no-underline">ข้อมูลผู้ใช้</a></div>
-    <div style="width: 180px; height: 33px; left: 100px; top: 359px; position: absolute; "><i class="fas fa-history"></i></div>
-    <div class="icon" style="left: 189px; top: 380px;"><a href="LeaveHistory.php" class="text-white no-underline">ประวัติการลา</a></div>
-    <div class="icon" style="left: 189px; top: 480px;"><a href="schedule.php" class="text-white no-underline">ตารางเรียน</a></div>
-    <div style="width: 180px; height: 33px; left: 100px; top: 450px; position: absolute; "><i class="bi bi-calendar-fill icon-calendar"></i></div>
-    <div class="title" style="left: 105px; top: 160px;">ระบบการใช้งานใบลา</div>
-    <div class="divider" style="left: 92px; top: 220px;"></div>
-    <div class="form-box" style="left: 442px; top: 100px;"></div>
-    <div class="textlabel"style="width: 136px; height: 30px; left: 486px; top: 260px;">เหตุผลการลา</div>
-    <textarea style="left: 479px; top: 290px;"></textarea>
-    <div class="divider" style="left: 676px; top: 196px;"></div>
-    <div class="divider" style="left: 1126px; top: 195px;"></div>
-    <div
-            style="width: 165px; height: 75px; left: 818px; top: 50px; position: absolute; color: black; font-size: 30px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-            บันทึกการลา</div>
-    <div class="file-input" style="left: 486px; top: 480px;">แนบไฟล์ ใบรับรองแพทย์</div>
-    <div class="file" style="left: 486px; top: 530px;" ><input type="file"></div>
-    <div class="file-input" style="left: 1044px; top: 260px;">ประเภทการลา</div>
-    <div>
-            <select
-                style="width: 159px; height: 50px; left: 1050px; top: 310px; position: absolute; background: white; border-radius: 15px; font-size: 20px; font-family: K2D; font-weight: 50; word-wrap: break-word"
-                name="Type_of_eave">
-                <option>ลากิจ</option>
-                <option>ลาป่วย</option>
-            </select>
-        </div>
-    <div class="file-input" style="left: 1044px; top: 371px;">วิชาที่ลาได้</div>
-    <div>
-            <select
-                style="width: 159px; height: 50px; left: 1050px; top: 424px; position: absolute;  background: white; border-radius: 15px;  font-size: 20px; font-family: K2D; font-weight: 50; word-wrap: break-word"
-                name="Leaving_subjects">
-                <option>คณิตศาสตร์</option>
-                <option>วิทยาศาสตร์</option>
-            </select>
-        </div>
-    <div class="file-input" style="left: 964px; top: 130px;">ตั้งแต่เวลา</div>
-    <div>
-            <select
-                style="width: 159px; height: 72px; left: 956px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word"
-                name="Type_of_eave">
-                <option>10.00 - 11.00</option>
-                <option>11.00 - 12.00</option>
-            </select>
-        </div>
 
-    <div class="file-input" style="left: 1180px; top: 130px;">ถึงเวลา</div>
-    <div>
-            <select name="Type_of_eave"
-                style="width: 159px; height: 72px; left: 1169px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
-                <option>11.00 - 12.00</option>
-                <option>12.00 - 13.00</option>
-            </select>
-        </div>
-    <div class="file-input" style="left: 486px; top: 130px;">วันที่เริ่มลา</div>
-    <div>
-            <button
-                style="width: 187px; height: 72px; left: 479px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word"
-                onclick="openPopup()">28/06/2565</button>
+<!-- ปุ่มที่เมื่อคลิกจะเปิดป็อปอัพท์ -->
+<button id="openPopupButton">เปิดปฏิทิน</button>
 
-        </div>
-    <div class="file-input" style="left: 725px; top: 130px;">ถึงวันที่</div>
-    <div>
-            <button
-                style="width: 187px; height: 72px;  left: 720px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word"
-                onclick="openPopup()">28/06/2565</button>
+<!-- ป็อปอัพท์ปฏิทิน -->
+<div class="calendar-popup" id="calendarPopup">
+  <h2 id="currentMonthYear">ปฏิทิน</h2>
+  <div class="calendar-header">
+    <button id="prevMonthButton">ย้อนกลับ</button>
+    <span id="currentMonthYear">เดือน ปี</span>
+    <button id="nextMonthButton">ถัดไป</button>
+  </div>
+  <div class="calendar" id="calendar">
+  </div>
+</div>
 
-        </div>
-    <div>
-        <button class="submit-button" style="left: 1050px; top: 530px;" onclick="window.location.href = 'index.php';">ยืนยันการลา</button>
-    </div>
-    </div>
+<script>
+document.getElementById("openPopupButton").addEventListener("click", function() {
+  var popup = document.getElementById("calendarPopup");
+  if (popup.style.display === "none") {
+    popup.style.display = "block";
+  } else {
+    popup.style.display = "none";
+  }
+});
+
+var selectedDate = null;
+var selectedCell = null;
+var currentYear = 2565;
+var currentMonth = 0; // เริ่มต้นที่มกราคม
+
+function generateCalendar(year, month) {
+  var table = document.createElement("table");
+  table.className = "calendar-table";
+
+  var header = document.createElement("thead");
+  var headerRow = document.createElement("tr");
+
+  var daysOfWeek = ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"];
+  for (var i = 0; i < 7; i++) {
+    var th = document.createElement("th");
+    th.textContent = daysOfWeek[i];
+    headerRow.appendChild(th);
+  }
+
+  header.appendChild(headerRow);
+  table.appendChild(header);
+
+  var daysInMonth = new Date(year, month + 1, 0).getDate();
+  var firstDayOfMonth = new Date(year, month, 1).getDay();
+  var currentDate = 1;
+
+  var tbody = document.createElement("tbody");
+
+  var monthNames = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
+
+  var monthYearHeader = document.getElementById("currentMonthYear");
+  monthYearHeader.textContent = `${monthNames[month]} ${year}`;
+
+  for (var i = 0; i < 6; i++) {
+    var row = document.createElement("tr");
+    for (var j = 0; j < 7; j++) {
+      var cell = document.createElement("td");
+      if (i === 0 && j < firstDayOfMonth) {
+        cell.textContent = "";
+      } else if (currentDate > daysInMonth) {
+        break;
+      } else {
+        cell.textContent = currentDate;
+        cell.addEventListener("click", function() {
+          if (selectedCell !== null) {
+            selectedCell.classList.remove("selected-day");
+          }
+
+          selectedDate = {
+            day: this.textContent,
+            month: currentMonth + 1,
+            year: currentYear
+          };
+          document.getElementById("openPopupButton").textContent = `${selectedDate.day}/${selectedDate.month}/${selectedDate.year}`;
+          
+          this.classList.add("selected-day");
+          selectedCell = this;
+        });
+        currentDate++;
+      }
+      row.appendChild(cell);
+    }
+    tbody.appendChild(row);
+  }
+
+  table.appendChild(tbody);
+  document.getElementById("calendar").innerHTML = "";
+  document.getElementById("calendar").appendChild(table);
+}
+
+document.getElementById("prevMonthButton").addEventListener("click", function() {
+  currentMonth--;
+  if (currentMonth < 0) {
+    currentMonth = 11;
+    currentYear--;
+  }
+  generateCalendar(currentYear, currentMonth);
+});
+
+document.getElementById("nextMonthButton").addEventListener("click", function() {
+  currentMonth++;
+  if (currentMonth > 11) {
+    currentMonth = 0;
+    currentYear++;
+  }
+  generateCalendar(currentYear, currentMonth);
+});
+
+// รันฟังก์ชันเพื่อแสดงปฏิทินเมื่อเอกสารโหลดเสร็จ
+document.addEventListener("DOMContentLoaded", function() {
+  generateCalendar(currentYear, currentMonth);
+});
+</script>
+
 </body>
 </html>
