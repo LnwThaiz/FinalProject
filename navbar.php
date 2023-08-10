@@ -24,6 +24,9 @@
         $Parent_Name = $_SESSION["Parent_Name"];
         $STD_Address = $_SESSION["STD_Address"];
         $Group_ID = $_SESSION["Group_ID"];
+        $Provinces_ID = $_SESSION["provinces_id"];
+        $District_ID = $_SESSION["district_id"];
+        $SubDistrict_ID = $_SESSION["subdistrict_id"];
 
     } else {
         // ถ้าไม่มีตัวแปรเซสชัน username แสดงว่ายังไม่ได้ล็อกอิน
@@ -37,7 +40,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mx-2">
                 <li class="nav-item ml-1">
                     <img src="./img/TATC_Logo.png" width="70" class="rounded-circle border-10px">
                 </li>
@@ -52,7 +55,7 @@
 
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-5">
 
                 </ul>
                 <ul class="navbar-nav mt-1">

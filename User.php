@@ -42,6 +42,8 @@
                 <div class="form-group">
                     <label for="address">ที่อยู่ :</label>
                     <input type="text" class="form-control" id="address" value="<?php echo "$STD_Address";?>" disabled>
+                    <label for="address">จังหวัด :</label>
+                    <input type="text" class="form-control" id="provinces-id" value="<?php echo "$Provinces_ID";?>" disabled>
                 </div>
             </div>
             <div class="col-12 col-md-6">
