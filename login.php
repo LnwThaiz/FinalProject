@@ -59,9 +59,8 @@ $connect->close();
                             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                                 <div class="card text-white" style="background: #454ABB; border-radius: 1rem;">
                                     <div class="card-body p-5 text-center">
-
+                                        <img src="./img/TATC_Logo.png" class="rounded-circle border-10px">
                                         <div class="mb-md-0 mt-md-4 pb-2">
-
                                             <h2 class="fw-bold mb-4 text-uppercase">วิทยาลัยเทคสัตหีบ</h2>
 
 
@@ -84,7 +83,7 @@ $connect->close();
                                             <div class="d-flex justify-content-between align-items-center">
                                             
                                                 <p class="mb-0"><a href="regis.jsp"
-                                                        class="text-white-50 fw-bold">เข้าสู่ระบบด้วยแอดมิน</a>
+                                                        class="text-white-50 fw-bold" style="text-decoration: none;">เข้าสู่ระบบด้วยแอดมิน</a>
                                             
                                         </p>
                                         <button class="btn btn-outline-light btn-lg px-5"

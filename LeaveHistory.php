@@ -48,7 +48,7 @@
 
     <H3 class="align-left text-left mb-0">ประวัติการลา</H3>
     <div class="table-container w-100 d-flex justify-content-center mt-0">
-        <table class="table table-striped m-0" style="width: 90%;">
+        <table class="table table-striped m-0" style="width: 90%; font-size: 15px">
             <thead>
                 <tr class="align-middle text-center">
                     <th>วันที่ลง</th>
@@ -113,11 +113,18 @@
                     
                     </div>
                     <div class="modal-body mx-3">
-                        yed mae
+                        <div class="d-flex">
+                            <p>เหตุผลการลา : </p>
+                            <textarea style="width: 497px; height: 183px; resize: none; border-radius: 20px"></textarea>
+                        </div>
+
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Understood</button>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
+                        <div>
+                            <button type="button" class="btn btn-primary">แก้ไขข้อมูล</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิกการลา</button>
+                        </div>
                     </div>
                 </div>
             </div>
