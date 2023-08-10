@@ -59,11 +59,9 @@ $connect->close();
                             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                                 <div class="card text-white" style="background: #454ABB; border-radius: 1rem;">
                                     <div class="card-body p-5 text-center">
-                                        <img src="./img/TATC_Logo.png" class="rounded-circle border-10px">
+                                        <img src="./img/TATC_Logo.png" width="150" class="rounded-circle border-10px">
                                         <div class="mb-md-0 mt-md-4 pb-2">
                                             <h2 class="fw-bold mb-4 text-uppercase">วิทยาลัยเทคสัตหีบ</h2>
-
-
                                             <div class="form-outline form-white mb-4">
                                                 <input type="text" class="form-control form-control-lg" name="STD_ID" value=""
                                                     required placeholder="ชื่อผู้ใช้งาน" />
