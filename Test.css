@@ -1,95 +1,62 @@
-   /* styles.css */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: K2D, sans-serif;
-}
+ /* สไตล์สำหรับป็อปอัพท์ */
+ .calendar-popup {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
 
-.container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background: white;
-}
+  .calendar-popup h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
 
-.section {
-    font-size: 25px;
-    color: black;
-    font-weight: 400;
-    word-wrap: break-word;
-}
+  .calendar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-.section-title {
-    font-size: 30px;
-}
+  .calendar-day {
+    width: 14.28%; /* 1/7 ของ 100% */
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
 
-.red-text {
-    color: #FF0000;
-}
+  .calendar-day:hover {
+    background-color: #f5f5f5;
+  }
 
-.green-button {
-    background: #00FF0A;
-}
+  .calendar-day:nth-child(7n), .calendar-day:last-child {
+    border-right: none;
+  }
 
-.red-button {
-    background: #FF0000;
-}
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
 
-.button {
-    width: 150px;
-    height: 50px;
-    border-radius: 20px;
+  .selected-day {
+    background-color: #007BFF;
     color: white;
-    font-size: 20px;
-}
+  }
 
-/* Define positions of the elements */
-#container {
-    width: 1257px;
-    height: 748px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: #EFEFEF;
-}
+  #openPopupButton1, #openPopupButton2 {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
 
-#section-title {
-    width: 241px;
-    height: 75px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 50px;
-}
-
-.section-content {
-    width: 200px;
-    height: 32px;
-    position: absolute;
-    left: 298px;
-}
-
-.section-label {
-    width: 165px;
-    height: 37px;
-    position: absolute;
-    left: 138px;
-}
-
-/* Define positions for specific elements */
-#student-code { top: 194px; }
-#student-level { top: 194px; left: 731px; }
-#student-name { top: 276px; }
-#birthdate { top: 362px; }
-#address { top: 443px; }
-#department { top: 276px; left: 720px; }
-#class-group { top: 362px; left: 722px; }
-#phone-number { top: 443px; left: 721px; }
-#guardian-name { top: 527px; left: 135px; }
-
-.button-group {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 700px;
-}
+  #openPopupButton1:hover, #openPopupButton2:hover {
+    background-color: #0056b3;
+  }
