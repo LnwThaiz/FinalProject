@@ -115,9 +115,12 @@
                     <div class="modal-body mx-3">
                         <div class="d-flex">
                             <p>เหตุผลการลา : </p>
-                            <textarea style="width: 497px; height: 183px; resize: none; border-radius: 20px"></textarea>
+                            <textarea class="mx-2" style="width: 300px; height: 100px; resize: none; border-radius: 20px"></textarea>
                         </div>
-
+                        <div class="d-flex mt-2">
+                            <p>ประเภทการลา : </p>
+                            <input type="text" class="mx-2" style="width: 300px; height: 50px; border-radius: 10px">
+                        </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
                         <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>

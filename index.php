@@ -24,14 +24,14 @@
     <div class="divider" style="left: 676px; top: 196px;"></div>
     <div class="divider" style="left: 1126px; top: 195px;"></div>
     <div
-            style="width: 165px; height: 75px; left: 818px; top: 50px; position: absolute; color: black; font-size: 30px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+            style="width: 165px; height: 75px; left: 818px; top: 50px; position: absolute; color: black; font-size: 30px; font-family: 'Anakotmai',sans-serif; font-weight: 400; word-wrap: break-word">
             บันทึกการลา</div>
     <div class="file-input" style="left: 486px; top: 480px;">แนบไฟล์ ใบรับรองแพทย์</div>
     <div class="file" style="left: 486px; top: 530px;" ><input type="file"></div>
     <div class="file-input" style="left: 1044px; top: 260px;">ประเภทการลา</div>
     <div>
             <select
-                style="width: 159px; height: 50px; left: 1050px; top: 310px; position: absolute; background: white; border-radius: 15px; font-size: 20px; font-family: K2D; font-weight: 50; word-wrap: break-word"
+                style="width: 159px; height: 50px; left: 1050px; top: 310px; position: absolute; background: white; border-radius: 15px; font-size: 20px; font-family: 'Anakotmai',sans-serif; font-weight: 50; word-wrap: break-word"
                 name="Type_of_eave">
                 <option>ลากิจ</option>
                 <option>ลาป่วย</option>
@@ -40,7 +40,7 @@
     <div class="file-input" style="left: 1044px; top: 371px;">วิชาที่ลาได้</div>
     <div>
             <select
-                style="width: 159px; height: 50px; left: 1050px; top: 424px; position: absolute;  background: white; border-radius: 15px;  font-size: 20px; font-family: K2D; font-weight: 50; word-wrap: break-word"
+                style="width: 159px; height: 50px; left: 1050px; top: 424px; position: absolute;  background: white; border-radius: 15px;  font-size: 20px; font-family: 'Anakotmai',sans-serif; font-weight: 50; word-wrap: break-word"
                 name="Leaving_subjects">
                 <option>คณิตศาสตร์</option>
                 <option>วิทยาศาสตร์</option>
@@ -49,7 +49,7 @@
     <div class="file-input" style="left: 964px; top: 130px;">ตั้งแต่เวลา</div>
     <div>
             <select
-                style="width: 159px; height: 72px; left: 956px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word"
+                style="width: 159px; height: 72px; left: 956px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: 'Anakotmai',sans-serif; font-weight: 400; word-wrap: break-word"
                 name="Type_of_eave">
                 <option>10.00 - 11.00</option>
                 <option>11.00 - 12.00</option>
@@ -59,7 +59,7 @@
     <div class="file-input" style="left: 1180px; top: 130px;">ถึงเวลา</div>
     <div>
             <select name="Type_of_eave"
-                style="width: 159px; height: 72px; left: 1169px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word">
+                style="width: 159px; height: 72px; left: 1169px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: 'Anakotmai',sans-serif; font-weight: 400; word-wrap: break-word">
                 <option>11.00 - 12.00</option>
                 <option>12.00 - 13.00</option>
             </select>
@@ -67,14 +67,14 @@
     <div class="file-input" style="left: 486px; top: 130px;">วันที่เริ่มลา</div>
     <div>
             <button
-                style="width: 187px; height: 72px; left: 479px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word"
+                style="width: 187px; height: 72px; left: 479px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: 'Anakotmai',sans-serif; font-weight: 400; word-wrap: break-word"
                 onclick="openPopup()">28/06/2565</button>
 
         </div>
     <div class="file-input" style="left: 725px; top: 130px;">ถึงวันที่</div>
     <div>
             <button
-                style="width: 187px; height: 72px;  left: 720px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: K2D; font-weight: 400; word-wrap: break-word"
+                style="width: 187px; height: 72px;  left: 720px; top: 159px; position: absolute; background: white; border-radius: 15px; color: black; font-size: 20px; font-family: 'Anakotmai',sans-serif; font-weight: 400; word-wrap: break-word"
                 onclick="openPopup()">28/06/2565</button>
 
         </div>
