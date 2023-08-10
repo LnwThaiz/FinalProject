@@ -95,7 +95,7 @@ document.getElementById("openPopupButton").addEventListener("click", function() 
 
 var selectedDate = null;
 var selectedCell = null;
-var currentYear = 2565;
+var currentYear = 2023;
 var currentMonth = 0; // เริ่มต้นที่มกราคม
 
 function generateCalendar(year, month) {
@@ -124,7 +124,7 @@ function generateCalendar(year, month) {
   var monthNames = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
 
   var monthYearHeader = document.getElementById("currentMonthYear");
-  monthYearHeader.textContent = `${monthNames[month]} ${year}`;
+  monthYearHeader.textContent = `${monthNames[month]} ${year+543}`;
 
   for (var i = 0; i < 6; i++) {
     var row = document.createElement("tr");
@@ -144,7 +144,7 @@ function generateCalendar(year, month) {
           selectedDate = {
             day: this.textContent,
             month: currentMonth + 1,
-            year: currentYear
+            year: currentYear + 543
           };
           document.getElementById("openPopupButton").textContent = `${selectedDate.day}/${selectedDate.month}/${selectedDate.year}`;
           
