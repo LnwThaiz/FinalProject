@@ -28,6 +28,7 @@
         $District_ID = $_SESSION["district_id"];
         $SubDistrict_ID = $_SESSION["subdistrict_id"];
 
+
     } else {
         // ถ้าไม่มีตัวแปรเซสชัน username แสดงว่ายังไม่ได้ล็อกอิน
         echo "กรุณาล็อกอินก่อนใช้งาน!";

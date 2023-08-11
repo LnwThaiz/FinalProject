@@ -39,6 +39,9 @@
         $_SESSION["Parent_Name"] = $row["Parent_Name"];
         $_SESSION["STD_Address"] = $row["STD_Address"];
         $_SESSION["Group_ID"] = $row["Group_ID"];
+        $_SESSION["provinces_id"] = $row["provinces_id"];
+        $_SESSION["district_id"] = $row["district_id"];
+        $_SESSION["subdistrict_id"] = $row["subdistrict_id"];
 
             header("Location: index.php");
             exit;
