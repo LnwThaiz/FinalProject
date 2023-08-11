@@ -28,17 +28,17 @@
             // ล็อกอินสำเร็จ
             $_SESSION["STD_ID"] = $STD_ID;
 
-            // ดึงข้อมูล fullname จากฐานข้อมูล
-            $row = $result->fetch_assoc();
-            $_SESSION["STD_Name"] = $row["STD_Name"];
-            $_SESSION["STD_Lastname"] = $row["STD_Lastname"];
-            $_SESSION["STD_Birth"] = $row["STD_Birth"];
-            $_SESSION["STD_Phone"] = $row["STD_Phone"];
-            $_SESSION["Classlev_ID"] = $row["Classlev_ID"];
-            $_SESSION["Major_ID"] = $row["Major_ID"];
-            $_SESSION["Parent_Name"] = $row["Parent_Name"];
-            $_SESSION["STD_Address"] = $row["STD_Address"];
-            $_SESSION["Group_ID"] = $row["Group_ID"];
+        // ดึงข้อมูล fullname จากฐานข้อมูล
+        $row = $result->fetch_assoc();
+        $_SESSION["STD_Name"] = $row["STD_Name"];
+        $_SESSION["STD_Lastname"] = $row["STD_Lastname"];
+        $_SESSION["STD_Birth"] = $row["STD_Birth"];
+        $_SESSION["STD_Phone"] = $row["STD_Phone"];
+        $_SESSION["Classlev_ID"] = $row["Classlev_ID"];
+        $_SESSION["Major_ID"] = $row["Major_ID"];
+        $_SESSION["Parent_Name"] = $row["Parent_Name"];
+        $_SESSION["STD_Address"] = $row["STD_Address"];
+        $_SESSION["Group_ID"] = $row["Group_ID"];
 
             header("Location: index.php");
             exit;
