@@ -1,3 +1,6 @@
+<?php
+ob_start(); // เริ่ม Output Buffering
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +15,40 @@
 
 <body>
 <?php
-    include_once "navbar.php"
+    include_once "navbar.php";
+
+    // ตรวจสอบว่ามีตัวแปรเซสชัน STD_ID ถูกตั้งค่าหรือไม่
+    if (isset($_SESSION["STD_ID"])) {
+        $STD_ID = $_SESSION["STD_ID"];
+        $STD_Name = $_SESSION["STD_Name"];
+        $STD_Lastname = $_SESSION["STD_Lastname"];
+        $STD_Birth = $_SESSION["STD_Birth"];
+        $STD_Phone = $_SESSION["STD_Phone"];
+        $Classlev_ID = $_SESSION["Classlev_ID"];
+        $Major_ID = $_SESSION["Major_ID"];
+        $Parent_Name = $_SESSION["Parent_Name"];
+        $STD_Address = $_SESSION["STD_Address"];
+        $Group_ID = $_SESSION["Group_ID"];
+
+          // ตรวจสอบว่ามีตัวแปรเซสชันที่ถูกอัปเดตมาหรือไม่
+        if (isset($_SESSION["UpdatedSTD_Birth"])) {
+            $STD_Birth = $_SESSION["UpdatedSTD_Birth"];
+        }
+        if (isset($_SESSION["UpdatedSTD_Address"])) {
+            $STD_Address = $_SESSION["UpdatedSTD_Address"];
+        }
+        if (isset($_SESSION["UpdatedSTD_Phone"])) {
+            $STD_Phone = $_SESSION["UpdatedSTD_Phone"];
+        }
+        if (isset($_SESSION["UpdatedParent_Name"])) {
+            $Parent_Name = $_SESSION["UpdatedParent_Name"];
+        }
+
+    } else {
+        // ถ้าไม่มีตัวแปรเซสชัน STD_ID แสดงว่ายังไม่ได้ล็อกอิน
+        echo "กรุณาล็อกอินก่อนใช้งาน!";
+    }
+
         ?>
     <!-- Your HTML content here -->
     <div class="container mt-4">
@@ -76,3 +112,7 @@
     
 </body>
 </html>
+<?php
+// สิ้นสุด Output Buffering และส่งเนื้อหาไปยังเบราว์เซอร์
+ob_end_flush();
+?>

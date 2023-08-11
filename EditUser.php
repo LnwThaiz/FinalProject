@@ -16,12 +16,19 @@ ob_start(); // เริ่ม Output Buffering
 <body>
 <?php
     include_once "navbar.php";
+
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Get the updated values from the form submission
         $updatedSTD_Birth = $_POST['birthdate'];
         $updatedSTD_Address = $_POST['address'];
         $updatedSTD_Phone = $_POST['phone-number'];
         $updatedParent_Name = $_POST['parent-name'];
+
+        // อัปเดตข้อมูลในตัวแปรเซสชัน
+        $_SESSION["STD_Birth"] = $updatedSTD_Birth;
+        $_SESSION["STD_Address"] = $updatedSTD_Address;
+        $_SESSION["STD_Phone"] = $updatedSTD_Phone;
+        $_SESSION["Parent_Name"] = $updatedParent_Name;
     
         // Update the data in the database using SQL
         // Replace 'your_database_host', 'your_username', 'your_password', and 'your_database_name' with your actual database credentials
@@ -35,8 +42,10 @@ ob_start(); // เริ่ม Output Buffering
         $sql = "UPDATE std SET STD_Birth = '$updatedSTD_Birth', STD_Address = '$updatedSTD_Address', STD_Phone = '$updatedSTD_Phone', Parent_Name = '$updatedParent_Name' WHERE STD_ID = '$STD_ID'";
     
         if ($conn->query($sql) === TRUE) {
+            echo ($sql);
             // If the update is successful, you may redirect to the same page to display the updated data
             header("Location: User.php");
+            // header("Refresh:0; url=User.php");
             exit;
         } else {
             echo "Error updating record: " . $conn->error;
