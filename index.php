@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="forindex.css">
+    <link rel="stylesheet" href="forindex.Css">
 </head>
 
 <body>
@@ -42,8 +42,8 @@
         font-family : 'Anakotmai',sans-serif ;font-size: medium"></textarea>
 
         <!-- ข้อมูลฝั่งขวาของกล่องข้อความการลา -->
-        <div class="divider" style="left: 676px; top: 196px;"></div>
-        <div class="divider" style="left: 1126px; top: 195px;"></div>
+        <div class="divider2" style="left: 700px; top: 196px;"></div>
+        <div class="divider2" style="left: 1126px; top: 195px;"></div>
         <div style="width: 165px; height: 75px; left: 818px; top: 50px; position: absolute; color: black;
         font-size: 30px; font-family: 'Anakotmai',sans-serif; font-weight: 400; word-wrap: break-word">
             บันทึกการลา</div>
@@ -95,20 +95,47 @@
         </div>
         <div class="file-input" style="left: 486px; top: 130px;">วันที่เริ่มลา</div>
         <div>
-            <button style="width: 187px; height: 72px; left: 479px; top: 159px; position: absolute; background: white; 
-            border: 1px solid black; border-radius: 15px; color: black; font-size: 20px; font-family: 'Anakotmai',sans-serif; 
-            font-weight: 400; word-wrap: break-word" onclick="openPopup()">28/06/2565</button>
+            <!-- ปุ่มที่สองเปิดปฏิทิน -->
+            <button id="openPopupButton2" style="left: 720px; top: 159px;">เลือกวันที่</button>
         </div>
         <div class="file-input" style="left: 725px; top: 130px;">ถึงวันที่</div>
         <div>
-            <button style="width: 187px; height: 72px;  left: 720px; top: 159px; position: absolute; background: white;
-            border: 1px solid black; border-radius: 15px; color: black; font-size: 20px; font-family: 'Anakotmai',sans-serif;
-            font-weight: 400; word-wrap: break-word" onclick="openPopup()">28/06/2565</button>
+
+            <!-- ปุ่มแรกเปิดปฏิทิน -->
+            <button id="openPopupButton1" style="left: 479px; top: 159px;">เลือกวันที่</button>
+
         </div>
         <div>
-            <button class="submit-button" style="left: 1050px; top: 530px;" 
-            onclick="window.location.href = 'index.php';">ยืนยันการลา</button>
+            <button class="submit-button" style="left: 1050px; top: 530px;" onclick="window.location.href = 'index.php';">ยืนยันการลา</button>
         </div>
+
+
+
+        <!-- ป็อปอัพท์ปฏิทิน 1 -->
+        <div class="calendar-popup" style="left:479px; top: 235px;" id="calendarPopup1">
+            <h2 id="currentMonthYear1">ปฏิทิน 1</h2>
+            <div class="calendar-header">
+                <button id="prevMonthButton1">ย้อนกลับ</button>
+                <span id="currentMonthYear1">เดือน ปี</span>
+                <button id="nextMonthButton1">ถัดไป</button>
+            </div>
+            <div class="calendar" id="calendar1">
+            </div>
+        </div>
+
+        <!-- ป็อปอัพท์ปฏิทิน 2 -->
+        <div class="calendar-popup" style="left: 720px; top: 235px;" id="calendarPopup2">
+            <h2 id="currentMonthYear2">ปฏิทิน 2</h2>
+            <div class="calendar-header">
+                <button id="prevMonthButton2">ย้อนกลับ</button>
+                <span id="currentMonthYear2">เดือน ปี</span>
+                <button id="nextMonthButton2">ถัดไป</button>
+            </div>
+            <div class="calendar" id="calendar2">
+            </div>
+        </div>
+
+        <script src="popUpd.js"></script>
     </div>
 </body>
 
