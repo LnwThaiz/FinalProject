@@ -39,7 +39,7 @@
         border: 1px solid white;
     }
 
-    input:focus{
+    input:focus {
         border: none;
     }
 </style>
@@ -50,6 +50,9 @@
     include "navbar.php"
     ?>
 
+    <?php
+
+    ?>
     <H3 class="align-left text-left mb-0">ประวัติการลา</H3>
     <div class="table-container w-100 d-flex justify-content-center mt-0">
         <table class="table table-striped m-0" style="width: 90%; font-size: 15px">
@@ -103,9 +106,9 @@
 
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-fullscreen py-4 px-2">
+            <div class="modal-dialog modal-dialog-centered modal-fullscreen py-4 px-5">
                 <div class="modal-content">
-                    <div class="modal-header d-flex flex-column border-0" >
+                    <div class="modal-header d-flex flex-column border-0">
                         <div class="d-flex justify-content-between w-100 px-3 align-items-center">
                             <i class="bi bi-file-text-fill fs-1"></i>
                             <h1 class="modal-title fs-4" id="staticBackdropLabel">รายละเอียดการลา</h1>
@@ -114,19 +117,50 @@
                         <div class="w-100">
                             <hr class="border border-3 border-dark mx-3 opacity-100">
                         </div>
-                    
                     </div>
-                    <div class="modal-body mx-3">
-                        <div class="d-flex">
-                            <p>เหตุผลการลา : </p>
-                            <textarea class="mx-2" style="width: 300px; height: 100px; resize: none; border-radius: 20px; border: 1px solid black" readonly></textarea>
-                        </div>
-                        <div class="d-flex mt-2">
-                            <p>ประเภทการลา : </p>
-                            <input type="text" class="mx-2" style="width: 300px; height: 50px; border-radius: 10px; border: 1px solid black" readonly>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 d-flex">
+                                    <div class="d-flex">
+                                        <p>วันที่เริ่มลา :</p>
+                                        <input type="text" class="mx-2" style="width: 300px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    </div>
+                                    <div class="d-flex" style="margin-left: 25px;">
+                                        <p>เวลา :</p>
+                                        <input type="text" class="mx-2" style="width: 150px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    </div>
+                                    <div class="d-flex mx-5">
+                                        <p>ประเภทการลา :</p>
+                                        <input type="text" class="mx-2" style="width: 150px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-10 d-flex mt-3">
+                                    <div class="d-flex" style="margin-left: 28px;">
+                                        <p>ถึงวันที่ :</p>
+                                        <input type="text" class="mx-2" style="width: 300px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    </div>
+                                    <div class="d-flex" style="margin-left: 23px;">
+                                        <p>เวลา :</p>
+                                        <input type="text" class="mx-2" style="width: 150px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p>วิชาที่สามารถลงได้ :</p>
+                                        <select name="Type_of_Leave" class="mx-2">
+                                            <option>11.00 - 12.00</option>
+                                            <option>12.00 - 13.00</option>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-">
+                                <div class="col">
+                                    <p>เหตุผลการลา :</p>
+                                    <textarea style="resize: none; border-radius: 5px;font-size: medium"></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer d-flex justify-content-between">
+                    <div class="modal-footer d-flex justify-content-between border-0">
                         <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
                         <div>
                             <button type="button" class="btn btn-primary">แก้ไขข้อมูล</button>
