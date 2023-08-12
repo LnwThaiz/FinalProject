@@ -38,7 +38,6 @@
         background-color: white;
         border: 1px solid white;
     }
-
 </style>
 
 <body>
@@ -155,24 +154,35 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="row" style="border: 1px solid black;align-items: center;">
-                                <div class="col" style="border: 1px solid black;">
-                                    <input type="button" class="w-100">
+
+                            <div class="row" style="border: 1px solid red;align-items: center;">
+                                <div class="col-12">
+                                    <div class="d-flex">
+                                        <p>วันที่เริ่มลา :</p>
+                                        <input type="text" class="mx-2" style="width: 300px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    </div>
+                                    <div class="d-flex" style="margin-left: 25px;">
+                                        <p>เวลา :</p>
+                                        <input type="text" class="mx-2" style="width: 150px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    </div>
+                                    <div class="d-flex mx-5">
+                                        <p>ประเภทการลา :</p>
+                                        <input type="text" class="mx-2" style="width: 150px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer d-flex justify-content-between border-1">
-                        <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
-                        <div>
-                            <button type="button" class="btn btn-primary">แก้ไขข้อมูล</button>
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิกการลา</button>
+                        <div class="modal-footer d-flex justify-content-between border-1">
+                            <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
+                            <div>
+                                <button type="button" class="btn btn-primary">แก้ไขข้อมูล</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิกการลา</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 </body>
 
