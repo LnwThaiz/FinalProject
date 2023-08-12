@@ -39,9 +39,6 @@
         border: 1px solid white;
     }
 
-    input:focus {
-        border: none;
-    }
 </style>
 
 <body>
@@ -120,8 +117,8 @@
                     </div>
                     <div class="modal-body">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-12 d-flex">
+                            <div class="row" style="border: 1px solid red;align-items: center;">
+                                <div class="col-12  g-3 d-flex">
                                     <div class="d-flex">
                                         <p>วันที่เริ่มลา :</p>
                                         <input type="text" class="mx-2" style="width: 300px; height: 50px; border-radius: 10px; border: none" readonly>
@@ -135,15 +132,21 @@
                                         <input type="text" class="mx-2" style="width: 150px; height: 50px; border-radius: 10px; border: none" readonly>
                                     </div>
                                 </div>
-                                <div class="col-10 d-flex mt-3">
+                            </div>
+                            <div class="row" style="border: 1px solid red;align-items: center;">
+                                <div class="col-md-5 d-flex mt-3">
                                     <div class="d-flex" style="margin-left: 28px;">
                                         <p>ถึงวันที่ :</p>
                                         <input type="text" class="mx-2" style="width: 300px; height: 50px; border-radius: 10px; border: none" readonly>
                                     </div>
+                                </div>
+                                <div class="col-md-3 d-flex mt-3">
                                     <div class="d-flex" style="margin-left: 23px;">
                                         <p>เวลา :</p>
                                         <input type="text" class="mx-2" style="width: 150px; height: 50px; border-radius: 10px; border: none" readonly>
                                     </div>
+                                </div>
+                                <div class="col-md-4 d-flex mt-3" style="align-items: center;">
                                     <div class="d-flex">
                                         <p>วิชาที่สามารถลงได้ :</p>
                                         <select name="Type_of_Leave" class="mx-2">
@@ -152,15 +155,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-">
-                                <div class="col">
-                                    <p>เหตุผลการลา :</p>
-                                    <textarea style="resize: none; border-radius: 5px;font-size: medium"></textarea>
+                            <!-- <div class="row" style="border: 1px solid black;align-items: center;">
+                                <div class="col" style="border: 1px solid black;">
+                                    <input type="button" class="w-100">
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
-                    <div class="modal-footer d-flex justify-content-between border-0">
+                    <div class="modal-footer d-flex justify-content-between border-1">
                         <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
                         <div>
                             <button type="button" class="btn btn-primary">แก้ไขข้อมูล</button>
