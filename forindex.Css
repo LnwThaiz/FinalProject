@@ -2,29 +2,6 @@ body {
     background: white;
 }
 
-.box {
-    width: 307px;
-    height: 520px;
-    position: absolute;
-    background: #454ABB;
-    border-radius: 35px;
-}
-
-.icon {
-    width: 180px;
-    height: 33px;
-    position: absolute;
-    font-size: 23px;
-    font-family: 'Anakotmai', sans-serif;
-    font-weight: 400;
-    word-wrap: break-word;
-    color: white;
-}
-
-.icon i {
-    margin-right: 5px;
-}
-
 .title {
     width: 293px;
     height: 65px;
@@ -42,13 +19,13 @@ body {
     position: absolute;
     border: 1px white solid;
 }
+
 .divider2 {
     width: 50px;
     height: 0px;
     position: absolute;
     border: 1px white solid;
 }
-
 
 .form-box {
     width: 918px;
@@ -107,70 +84,139 @@ textarea {
     font-weight: 400;
     word-wrap: break-word
 }
- /* สไตล์สำหรับป็อปอัพท์ */
- .calendar-popup {
+
+
+/* สไตล์สำหรับป็อปอัพท์ */
+
+.calendar-popup {
     display: none;
     position: absolute;
     background-color: white;
     border: 1px solid #ccc;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  }
+}
 
-  .calendar-popup h2 {
+.calendar-popup h2 {
     font-size: 1.5rem;
     margin-bottom: 20px;
-  }
+}
 
-  .calendar {
+.calendar {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-  }
+}
 
-  .calendar-day {
-    width: 14.28%; /* 1/7 ของ 100% */
+.calendar-day {
+    width: 14.28%;
+    /* 1/7 ของ 100% */
     text-align: center;
     padding: 10px;
-  
     border: 1px solid #ccc;
     cursor: pointer;
-  }
+}
 
-  .calendar-day:hover {
+.calendar-day:hover {
     background-color: #ffffff;
-  }
+}
 
-  .calendar-day:nth-child(7n), .calendar-day:last-child {
+.calendar-day:nth-child(7n),
+.calendar-day:last-child {
     border-right: none;
-  }
+}
 
-  .calendar-header {
+.calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-  }
+}
 
-  .selected-day {
+.selected-day {
     background-color: #007BFF;
     color: white;
-  }
+}
 
-  #openPopupButton1, #openPopupButton2 {
+#openPopupButton1,
+#openPopupButton2 {
     cursor: pointer;
-    width: 200px; 
-    height: 72px;   
-    position: absolute; 
+    width: 200px;
+    height: 72px;
+    position: absolute;
     background: white;
-    border: 1px solid black; 
-    border-radius: 15px; 
-    color: black; 
-    font-size: 20px; 
-    font-family: 'Anakotmai',sans-serif;                          
-    font-weight: 400; 
+    border: 1px solid black;
+    border-radius: 15px;
+    color: black;
+    font-size: 20px;
+    font-family: 'Anakotmai', sans-serif;
+    font-weight: 400;
     word-wrap: break-word
-  }
+}
 
-  #openPopupButton1:hover, #openPopupButton2:hover {
+#openPopupButton1:hover,
+#openPopupButton2:hover {
     background-color: #00000018;
-  }
+}
+
+
+/* Define styles for the sidebar */
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 200;
+    left: -250px;
+    /* Start with the sidebar hidden */
+    background-color: #5459b7;
+    padding-top: 20px;
+    transition: left 0.3s;
+    /* Add smooth transition */
+}
+
+
+/* Style the links inside the sidebar */
+
+.sidebar a {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+}
+
+
+/* Change the color of the links when hovered */
+
+.sidebar a:hover {
+    background-color: #454ABB;
+}
+
+
+/* Define styles for the main content area */
+
+.content {
+    margin-left: 0;
+    /* No margin on the left to start */
+    padding: 20px;
+    transition: margin-left 0.3s;
+    /* Add smooth transition */
+}
+
+.custom-width {
+    width: 50px;
+    /* Set the desired width */
+}
+
+.fas.fa-history {
+    font-size: 50px;
+    color: white;
+    /* ปรับสีไอคอน */
+}
+
+.icon-calendar {
+    font-size: 50px;
+    /* ปรับขนาดไอคอนตามต้องการ */
+    color: white;
+    /* เปลี่ยนสีไอคอนตามต้องการ */
+}

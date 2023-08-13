@@ -4,6 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Leave System</title>
+    <link rel="stylesheet" href="forindex.css">
 </head>
 
 <body>
@@ -12,7 +13,7 @@
 
     session_start();
 
- // ตรวจสอบว่ามีตัวแปรเซสชัน username และ fullname ถูกตั้งค่าหรือไม่
+    // ตรวจสอบว่ามีตัวแปรเซสชัน username และ fullname ถูกตั้งค่าหรือไม่
     if (isset($_SESSION["STD_ID"])) {
         $STD_ID = $_SESSION["STD_ID"];
         $STD_Name = $_SESSION["STD_Name"];
@@ -27,13 +28,12 @@
         $Provinces_ID = $_SESSION["provinces_id"];
         $District_ID = $_SESSION["district_id"];
         $SubDistrict_ID = $_SESSION["subdistrict_id"];
-
-
     } else {
         // ถ้าไม่มีตัวแปรเซสชัน username แสดงว่ายังไม่ได้ล็อกอิน
         echo "กรุณาล็อกอินก่อนใช้งาน!";
     }
     ?>
+
     <nav class="navbar navbar-expand-lg navbar-light" style="background: #454ABB;">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,21 +61,17 @@
                 </ul>
                 <ul class="navbar-nav mt-1">
                     <li class="nav-item">
-                        <a href="" class="nav-link text-white">
-                            <i class="bi bi-person-circle fs-5"></i>
-                        </a>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="User.php"><?php echo "$STD_Name $STD_Lastname" ;?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="Login.php" class="nav-link text-white ">Logout</a>
+                     
+                    <div class="sidebarToggle">
+                        <button id="sidebarToggle">☰</button>
+                    </div>
+     
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+ 
     <?php
     include_once "footerBoostrapLogin.html";
     ?>
