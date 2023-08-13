@@ -81,9 +81,22 @@ ob_start(); // เริ่ม Output Buffering
                     <label for="birthdate">วันเดือนปีเกิด :</label>
                     <input type="text" class="form-control" id="birthdate" name="birthdate" value="<?php echo "$STD_Birth";?>" >
                 </div>
-                <div class="form-group">
-                    <label for="address">ที่อยู่ :</label>
-                    <input type="text" class="form-control" id="address" name="address" value="<?php echo "$STD_Address";?>" >
+                <div class="form-group d-flex">
+                    <label for="address" class=" text-nowrap">ที่อยู่ :</label>
+                    <input type="text" class="form-control form mx-2" id="address" style="width: 180px;" value="<?php echo "$STD_Address";?>" >
+
+                    <label for="provinces" class=" text-nowrap">จังหวัด :</label>
+                    <select name="" id="" class=" form-control" style="width: 250px;">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                    </select>
+
+                    <label for="district" class=" text-nowrap">ตำบล :</label>
+                    <input type="text" class="form-control form mx-2" id="district-id" style="width: 180px;" value="<?php echo "$District_ID";?>" >
+
+                    <label for="subdistrict" class=" text-nowrap">อำเภอ :</label>
+                    <input type="text" class="form-control form mx-2" id="subdistrict-id" style="width: 180px;" value="<?php echo "$SubDistrict_ID";?>" >
                 </div>
             </div>
             <div class="col-12 col-md-6">

@@ -46,9 +46,6 @@
     include "navbar.php"
     ?>
 
-    <?php
-
-    ?>
     <H3 class="align-left text-left mb-0">ประวัติการลา</H3>
     <div class="table-container w-100 d-flex justify-content-center mt-0">
         <table class="table table-striped m-0" style="width: 90%; font-size: 15px">
@@ -115,74 +112,92 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <div class="container">
-                            <div class="row" style="border: 1px solid red;align-items: center;">
-                                <div class="col-12  g-3 d-flex">
-                                    <div class="d-flex">
-                                        <p>วันที่เริ่มลา :</p>
-                                        <input type="text" class="mx-2" style="width: 300px; height: 50px; border-radius: 10px; border: none" readonly>
+                        <div class="container d-flex flex-column">
+                            <div class="row row-cols-1 " style="border: 1px solid red;align-items: center;">
+                                <div class=" row row-cols-3 g-3">
+                                    <div class=" col">
+                                        <div class=" d-flex align-items-center m-0">
+                                            <p class=" text-nowrap m-0">วันที่เริ่มลา :</p>
+                                            <input type="text" class=" form-control shadow-none disabled" disabled>
+                                        </div>
                                     </div>
-                                    <div class="d-flex" style="margin-left: 25px;">
-                                        <p>เวลา :</p>
-                                        <input type="text" class="mx-2" style="width: 150px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    <div class=" col">
+                                        <div class=" d-flex align-items-center m-0">
+                                            <p class=" text-nowrap m-0">เวลา :</p>
+                                            <input type="text" class=" form-control shadow-none disabled" disabled>
+                                        </div>
                                     </div>
-                                    <div class="d-flex mx-5">
-                                        <p>ประเภทการลา :</p>
-                                        <input type="text" class="mx-2" style="width: 150px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    <div class=" col">
+                                        <div class=" d-flex align-items-center m-0">
+                                            <p class=" text-nowrap m-0">ประเภทการลา :</p>
+                                            <input type="text" class=" form-control shadow-none disabled" disabled>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row" style="border: 1px solid red;align-items: center;">
-                                <div class="col-md-5 d-flex mt-3">
-                                    <div class="d-flex" style="margin-left: 28px;">
-                                        <p>ถึงวันที่ :</p>
-                                        <input type="text" class="mx-2" style="width: 300px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    <div class=" col">
+                                        <div class=" d-flex align-items-center m-0">
+                                            <p class=" text-nowrap m-0">ถึงวันที่ :</p>
+                                            <input type="text" class=" form-control shadow-none disabled" disabled>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3 d-flex mt-3">
-                                    <div class="d-flex" style="margin-left: 23px;">
-                                        <p>เวลา :</p>
-                                        <input type="text" class="mx-2" style="width: 150px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    <div class=" col">
+                                        <div class=" d-flex align-items-center m-0">
+                                            <p class=" text-nowrap m-0">เวลา :</p>
+                                            <input type="text" class=" form-control shadow-none disabled" disabled>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4 d-flex mt-3" style="align-items: center;">
-                                    <div class="d-flex">
-                                        <p>วิชาที่สามารถลงได้ :</p>
-                                        <select name="Type_of_Leave" class="mx-2">
-                                            <option>11.00 - 12.00</option>
-                                            <option>12.00 - 13.00</option>
+                                    <div class=" col">
+                                        <div class=" d-flex align-items-center m-0">
+                                            <p class=" text-nowrap m-0">วิชาที่ลาได้ :</p>
+                                            <select name="" id="" class=" form-control">
+                                                <option value="">1</option>
+                                                <option value="">2</option>
+                                                <option value="">3</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="row" style="border: 1px solid red;align-items: center;">
-                                <div class="col-12">
-                                    <div class="d-flex">
-                                        <p>วันที่เริ่มลา :</p>
-                                        <input type="text" class="mx-2" style="width: 300px; height: 50px; border-radius: 10px; border: none" readonly>
-                                    </div>
-                                    <div class="d-flex" style="margin-left: 25px;">
-                                        <p>เวลา :</p>
-                                        <input type="text" class="mx-2" style="width: 150px; height: 50px; border-radius: 10px; border: none" readonly>
-                                    </div>
-                                    <div class="d-flex mx-5">
-                                        <p>ประเภทการลา :</p>
-                                        <input type="text" class="mx-2" style="width: 150px; height: 50px; border-radius: 10px; border: none" readonly>
+                                    <div class=" col">
+                                        <div class=" d-flex align-items-center m-0">
+                                            <p class=" text-nowrap m-0">เหตุผลการลา :</p>
+                                            <textarea name="" id="" class=" form-control "></textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer d-flex justify-content-between border-1">
-                            <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
-                            <div>
-                                <button type="button" class="btn btn-primary">แก้ไขข้อมูล</button>
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิกการลา</button>
+                        <div class="container d-flex flex-column mt-5">
+                            <div class="row row-cols-1" style="border: 1px solid red;">
+                                <div class="row row-cols-2 d-flex justify-content-between">
+                                    <div class="col">
+                                        <div class=" d-flex align-items-center m-0">
+                                            <label class=" text-nowrap m-0">วันที่ทำการลา :</label>
+                                            <label class="mx-1"> xx/xx/xxxx</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <div class="container d-flex flex-column mt-1">
+                            <div class="row row-cols-1" style="border: 1px solid red;">
+                                <div class="row row-cols-2 d-flex justify-content-between">
+                                    <div class="col">
+                                        <div class=" d-flex align-items-center m-0">
+                                            <label class=" text-nowrap m-0">สถานะการดำเนินการ :</label>
+                                            <label class="mx-1"> รออนุมัติ</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between border-0">
+                        <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
+                        <div>
+                            <button type="button" class="btn btn-primary">แก้ไขข้อมูล</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิกการลา</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 </body>
 

@@ -49,6 +49,7 @@ ob_start(); // เริ่ม Output Buffering
         echo "กรุณาล็อกอินก่อนใช้งาน!";
     }
 
+        $query = '';
         ?>
     <!-- Your HTML content here -->
     <div class="container mt-4">
@@ -75,11 +76,15 @@ ob_start(); // เริ่ม Output Buffering
                     <label for="birthdate">วันเดือนปีเกิด :</label>
                     <input type="text" class="form-control" id="birthdate" value="<?php echo "$STD_Birth";?>" disabled>
                 </div>
-                <div class="form-group">
-                    <label for="address">ที่อยู่ :</label>
-                    <input type="text" class="form-control" id="address" value="<?php echo "$STD_Address";?>" disabled>
-                    <label for="address">จังหวัด :</label>
-                    <input type="text" class="form-control" id="provinces-id" value="<?php echo "$Provinces_ID";?>" disabled>
+                <div class="form-group d-flex">
+                    <label for="address" class=" text-nowrap">ที่อยู่ :</label>
+                    <input type="text" class="form-control form mx-2" id="address" style="width: 180px;" value="<?php echo "$STD_Address";?>" disabled>
+                    <label for="provinces" class=" text-nowrap">จังหวัด :</label>
+                    <input type="text" class="form-control form mx-2" id="provinces-id" style="width: 180px;" value="<?php echo "$Provinces_ID";?>" disabled>
+                    <label for="district" class=" text-nowrap">ตำบล :</label>
+                    <input type="text" class="form-control form mx-2" id="district-id" style="width: 180px;" value="<?php echo "$District_ID";?>" disabled>
+                    <label for="subdistrict" class=" text-nowrap">อำเภอ :</label>
+                    <input type="text" class="form-control form mx-2" id="subdistrict-id" style="width: 180px;" value="<?php echo "$SubDistrict_ID";?>" disabled>
                 </div>
             </div>
             <div class="col-12 col-md-6">
