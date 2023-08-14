@@ -154,7 +154,7 @@
                                                         <div class="col">
                                                             <div class=" d-flex align-items-center m-0">
                                                                 <label class=" text-nowrap m-0">วันที่ทำการลา :</label>
-                                                                <label class="mx-1"> xx/xx/xxxx</label>
+                                                                <label class="mx-1" value="<?php echo $row['leave_status_name'] ?>"></label>
                                                             </div>
                                                         </div>
                                                     </div>
