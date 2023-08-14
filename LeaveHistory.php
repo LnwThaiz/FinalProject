@@ -46,8 +46,10 @@
     include "navbar.php";
     include "connect.php";
 
-    $query = "SELECT * FROM leaves where std_id ='$STD_ID' ";
-    $result = mysqli_query($connect,$query);
+    $query = "SELECT * FROM leaves
+              inner JOIN leave_type on leaves.leave_type_id=leave_type.leave_type_id AND std_id = '$STD_ID'
+              inner join leave_status on leaves.leave_status_id=leave_status.leave_status_id ";
+    $result = mysqli_query($connect, $query);
 
     ?>
 
@@ -64,246 +66,243 @@
                 </tr>
             </thead>
             <tbody class="align-middle text-center">
-                <tr>
-                    <td>23/05/2566</td>
-                    <td>ลาป่วย</td>
-                    <td>25/05/66 09:00 - 26/05/2566 18:00</td>
-                    <td>รออนุมัติ</td>
-                    <td><a href="" class="btn p-0 border-0 shadow-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-info-circle-fill fs-5"></i></a></td>
-                </tr>
-                <tr>
-                    <td>23/05/2566</td>
-                    <td>ลาป่วย</td>
-                    <td>25/05/66 09:00 - 26/05/2566 18:00</td>
-                    <td>รออนุมัติ</td>
-                    <td><a href="" class="btn p-0 border-0 shadow-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-info-circle-fill fs-5"></i></a></td>
-                </tr>
-                <tr>
-                    <td>23/05/2566</td>
-                    <td>ลาป่วย</td>
-                    <td>25/05/66 09:00 - 26/05/2566 18:00</td>
-                    <td>รออนุมัติ</td>
-                    <td><a href="" class="btn p-0 border-0 shadow-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-info-circle-fill fs-5"></i></a></td>
-                </tr>
-                <tr>
-                    <td>23/05/2566</td>
-                    <td>ลาป่วย</td>
-                    <td>25/05/66 09:00 - 26/05/2566 18:00</td>
-                    <td>รออนุมัติ</td>
-                    <td><a href="" class="btn p-0 border-0 shadow-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-info-circle-fill fs-5"></i></a></td>
-                </tr>
-                <tr>
-                    <td>23/05/2566</td>
-                    <td>ลาป่วย</td>
-                    <td>25/05/66 09:00 - 26/05/2566 18:00</td>
-                    <td>รออนุมัติ</td>
-                    <td><a href="" class="btn p-0 border-0 shadow-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-info-circle-fill fs-5"></i></a></td>
-                </tr>
-            </tbody>
-        </table>
+                <?php
+                while ($row = mysqli_fetch_array($result)) {
+                ?>
+                    <tr>
+                        <td><?php echo $row['leave_id'] ?></td>
+                        <td><?php echo $row['leave_type_name'] ?></td>
+                        <td><?php echo $row['start_leave_date'] . " - " . $row['end_leave_date'] ?></td>
+                        <td><?php echo $row['leave_status_name'] ?></td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo $row['leave_id'] ?>"><i class="bi bi-info-circle-fill fs-5"></i></button>
+                            <div class="modal fade" id="staticBackdrop<?php echo $row['leave_id'] ?>" data-bs-keyboard="false" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered modal-fullscreen py-4 px-5">
+                                    <div class="modal-content">
+                                        <div class="modal-header d-flex flex-column border-0">
+                                            <div class="d-flex justify-content-between w-100 px-3 align-items-center">
+                                                <i class="bi bi-file-text-fill fs-1"></i>
+                                                <h1 class="modal-title fs-4" id="staticBackdropLabel">รายละเอียดการลา</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="w-100">
+                                                <hr class="border border-3 border-dark mx-3 opacity-100">
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- row 1 -->
+                                            <div class=" d-flex flex-column">
+                                                <div class="row row-cols-1 " style="align-items: center;">
+                                                    <div class=" row row-cols-3 g-3">
+                                                        <div class=" col">
+                                                            <div class=" d-flex align-items-center m-0">
+                                                                <p class=" text-nowrap m-0">วันที่เริ่มลา :</p>
+                                                                <input type="text" id="start_date" name="start_date" class=" form-control shadow-none" value="<?php echo $row['start_leave_date'] ?>" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col">
+                                                            <div class=" d-flex align-items-center m-0">
+                                                                <p class=" text-nowrap m-0">เวลา :</p>
+                                                                <input type="text" id="time_start_date" name="time_start_date" class=" form-control shadow-none" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col">
+                                                            <div class=" d-flex align-items-center m-0">
+                                                                <p class=" text-nowrap m-0">ประเภทการลา :</p>
+                                                                <input type="text" id="leave_type" name="leave_type" class=" form-control shadow-none disabled" value="<?php echo $row['leave_type_name'] ?>" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col">
+                                                            <div class=" d-flex align-items-center m-0">
+                                                                <p class=" text-nowrap m-0">ถึงวันที่ :</p>
+                                                                <input type="text" id="end_date" name="end_date" class=" form-control shadow-none" value="<?php echo $row['end_leave_date'] ?>" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col">
+                                                            <div class=" d-flex align-items-center m-0">
+                                                                <p class=" text-nowrap m-0">เวลา :</p>
+                                                                <input type="text" id="time_end_date" name="time_end_date" class=" form-control shadow-none" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" col">
+                                                            <div class=" d-flex align-items-center m-0">
+                                                                <p class=" text-nowrap m-0">วิชาที่ลาได้ :</p>
+                                                                <select name="" id="" class=" form-control" disabled>
+                                                                    <option value=""></option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <div class="row row-cols-2">
+                                                            <div class=" col mt-3">
+                                                                <div class=" d-flex align-items-center m-0 text-nowrap">
+                                                                    <label for="exampleFormControlTextarea1" class="form-label">เหตุผลการลา :</label>
+                                                                    <input type="text" id="time_end_date" name="time_end_date" 
+                                                                    class=" form-control shadow-none" VALUE="<?php echo $row['leave_comment'] ?>" disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-fullscreen py-4 px-5">
-                <div class="modal-content">
-                    <div class="modal-header d-flex flex-column border-0">
-                        <div class="d-flex justify-content-between w-100 px-3 align-items-center">
-                            <i class="bi bi-file-text-fill fs-1"></i>
-                            <h1 class="modal-title fs-4" id="staticBackdropLabel">รายละเอียดการลา</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="w-100">
-                            <hr class="border border-3 border-dark mx-3 opacity-100">
+                                            <!-- row 2 -->
+                                            <div class=" d-flex flex-column mt-5">
+                                                <div class="row row-cols-1">
+                                                    <div class="row row-cols-2 d-flex justify-content-between">
+                                                        <div class="col">
+                                                            <div class=" d-flex align-items-center m-0">
+                                                                <label class=" text-nowrap m-0">วันที่ทำการลา :</label>
+                                                                <label class="mx-1"> xx/xx/xxxx</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class=" d-flex flex-column mt-1">
+                                                <div class="row row-cols-1">
+                                                    <div class="row row-cols-2 d-flex justify-content-between">
+                                                        <div class="col">
+                                                            <div class=" d-flex align-items-center m-0">
+                                                                <label class=" text-nowrap m-0">สถานะการดำเนินการ :</label>
+                                                                <label class="mx-1"> รออนุมัติ</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer d-flex justify-content-between border-0">
+                                            <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
+                                            <div>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">แก้ไขข้อมูล</button>
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิกการลา</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+    </div>
+    </td>
+    </tr>
+<?php } ?>
+</tbody>
+</table>
+
+<!-- Modal -->
+
+
+<!-- Modal 2 -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen py-4 px-5">
+        <div class="modal-content">
+            <div class="modal-header d-flex flex-column border-0">
+                <div class="d-flex justify-content-between w-100 px-3 align-items-center">
+                    <i class="bi bi-file-text-fill fs-1"></i>
+                    <h1 class="modal-title fs-4" id="staticBackdropLabel">รายละเอียดการลา</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="w-100">
+                    <hr class="border border-3 border-dark mx-3 opacity-100">
+                </div>
+            </div>
+            <div class="modal-body">
+
+                <!-- row 1 -->
+                <div class="container d-flex flex-column">
+                    <div class="row row-cols-1 " style="align-items: center;">
+                        <div class=" row row-cols-3 g-3">
+                            <div class=" col">
+                                <div class=" d-flex align-items-center m-0">
+                                    <p class=" text-nowrap m-0">วันที่เริ่มลา :</p>
+                                    <input type="text" id="start_date" name="start_date" class=" form-control shadow-none disabled" value="<?php echo ""; ?> ">
+                                </div>
+                            </div>
+                            <div class=" col">
+                                <div class=" d-flex align-items-center m-0">
+                                    <p class=" text-nowrap m-0">เวลา :</p>
+                                    <input type="text" id="time_start_date" name="time_start_date" class=" form-control shadow-none disabled" disabled>
+                                </div>
+                            </div>
+                            <div class=" col">
+                                <div class=" d-flex align-items-center m-0">
+                                    <p class=" text-nowrap m-0">ประเภทการลา :</p>
+                                    <input type="text" id="leave_type" name="leave_type" class=" form-control shadow-none disabled" disabled>
+                                </div>
+                            </div>
+                            <div class=" col">
+                                <div class=" d-flex align-items-center m-0">
+                                    <p class=" text-nowrap m-0">ถึงวันที่ :</p>
+                                    <input type="text" id="end_date" name="end_date" class=" form-control shadow-none disabled" disabled>
+                                </div>
+                            </div>
+                            <div class=" col">
+                                <div class=" d-flex align-items-center m-0">
+                                    <p class=" text-nowrap m-0">เวลา :</p>
+                                    <input type="text" id="time_end_date" name="time_end_date" class=" form-control shadow-none disabled" disabled>
+                                </div>
+                            </div>
+                            <div class=" col">
+                                <div class=" d-flex align-items-center m-0">
+                                    <p class=" text-nowrap m-0">วิชาที่ลาได้ :</p>
+                                    <select name="" id="" class=" form-control">
+                                        <?php
+                                        while ($row1 = mysqli_fetch_array($result)) : ?>
+                                            <option value=""><?php echo $row1['leave_type_id']; ?></option>
+                                        <?php endwhile; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class=" col">
+                                <div class=" d-flex align-items-center m-0">
+                                    <p class=" text-nowrap m-0">เหตุผลการลา :</p>
+                                    <input type="text" class=" form-control shadow-none disabled" disabled>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-body">
-                        <div class="container d-flex flex-column">
-                            <div class="row row-cols-1 " style="align-items: center;">
-                                <div class=" row row-cols-3 g-3">
-                                    <div class=" col">
-                                        <div class=" d-flex align-items-center m-0">
-                                            <p class=" text-nowrap m-0">วันที่เริ่มลา :</p>
-                                            <input type="text" id="start_date" name="start_date" class=" form-control shadow-none disabled"value="<?php echo "";?> " disabled>
-                                        </div>
-                                    </div>
-                                    <div class=" col">
-                                        <div class=" d-flex align-items-center m-0">
-                                            <p class=" text-nowrap m-0">เวลา :</p>
-                                            <input type="text" id="time_start_date" name="time_start_date" class=" form-control shadow-none disabled" disabled>
-                                        </div>
-                                    </div>
-                                    <div class=" col">
-                                        <div class=" d-flex align-items-center m-0">
-                                            <p class=" text-nowrap m-0">ประเภทการลา :</p>
-                                            <input type="text" id="leave_type" name="leave_type" class=" form-control shadow-none disabled" disabled>
-                                        </div>
-                                    </div>
-                                    <div class=" col">
-                                        <div class=" d-flex align-items-center m-0">
-                                            <p class=" text-nowrap m-0">ถึงวันที่ :</p>
-                                            <input type="text" id="end_date" name="end_date" class=" form-control shadow-none disabled" disabled>
-                                        </div>
-                                    </div>
-                                    <div class=" col">
-                                        <div class=" d-flex align-items-center m-0">
-                                            <p class=" text-nowrap m-0">เวลา :</p>
-                                            <input type="text" id="time_end_date" name="time_end_date" class=" form-control shadow-none disabled" disabled>
-                                        </div>
-                                    </div>
-                                    <div class=" col">
-                                        <div class=" d-flex align-items-center m-0">
-                                            <p class=" text-nowrap m-0">วิชาที่ลาได้ :</p>
-                                            <select name="" id="" class=" form-control" disabled>
-                                                <?php while ($row1 = mysqli_fetch_array($result)) :?>
-                                                <option value=""><?php echo $row1[1];?></option>
-                                                <?php endwhile;?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class=" col">
-                                        <div class=" d-flex align-items-center m-0">
-                                            <p class=" text-nowrap m-0">เหตุผลการลา :</p>
-                                            <input type="text" class=" form-control shadow-none disabled" disabled>
-                                        </div>
-                                    </div>
+                </div>
+                <div class="container d-flex flex-column mt-5">
+                    <div class="row row-cols-1">
+                        <div class="row row-cols-2 d-flex justify-content-between">
+                            <div class="col">
+                                <div class=" d-flex align-items-center m-0">
+                                    <label class=" text-nowrap m-0">วันที่ทำการลา :</label>
+                                    <label class="mx-1"> xx/xx/xxxx</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="container d-flex flex-column mt-5">
-                            <div class="row row-cols-1">
-                                <div class="row row-cols-2 d-flex justify-content-between">
-                                    <div class="col">
-                                        <div class=" d-flex align-items-center m-0">
-                                            <label class=" text-nowrap m-0">วันที่ทำการลา :</label>
-                                            <label class="mx-1"> xx/xx/xxxx</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container d-flex flex-column mt-1">
-                            <div class="row row-cols-1" >
-                                <div class="row row-cols-2 d-flex justify-content-between">
-                                    <div class="col">
-                                        <div class=" d-flex align-items-center m-0">
-                                            <label class=" text-nowrap m-0">สถานะการดำเนินการ :</label>
-                                            <label class="mx-1"> รออนุมัติ</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer d-flex justify-content-between border-0">
-                        <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
-                        <div>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">แก้ไขข้อมูล</button>
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิกการลา</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-fullscreen py-4 px-5">
-                        <div class="modal-content">
-                            <div class="modal-header d-flex flex-column border-0">
-                                <div class="d-flex justify-content-between w-100 px-3 align-items-center">
-                                    <i class="bi bi-file-text-fill fs-1"></i>
-                                    <h1 class="modal-title fs-4" id="staticBackdropLabel">รายละเอียดการลา</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="w-100">
-                                    <hr class="border border-3 border-dark mx-3 opacity-100">
-                                </div>
-                            </div>
-                            <div class="modal-body">
-                                <div class="container d-flex flex-column">
-                                    <div class="row row-cols-1 " style="border: 1px solid red;align-items: center;">
-                                        <div class=" row row-cols-3 g-3">
-                                            <div class=" col">
-                                                <div class=" d-flex align-items-center m-0">
-                                                    <p class=" text-nowrap m-0">วันที่เริ่มลา :</p>
-                                                    <input type="text" class=" form-control shadow-none disabled" disabled>
-                                                </div>
-                                            </div>
-                                            <div class=" col">
-                                                <div class=" d-flex align-items-center m-0">
-                                                    <p class=" text-nowrap m-0">เวลา :</p>
-                                                    <input type="text" class=" form-control shadow-none disabled" disabled>
-                                                </div>
-                                            </div>
-                                            <div class=" col">
-                                                <div class=" d-flex align-items-center m-0">
-                                                    <p class=" text-nowrap m-0">ประเภทการลา :</p>
-                                                    <input type="text" class=" form-control shadow-none disabled" disabled>
-                                                </div>
-                                            </div>
-                                            <div class=" col">
-                                                <div class=" d-flex align-items-center m-0">
-                                                    <p class=" text-nowrap m-0">ถึงวันที่ :</p>
-                                                    <input type="text" class=" form-control shadow-none disabled" disabled>
-                                                </div>
-                                            </div>
-                                            <div class=" col">
-                                                <div class=" d-flex align-items-center m-0">
-                                                    <p class=" text-nowrap m-0">เวลา :</p>
-                                                    <input type="text" class=" form-control shadow-none disabled" disabled>
-                                                </div>
-                                            </div>
-                                            <div class=" col">
-                                                <div class=" d-flex align-items-center m-0">
-                                                    <p class=" text-nowrap m-0">วิชาที่ลาได้ :</p>
-                                                    <select name="" id="" class=" form-control">
-                                                        <option value="">1</option>
-                                                        <option value="">2</option>
-                                                        <option value="">3</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class=" col">
-                                                <div class=" d-flex align-items-center m-0">
-                                                    <p class=" text-nowrap m-0">เหตุผลการลา :</p>
-                                                    <input type="text" class=" form-control shadow-none disabled" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container d-flex flex-column mt-5">
-                                    <div class="row row-cols-1" style="border: 1px solid red;">
-                                        <div class="row row-cols-2 d-flex justify-content-between">
-                                            <div class="col">
-                                                <div class=" d-flex align-items-center m-0">
-                                                    <label class=" text-nowrap m-0">วันที่ทำการลา :</label>
-                                                    <label class="mx-1"> xx/xx/xxxx</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container d-flex flex-column mt-1">
-                                    <div class="row row-cols-1" style="border: 1px solid red;">
-                                        <div class="row row-cols-2 d-flex justify-content-between">
-                                            <div class="col">
-                                                <div class=" d-flex align-items-center m-0">
-                                                    <label class=" text-nowrap m-0">สถานะการดำเนินการ :</label>
-                                                    <label class="mx-1"> รออนุมัติ</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer d-flex justify-content-between border-0">
-                                <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
-                                <div>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">แก้ไขข้อมูล</button>
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิกการลา</button>
+                <!-- row 2 -->
+                <div class="container d-flex flex-column mt-1">
+                    <div class="row row-cols-1">
+                        <div class="row row-cols-2 d-flex justify-content-between">
+                            <div class="col">
+                                <div class=" d-flex align-items-center m-0">
+                                    <label class=" text-nowrap m-0">สถานะการดำเนินการ :</label>
+                                    <label class="mx-1"> รออนุมัติ</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between border-0">
+                <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
+                <div>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">แก้ไขข้อมูล</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิกการลา</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
