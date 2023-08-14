@@ -43,7 +43,12 @@
 <body>
 
     <?php
-    include "navbar.php"
+    include "navbar.php";
+    include "connect.php";
+
+    $query = "SELECT * FROM leaves where std_id ='$STD_ID' ";
+    $result = mysqli_query($connect,$query);
+
     ?>
 
     <H3 class="align-left text-left mb-0">ประวัติการลา</H3>
@@ -113,45 +118,45 @@
                     </div>
                     <div class="modal-body">
                         <div class="container d-flex flex-column">
-                            <div class="row row-cols-1 " style="border: 1px solid red;align-items: center;">
+                            <div class="row row-cols-1 " style="align-items: center;">
                                 <div class=" row row-cols-3 g-3">
                                     <div class=" col">
                                         <div class=" d-flex align-items-center m-0">
                                             <p class=" text-nowrap m-0">วันที่เริ่มลา :</p>
-                                            <input type="text" class=" form-control shadow-none disabled" disabled>
+                                            <input type="text" id="start_date" name="start_date" class=" form-control shadow-none disabled"value="<?php echo "";?> " disabled>
                                         </div>
                                     </div>
                                     <div class=" col">
                                         <div class=" d-flex align-items-center m-0">
                                             <p class=" text-nowrap m-0">เวลา :</p>
-                                            <input type="text" class=" form-control shadow-none disabled" disabled>
+                                            <input type="text" id="time_start_date" name="time_start_date" class=" form-control shadow-none disabled" disabled>
                                         </div>
                                     </div>
                                     <div class=" col">
                                         <div class=" d-flex align-items-center m-0">
                                             <p class=" text-nowrap m-0">ประเภทการลา :</p>
-                                            <input type="text" class=" form-control shadow-none disabled" disabled>
+                                            <input type="text" id="leave_type" name="leave_type" class=" form-control shadow-none disabled" disabled>
                                         </div>
                                     </div>
                                     <div class=" col">
                                         <div class=" d-flex align-items-center m-0">
                                             <p class=" text-nowrap m-0">ถึงวันที่ :</p>
-                                            <input type="text" class=" form-control shadow-none disabled" disabled>
+                                            <input type="text" id="end_date" name="end_date" class=" form-control shadow-none disabled" disabled>
                                         </div>
                                     </div>
                                     <div class=" col">
                                         <div class=" d-flex align-items-center m-0">
                                             <p class=" text-nowrap m-0">เวลา :</p>
-                                            <input type="text" class=" form-control shadow-none disabled" disabled>
+                                            <input type="text" id="time_end_date" name="time_end_date" class=" form-control shadow-none disabled" disabled>
                                         </div>
                                     </div>
                                     <div class=" col">
                                         <div class=" d-flex align-items-center m-0">
                                             <p class=" text-nowrap m-0">วิชาที่ลาได้ :</p>
-                                            <select name="" id="" class=" form-control">
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
+                                            <select name="" id="" class=" form-control" disabled>
+                                                <?php while ($row1 = mysqli_fetch_array($result)) :?>
+                                                <option value=""><?php echo $row1[1];?></option>
+                                                <?php endwhile;?>
                                             </select>
                                         </div>
                                     </div>
@@ -165,7 +170,7 @@
                             </div>
                         </div>
                         <div class="container d-flex flex-column mt-5">
-                            <div class="row row-cols-1" style="border: 1px solid red;">
+                            <div class="row row-cols-1">
                                 <div class="row row-cols-2 d-flex justify-content-between">
                                     <div class="col">
                                         <div class=" d-flex align-items-center m-0">
@@ -177,7 +182,7 @@
                             </div>
                         </div>
                         <div class="container d-flex flex-column mt-1">
-                            <div class="row row-cols-1" style="border: 1px solid red;">
+                            <div class="row row-cols-1" >
                                 <div class="row row-cols-2 d-flex justify-content-between">
                                     <div class="col">
                                         <div class=" d-flex align-items-center m-0">

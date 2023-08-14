@@ -16,6 +16,7 @@ ob_start(); // เริ่ม Output Buffering
 <body>
 <?php
     include_once "navbar.php";
+    include "connect.php";
 
     // ตรวจสอบว่ามีตัวแปรเซสชัน STD_ID ถูกตั้งค่าหรือไม่
     if (isset($_SESSION["STD_ID"])) {
@@ -49,7 +50,6 @@ ob_start(); // เริ่ม Output Buffering
         echo "กรุณาล็อกอินก่อนใช้งาน!";
     }
 
-        $query = '';
         ?>
     <!-- Your HTML content here -->
     <div class="container mt-4">
@@ -79,10 +79,14 @@ ob_start(); // เริ่ม Output Buffering
                 <div class="form-group d-flex">
                     <label for="address" class=" text-nowrap">ที่อยู่ :</label>
                     <input type="text" class="form-control form mx-2" id="address" style="width: 180px;" value="<?php echo "$STD_Address";?>" disabled>
+
                     <label for="provinces" class=" text-nowrap">จังหวัด :</label>
-                    <input type="text" class="form-control form mx-2" id="provinces-id" style="width: 180px;" value="<?php echo "$Provinces_ID";?>" disabled>
+                    <input type="text" class="form-control form mx-2" id="district-id" style="width: 180px;" value="<?php echo "$Provinces_ID";?>" disabled>
+ 
+
                     <label for="district" class=" text-nowrap">ตำบล :</label>
                     <input type="text" class="form-control form mx-2" id="district-id" style="width: 180px;" value="<?php echo "$District_ID";?>" disabled>
+
                     <label for="subdistrict" class=" text-nowrap">อำเภอ :</label>
                     <input type="text" class="form-control form mx-2" id="subdistrict-id" style="width: 180px;" value="<?php echo "$SubDistrict_ID";?>" disabled>
                 </div>

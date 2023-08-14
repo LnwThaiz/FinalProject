@@ -16,6 +16,7 @@ ob_start(); // เริ่ม Output Buffering
 <body>
 <?php
     include_once "navbar.php";
+    include_once "connect.php";
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Get the updated values from the form submission
@@ -86,12 +87,10 @@ ob_start(); // เริ่ม Output Buffering
                     <input type="text" class="form-control form mx-2" id="address" style="width: 180px;" value="<?php echo "$STD_Address";?>" >
 
                     <label for="provinces" class=" text-nowrap">จังหวัด :</label>
-                    <select name="" id="" class=" form-control" style="width: 250px;">
-                        <option value=""></option>
-                    </select>
+                    <input type="text" class="form-control form mx-2" id="subdistrict-id" style="width: 180px;" value="<?php echo "$Provinces_ID";?>" >
 
                     <label for="district" class=" text-nowrap">ตำบล :</label>
-                    <input type="text" class="form-control form mx-2" id="district-id" style="width: 180px;" value="<?php echo "$District_ID";?>" >
+                    <input type="text" class="form-control form mx-2" id="subdistrict-id" style="width: 180px;" value="<?php echo "$District_ID";?>" >
 
                     <label for="subdistrict" class=" text-nowrap">อำเภอ :</label>
                     <input type="text" class="form-control form mx-2" id="subdistrict-id" style="width: 180px;" value="<?php echo "$SubDistrict_ID";?>" >
