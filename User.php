@@ -14,7 +14,7 @@ ob_start(); // เริ่ม Output Buffering
 </head>
 
 <body>
-<?php
+    <?php
     include_once "navbar.php";
     include "connect.php";
 
@@ -31,7 +31,7 @@ ob_start(); // เริ่ม Output Buffering
         $STD_Address = $_SESSION["STD_Address"];
         $Group_ID = $_SESSION["Group_ID"];
 
-          // ตรวจสอบว่ามีตัวแปรเซสชันที่ถูกอัปเดตมาหรือไม่
+        // ตรวจสอบว่ามีตัวแปรเซสชันที่ถูกอัปเดตมาหรือไม่
         if (isset($_SESSION["UpdatedSTD_Birth"])) {
             $STD_Birth = $_SESSION["UpdatedSTD_Birth"];
         }
@@ -44,13 +44,12 @@ ob_start(); // เริ่ม Output Buffering
         if (isset($_SESSION["UpdatedParent_Name"])) {
             $Parent_Name = $_SESSION["UpdatedParent_Name"];
         }
-
     } else {
         // ถ้าไม่มีตัวแปรเซสชัน STD_ID แสดงว่ายังไม่ได้ล็อกอิน
         echo "กรุณาล็อกอินก่อนใช้งาน!";
     }
 
-        ?>
+    ?>
     <!-- Your HTML content here -->
     <div class="container mt-4">
         <div class="row">
@@ -59,54 +58,75 @@ ob_start(); // เริ่ม Output Buffering
             </div>
         </div>
         <div class="row mt-3">
+            <h5 style="font-weight: bold;">ข้อมูลการเรียน</h5>
             <div class="col-12 col-md-6">
                 <div class="form-group">
                     <label for="student-id">รหัสนักศึกษา :</label>
-                    <input type="text" class="form-control" id="student-id" value="<?php echo "$STD_ID";?> " disabled>
+                    <input type="text" class="form-control" id="student-id" value="<?php echo "$STD_ID"; ?> " disabled>
                 </div>
                 <div class="form-group">
                     <label for="student-level">ระดับชั้น :</label>
-                    <input type="text" class="form-control" id="student-level" value="<?php echo "$Classlev_ID";?>" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="student-name">ชื่อ - นามสกุล :</label>
-                    <input type="text" class="form-control" id="student-name" value="<?php echo "$STD_Name";?>  <?php echo "$STD_Lastname ";?> " disabled>
-                </div>
-                <div class="form-group">
-                    <label for="birthdate">วันเดือนปีเกิด :</label>
-                    <input type="text" class="form-control" id="birthdate" value="<?php echo "$STD_Birth";?>" disabled>
-                </div>
-                <div class="form-group d-flex">
-                    <label for="address" class=" text-nowrap">ที่อยู่ :</label>
-                    <input type="text" class="form-control form mx-2" id="address" style="width: 180px;" value="<?php echo "$STD_Address";?>" disabled>
-
-                    <label for="provinces" class=" text-nowrap">จังหวัด :</label>
-                    <input type="text" class="form-control form mx-2" id="district-id" style="width: 180px;" value="<?php echo "$Provinces_ID";?>" disabled>
- 
-
-                    <label for="district" class=" text-nowrap">ตำบล :</label>
-                    <input type="text" class="form-control form mx-2" id="district-id" style="width: 180px;" value="<?php echo "$District_ID";?>" disabled>
-
-                    <label for="subdistrict" class=" text-nowrap">อำเภอ :</label>
-                    <input type="text" class="form-control form mx-2" id="subdistrict-id" style="width: 180px;" value="<?php echo "$SubDistrict_ID";?>" disabled>
+                    <input type="text" class="form-control" id="student-level" value="<?php echo "$Classlev_ID"; ?>" disabled>
                 </div>
             </div>
             <div class="col-12 col-md-6">
                 <div class="form-group">
                     <label for="department">แผนกวิชา :</label>
-                    <input type="text" class="form-control" id="department" value="<?php echo "$Major_ID";?>" disabled>
+                    <input type="text" class="form-control" id="department" value="<?php echo "$Major_ID"; ?>" disabled>
                 </div>
                 <div class="form-group">
                     <label for="class-group">กลุ่มเรียน :</label>
-                    <input type="text" class="form-control" id="class-group" value="<?php echo "$Group_ID";?>" disabled>
+                    <input type="text" class="form-control" id="class-group" value="<?php echo "$Group_ID"; ?>" disabled>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <h5 style="font-weight: bold;">ข้อมูลทั่วไป</h5>
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <label for="student-name">ชื่อ - นามสกุล :</label>
+                    <input type="text" class="form-control" id="student-name" value="<?php echo "$STD_Name"; ?>  <?php echo "$STD_Lastname "; ?> " disabled>
                 </div>
                 <div class="form-group">
+                    <label for="birthdate">วันเดือนปีเกิด :</label>
+                    <input type="text" class="form-control" id="birthdate" value="<?php echo "$STD_Birth"; ?>" disabled>
+                </div>
+                <div class="form-group d-flex">
+                    <label for="address" class=" text-nowrap">ที่อยู่ :</label>
+                    <input type="text" class="form-control form mx-2" id="address" style="width: 250px;" value="<?php echo "$STD_Address"; ?>" disabled>
+
+                    <label for="provinces" class=" text-nowrap">จังหวัด :</label>
+                    <select name="" id="" class=" form-control" style="margin-left: 13px;"></select>
+                    <!-- <input type="text" class="form-control form mx-2" id="district-id" style="width: 180px;" value="" disabled> -->
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="form-group">
                     <label for="phone-number">เบอร์โทร :</label>
-                    <input type="text" class="form-control" id="phone-number" value="<?php echo "$STD_Phone";?>" disabled>
+                    <input type="text" class="form-control" id="phone-number" value="<?php echo "$STD_Phone"; ?>" disabled>
                 </div>
                 <div class="form-group">
                     <label for="parent-name">ชื่อผู้ปกครอง :</label>
-                    <input type="text" class="form-control" id="parent-name" value="<?php echo "$Parent_Name";?>" disabled>
+                    <input type="text" class="form-control" id="parent-name" value="<?php echo "$Parent_Name"; ?>" disabled>
+                </div>
+                <div class="form-group d-flex">
+                    <label for="district" class=" text-nowrap">ตำบล :</label>
+                    <select name="" id="" class=" form-control" style="margin-left: 13px;"></select>
+                    <!-- <input type="text" class="form-control form mx-2" id="district-id" style="width: 180px;" value="<?php echo "$District_ID"; ?>" disabled> -->
+
+                    <label for="subdistrict" class=" text-nowrap" style="margin-left: 8px;">อำเภอ :</label>
+                    <select name="" id="" class=" form-control" style="margin-left: 13px;"></select>
+                    <!-- <input type="text" class="form-control form mx-2" id="subdistrict-id" style="width: 180px;" value="<?php echo "$SubDistrict_ID"; ?>" disabled> -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group d-flex">
+                    <label for="subdistrict" class=" text-nowrap">รหัสไปรษณีย์ :</label>
+                    <input type="text" class="form-control form mx-2" id="subdistrict-id" style="width: 175px;" value="<?php echo "$SubDistrict_ID"; ?>" disabled>
                 </div>
             </div>
         </div>
@@ -118,8 +138,9 @@ ob_start(); // เริ่ม Output Buffering
             </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>
 <?php
 // สิ้นสุด Output Buffering และส่งเนื้อหาไปยังเบราว์เซอร์
