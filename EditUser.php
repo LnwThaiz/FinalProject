@@ -108,11 +108,20 @@ ob_start(); // เริ่ม Output Buffering
 
                         <label for="provinces" class=" text-nowrap">จังหวัด :</label>
                         <?php
+                        $sql_all = 
+                        "SELECT * FROM std
+                        INNER JOIN subdistrict ON std.subdistrict_id = subdistrict.subdistrict_id
+                        INNER JOIN district ON subdistrict.district_id = district.district_id
+                        INNER JOIN provinces ON district.provinces_id = provinces.provinces_id
+                        WHERE std.STD_ID = $STD_ID;";
+                        $query_all = mysqli_query($connect, $sql_all);
+                        $fetch_all = mysqli_fetch_assoc($query_all);
+
                         $sql_provinces = "SELECT * FROM provinces";
                         $sql_provinces_q = mysqli_query($connect, $sql_provinces);
                         ?>
                         <select name="provinces" id="provinces" class=" form-control" style="margin-left: 13px;">
-                            <option value="" selected disabled>-กรุณาเลือกจังหวัด-</option>
+                            <option value="<?php echo $fetch_all['provinces_id']; ?>" selected disabled><?php echo $fetch_all['name_th']; ?></option>
                             <?php foreach ($sql_provinces_q as $data) { ?>
                                 <option value="<?= $data['provinces_id'] ?>"><?=$data['name_th']?></option>
                             <?php } ?>
@@ -131,9 +140,11 @@ ob_start(); // เริ่ม Output Buffering
                     <div class="form-group d-flex">
                         <label for="district" class=" text-nowrap">ตำบล :</label>
                         <select name="districts" id="districts" class=" form-control" style="margin-left: 13px;">
+                                <option value="<?php echo $fetch_all['district_id']; ?>"><?php echo $fetch_all['d_name_th']; ?></option>
                         </select>
                         <label for="subdistrict" class=" text-nowrap" style="margin-left: 8px;">อำเภอ :</label>
                         <select name="subdistricts" id="subdistricts" class=" form-control" style="margin-left: 13px;">
+                                <option value="<?php echo $fetch_all['subdistrict_id']; ?>"><?php echo $fetch_all['s_name_th']; ?></option>
                         </select>
                     </div>
                 </div>
@@ -144,7 +155,7 @@ ob_start(); // เริ่ม Output Buffering
                     <div class="form-group d-flex">
                         <label for="subdistrict" class=" text-nowrap">รหัสไปรษณีย์ :</label>
                         <input type="text" class="form-control form mx-2" name="zipcode" id="zipcode" 
-                        style="width: 175px;" value="<?php echo "$SubDistrict_ID"; ?>">
+                        style="width: 175px;" value="<?php echo $fetch_all['zip_code'] ?>">
                     </div>
                 </div>
             </div>

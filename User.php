@@ -110,8 +110,8 @@ ob_start(); // เริ่ม Output Buffering
                     ?>
                     <label for="provinces" class=" text-nowrap">จังหวัด :</label>
                     <!-- <select name="" id="" class=" form-control" style="margin-left: 13px;"></select> -->
-                    <input type="text" class="form-control form mx-2" name="provinces" id="provinces" 
-                    style="width: 180px;" value="<?php echo $fetch_all['name_th'];?>" disabled>
+                    <input type="text" class="form-control form" name="provinces" id="provinces" 
+                    style="margin-left: 10px;" value="<?php echo $fetch_all['name_th'];?>" disabled>
                 </div>
             </div>
             <div class="col-12 col-md-6">
@@ -126,13 +126,13 @@ ob_start(); // เริ่ม Output Buffering
                 <div class="form-group d-flex">
                     <label for="district" class=" text-nowrap">ตำบล :</label>
                     <!-- <select name="districts" id="districts" class=" form-control" style="margin-left: 13px;"></select> -->
-                    <input type="text" class="form-control form mx-2" name="districts" id="districts" 
-                    style="width: 180px;" value="<?php echo $fetch_all['d_name_th']; ?>" disabled>
+                    <input type="text" class="form-control form " name="districts" id="districts" 
+                    style="margin-left: 10px;" value="<?php echo $fetch_all['d_name_th']; ?>" disabled>
 
                     <label for="subdistrict" class=" text-nowrap" style="margin-left: 8px;">อำเภอ :</label>
                     <!-- <select name="subdistricts" id="subdistrict" class=" form-control" style="margin-left: 13px;"></select> -->
-                    <input type="text" class="form-control form mx-2" name="subdistricts" id="subdistricts" 
-                    style="width: 180px;" value="<?php echo $fetch_all['s_name_th']; ?>" disabled>
+                    <input type="text" class="form-control form " name="subdistricts" id="subdistricts" 
+                    style="margin-left: 10px;" value="<?php echo $fetch_all['s_name_th']; ?>" disabled>
                 </div>
             </div>
         </div>
