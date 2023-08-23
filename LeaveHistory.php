@@ -90,6 +90,19 @@
                                             </div>
                                         </div>
                                         <div class="modal-body">
+                                            <?php
+                                                $sqlModal = 
+                                                "SELECT leave_id, date(start_leave_date) as start_date_woTime ,time(start_leave_date) as start_time_woDate ,
+                                                lt.leave_type_name , date(end_leave_date) as end_date_woTime ,time(end_leave_date) as end_time_woDate ,
+                                                leave_comment , ls.leave_status_name
+                                                FROM leaves
+                                                inner JOIN leave_type lt on leaves.leave_type_id=lt.leave_type_id AND std_id = '$STD_ID'
+                                                inner join leave_status ls on leaves.leave_status_id=ls.leave_status_id;
+                                                ";
+                                                $queryModal = mysqli_query($connect,$sqlModal);
+                                                $fetchModal = mysqli_fetch_assoc($queryModal);
+
+                                             ?>
                                             <!-- row 1 -->
                                             <div class=" d-flex flex-column">
                                                 <div class="row row-cols-1 " style="align-items: center;">
@@ -97,31 +110,31 @@
                                                         <div class=" col">
                                                             <div class=" d-flex align-items-center m-0">
                                                                 <p class=" text-nowrap m-0">วันที่เริ่มลา :</p>
-                                                                <input type="text" id="start_date" name="start_date" class=" form-control shadow-none" value="<?php echo $row['start_leave_date'] ?>" disabled>
+                                                                <input type="text" id="start_date" name="start_date" class=" form-control shadow-none" value="<?php echo $fetchModal['start_date_woTime'] ?>" disabled>
                                                             </div>
                                                         </div>
                                                         <div class=" col">
                                                             <div class=" d-flex align-items-center m-0">
                                                                 <p class=" text-nowrap m-0">เวลา :</p>
-                                                                <input type="text" id="time_start_date" name="time_start_date" class=" form-control shadow-none" disabled>
+                                                                <input type="text" id="time_start_date" name="time_start_date" class=" form-control shadow-none" value="<?php echo $fetchModal['start_time_woDate'] ?>" disabled>
                                                             </div>
                                                         </div>
                                                         <div class=" col">
                                                             <div class=" d-flex align-items-center m-0">
                                                                 <p class=" text-nowrap m-0">ประเภทการลา :</p>
-                                                                <input type="text" id="leave_type" name="leave_type" class=" form-control shadow-none disabled" value="<?php echo $row['leave_type_name'] ?>" disabled>
+                                                                <input type="text" id="leave_type" name="leave_type" class=" form-control shadow-none disabled" value="<?php echo $fetchModal['leave_type_name'] ?>" disabled>
                                                             </div>
                                                         </div>
                                                         <div class=" col">
                                                             <div class=" d-flex align-items-center m-0">
                                                                 <p class=" text-nowrap m-0">ถึงวันที่ :</p>
-                                                                <input type="text" id="end_date" name="end_date" class=" form-control shadow-none" value="<?php echo $row['end_leave_date'] ?>" disabled>
+                                                                <input type="text" id="end_date" name="end_date" class=" form-control shadow-none" value="<?php echo $fetchModal['end_date_woTime'] ?>" disabled>
                                                             </div>
                                                         </div>
                                                         <div class=" col">
                                                             <div class=" d-flex align-items-center m-0">
                                                                 <p class=" text-nowrap m-0">เวลา :</p>
-                                                                <input type="text" id="time_end_date" name="time_end_date" class=" form-control shadow-none" disabled>
+                                                                <input type="text" id="time_end_date" name="time_end_date" class=" form-control shadow-none" value="<?php echo $fetchModal['end_time_woDate'] ?>" disabled>
                                                             </div>
                                                         </div>
                                                         <div class=" col">
@@ -138,7 +151,7 @@
                                                             <div class=" col mt-3">
                                                                 <div class=" d-flex align-items-center m-0 text-nowrap">
                                                                     <label for="exampleFormControlTextarea1" class="form-label">เหตุผลการลา :</label>
-                                                                    <input type="text" id="time_end_date" name="time_end_date" class=" form-control shadow-none" VALUE="<?php echo $row['leave_comment'] ?>" disabled>
+                                                                    <input type="text" id="time_end_date" name="time_end_date" class=" form-control shadow-none" VALUE="<?php echo $fetchModal['leave_comment'] ?>" disabled>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -166,7 +179,7 @@
                                                         <div class="col">
                                                             <div class=" d-flex align-items-center m-0">
                                                                 <label class=" text-nowrap m-0">สถานะการดำเนินการ :</label>
-                                                                <label class="mx-1"><?php echo $row['leave_status_name']?></label>
+                                                                <label class="mx-1"><?php echo $fetchModal['leave_status_name']?></label>
                                                             </div>
                                                         </div>
                                                     </div>
