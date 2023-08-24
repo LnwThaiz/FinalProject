@@ -10,7 +10,6 @@
 <body>
     <?php
     include_once "BSCss.html";
-
     session_start();
 
     // ตรวจสอบว่ามีตัวแปรเซสชัน username และ fullname ถูกตั้งค่าหรือไม่

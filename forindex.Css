@@ -1,5 +1,7 @@
 body {
-    background: white;
+    background: rgb(255, 255, 255);
+    padding-top: 80px;
+    /* ปรับค่าตามความสูงของ Navbar */
 }
 
 .title {
@@ -159,40 +161,6 @@ textarea {
 }
 
 
-/* Define styles for the sidebar */
-
-.sidebar {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    top: 200;
-    left: -250px;
-    /* Start with the sidebar hidden */
-    background-color: #5459b7;
-    padding-top: 20px;
-    transition: left 0.3s;
-    /* Add smooth transition */
-}
-
-
-/* Style the links inside the sidebar */
-
-.sidebar a {
-    padding: 10px;
-    text-decoration: none;
-    font-size: 18px;
-    color: #fff;
-    display: block;
-}
-
-
-/* Change the color of the links when hovered */
-
-.sidebar a:hover {
-    background-color: #454ABB;
-}
-
-
 /* Define styles for the main content area */
 
 .content {
@@ -220,3 +188,47 @@ textarea {
     color: white;
     /* เปลี่ยนสีไอคอนตามต้องการ */
 }
+
+
+/* สไตล์ลิงก์ */
+
+.link-button {
+    /* ข้อความอยู่ตรงกลางแนวตั้งและแนวนอน */
+    display: flex;
+    justify-content: center;
+    /* จัดให้ข้อความอยู่ตรงกลางแนวนอน */
+    align-items: center;
+    /* จัดให้ข้อความอยู่ตรงกลางแนวตั้ง */
+    /* คำสั่งอื่น ๆ สามารถใช้ต่อจากนี้ได้ */
+    cursor: pointer;
+    width: 200px;
+    height: 72px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    color: black;
+    font-size: 20px;
+    font-family: 'Anakotmai', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+    text-decoration: none;
+    /* ลบขีดเส้นใต้ลิงก์ */
+}
+
+
+/* สไตล์ลิงก์เมื่อนำเมาส์ไปวาง */
+
+.link-button:hover {
+    background: lightgray;
+    /* เปลี่ยนพื้นหลังเมื่อเมาส์วาง */
+}
+
+#nav-item {
+    margin-right: 50px;
+}
+
+
+/* #navbar5 {
+    background: #454ABB;
+    position: fixed;
+} */
