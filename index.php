@@ -14,19 +14,19 @@
   include_once "navbar.php";
   include "sidebar.php";
   include "connect.php";
+
+  if (isset($_POST['save'])) {
+    
+  }
   ?>
   <div class="content">
     <h2 class="d-flex justify-content-center my-3">บันทึกการลา</h2>
     <div>
       <div class="container d-flex justify-content-center align-content-center">
-        <fo rm method="post">
+        <form method="post">
           <div class="card text-bg-secondary mb-3" style="width: 1000px;">
             <div class="card-body">
 
-              <!-- query insert -->
-              <?php
-
-              ?>
               <!-- แถวแรก -->
               <div class="row mt-3">
 
@@ -62,7 +62,7 @@
                 <div class="col-md-7">
                   <div class=" form-group">
                     <label for="">เหตุผลการลา</label>
-                    <textarea name="" id="" class=" form-control" style="  height: 7rem;width: 29rem;padding: 5px;"></textarea>
+                    <textarea name="comment" id="comment" class=" form-control" style="  height: 7rem;width: 29rem;padding: 5px;"></textarea>
                     <!-- <input type="text" name="comment" class=" form-control"> -->
                   </div>
                 </div>
@@ -103,7 +103,7 @@
                 <div class="col " style="margin-left: 50px;">
                   <div class=" form-group">
                     <label for="">วิชาที่ลาได้</label>
-                    <select name="leavetype" id="" class=" form-control"></select>
+                    <select name="" id="" class=" form-control"></select>
                   </div>
                 </div>
 
@@ -117,12 +117,12 @@
                   <p style="margin-top: 10px; margin-bottom: 0;color: red;">** หมายเหตุ กรณีที่ลาป่วยเกิน 3 วันควรมีใบรับรองแพทย์ในการยืนยัน</p>
                 </div>
                 <div class="col">
-                  <button class=" btn bg-success form-control" style="width: 200px; height: 50px; margin-left: 99px; margin-top: 55px; color: white;">บันทึกการลา</button>
+                  <button class=" btn bg-success form-control" name="save" id="save" style="width: 200px; height: 50px; margin-left: 99px; margin-top: 55px; color: white;">บันทึกการลา</button>
                 </div>
               </div>
             </div>
           </div>
-          </form>
+        </form>
       </div>
     </div>
   </div>
