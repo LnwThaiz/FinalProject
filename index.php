@@ -102,7 +102,7 @@
                 </div>
                 <div class="col " style="margin-left: 50px;">
                   <div class=" form-group">
-                    <label for="">ประเภทการลา</label>
+                    <label for="">วิชาที่ลาได้</label>
                     <select name="leavetype" id="" class=" form-control"></select>
                   </div>
                 </div>
