@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Leave System</title>
     <link rel="stylesheet" href="forindex.css">
+    <link rel="stylesheet" href="sidebar_com.css">
 </head>
 
 <body>
@@ -70,7 +71,7 @@
             </div>
         </div>
     </nav>
- 
+    <?php include "sidebar.php"; ?>
     <?php
     include_once "footerBoostrapLogin.html";
     ?>

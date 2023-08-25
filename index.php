@@ -12,7 +12,6 @@
 <body>
   <?php
   include_once "navbar.php";
-  include_once "sidebar.php";
   ?>
   <div class="content">
     <h2 class="d-flex justify-content-center my-3">บันทึกการลา</h2>
@@ -53,24 +52,42 @@
               <div class="col-md-7">
                 <div class=" form-group">
                   <label for="">เหตุผลการลา</label>
-                  <input type="text" name="comment" class=" form-control">
+                  <textarea name="" id="" class=" form-control" style="  height: 7rem;width: 29rem;padding: 5px;"></textarea>
+                  <!-- <input type="text" name="comment" class=" form-control"> -->
                 </div>
               </div>
-              <div class="col ">
-                <div class="row" style="margin-left: 30px;">
-                  <div class="col">
-                    <div class=" form-group">
-                      <label for="">ประเภทการลา</label>
-                      <select name="leavetype" id="" class=" form-control"></select>
-                    </div>
-                  </div>
-                  <!-- <div class="col">
+              <div class="col " style="margin-left: 50px;">
+
+                <div class=" form-group">
+                  <label for="">ประเภทการลา</label>
+                  <select name="leavetype" id="" class=" form-control"></select>
+                </div>
+
+                <!-- <div class="col">
                     <div class=" form-group">
                       <label for="">วิชาที่ลาได้</label>
                       <select name="subject" id="" class=" form-control"></select>
                     </div>
                   </div> -->
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-7">
+
+              </div>
+              <div class="col " style="margin-left: 50px;">
+
+                <div class=" form-group">
+                  <label for="">ประเภทการลา</label>
+                  <select name="leavetype" id="" class=" form-control"></select>
                 </div>
+
+                <!-- <div class="col">
+                    <div class=" form-group">
+                      <label for="">วิชาที่ลาได้</label>
+                      <select name="subject" id="" class=" form-control"></select>
+                    </div>
+                  </div> -->
               </div>
             </div>
           </div>
