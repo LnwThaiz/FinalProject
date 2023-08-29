@@ -82,7 +82,7 @@
                                         <div class="modal-header d-flex flex-column border-0">
                                             <div class="d-flex justify-content-between w-100 px-3 align-items-center">
                                                 <i class="bi bi-file-text-fill fs-1"></i>
-                                                <h1 class="modal-title fs-4" id="staticBackdropLabel">รายละเอียดการลา</h1>
+                                                <h1 class="modal-title fs-4" id="staticBackdropLabel">รายละเอียดการลา <?php echo $row['leave_id'] ?></h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="w-100">
@@ -96,9 +96,8 @@
                                                 lt.leave_type_name , date(end_leave_date) as end_date_woTime ,time(end_leave_date) as end_time_woDate ,
                                                 leave_comment , ls.leave_status_name
                                                 FROM leaves
-                                                inner JOIN leave_type lt on leaves.leave_type_id=lt.leave_type_id AND std_id = '$STD_ID'
-                                                inner join leave_status ls on leaves.leave_status_id=ls.leave_status_id;
-                                                ";
+                                                inner JOIN leave_type lt on leaves.leave_type_id=lt.leave_type_id
+                                                inner join leave_status ls on leaves.leave_status_id=ls.leave_status_id;";
                                                 $queryModal = mysqli_query($connect,$sqlModal);
                                                 $fetchModal = mysqli_fetch_assoc($queryModal);
 

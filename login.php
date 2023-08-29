@@ -47,7 +47,7 @@
             exit;
         } else {
             // ล็อกอินไม่สำเร็จ
-            $txt = "This STD_ID and Password combination was not found.";
+            $txt = "ไม่สามารถเข้าสู่ระบบได้กรูณาตรวจสอบ <br> รหัสผู้ใช้หรือรหัสผ่านของท่าน";
         }
     }
 

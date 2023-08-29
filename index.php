@@ -16,7 +16,23 @@
   include "connect.php";
 
   if (isset($_POST['save'])) {
-    
+    $leaveid = $_POST['leaveid'];
+    $startleave = $_POST['startleave'];
+    $endleave = $_POST['endleave'];
+    $start_time = $_POST['start_time'];
+    $end_time = $_POST['end_time'];
+    $comment = $_POST['comment'];
+    $leavetype = $_POST['leavetype'];
+    $attachfile = $_POST['attachfile'];
+
+    $sql_leave = "INSERT INTO leaves(leave_id,leave_type_id,std_id,start_leave_date,end_leave_date,leave_comment,leave_status_id,attach_medCerti)
+                  VALUES ('l$leaveid','$leavetype','$STD_ID','$startleave $start_time','$endleave $end_time','$comment','LS01','$attachfile')";
+    if (mysqli_query($connect,$sql_leave)) {
+      echo "<script>alert('insert success')</script>";
+    }else{
+      echo mysqli_error($connect);
+    }
+
   }
   ?>
   <div class="content">
@@ -33,25 +49,33 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">วันที่เริ่มลา</label>
-                    <input type="date" name="startdate" class="form-control">
+                    <input type="date" name="startleave" class="form-control">
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="">ถึงวันที่</label>
-                    <input type="date" name="enddate" class="form-control">
+                    <input type="date" name="endleave" class="form-control">
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class=" form-group">
                     <label for="">ตั้งแต่เวลา</label>
-                    <select name="start_time" id="start_time" class=" form-control"></select>
+                    <select name="start_time" id="start_time" class=" form-control">
+                      <option value="08:00">08:00</option>
+                      <option value="09:00">09:00</option>
+                      <option value="10:00">10:00</option>
+                    </select>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class=" form-group">
                     <label for="">ถึงเวลา</label>
-                    <select name="end_time" id="end_time" class=" form-control"></select>
+                    <select name="end_time" id="end_time" class=" form-control">
+                      <option value="12:00">12:00</option>
+                      <option value="13:00">13:00</option>
+                      <option value="14:00">14:00</option>
+                    </select>
                   </div>
                 </div>
 
@@ -116,7 +140,9 @@
                   <input type="file" name="attachfile" id="attachfile">
                   <p style="margin-top: 10px; margin-bottom: 0;color: red;">** หมายเหตุ กรณีที่ลาป่วยเกิน 3 วันควรมีใบรับรองแพทย์ในการยืนยัน</p>
                 </div>
+
                 <div class="col">
+                  <input type="hidden" name="leaveid" value="<?php echo generateNewProvinceId($connect); ?>">
                   <button class=" btn bg-success form-control" name="save" id="save" style="width: 200px; height: 50px; margin-left: 99px; margin-top: 55px; color: white;">บันทึกการลา</button>
                 </div>
               </div>
@@ -127,6 +153,19 @@
     </div>
   </div>
 
+  <?php
+  function generateNewProvinceId($conn)
+  {
+    $sql_max_id = "SELECT count(leave_id) AS max_id FROM leaves";
+    $result = mysqli_query($conn, $sql_max_id);
+    $row = mysqli_fetch_assoc($result);
+
+    // Generate new id by adding 1 to the max id
+    $new_id = intval($row['max_id']) + 1;
+
+    return $new_id;
+  }
+  ?>
 </body>
 
 </html>
