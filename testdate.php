@@ -38,13 +38,6 @@
 
             $thaiDayOfWeek = checkDays($Starttimestamp);
 
-            $testsql =  "SELECT sd.Schedule_ID, s.Subject_Name, d.Day_name, sb.SB_time, Classroom FROM `schedule_detail` sd 
-            inner join subject s on sd.Subject_ID = s.Subject_ID
-            inner join days d on sd.Day_ID = d.Day_ID
-            inner join study_block sb on sd.SB_ID = sb.SB_ID
-            WHERE d.Day_name like '%$thaiDayOfWeek%' ORDER BY d.Day_ID;";
-            $testquery = mysqli_query($connect, $testsql);
-
             // Display the table only when the form is submitted
         ?>
             <table>
@@ -59,7 +52,15 @@
                 </thead>
                 <tbody>
                     <?php
-                    for ($count = 1; $count <= $Daysbetween; $count++) {
+                    for ($count = 0; $count <= $Daysbetween; $count++) {
+
+                        $testsql =  "SELECT sd.Schedule_ID, s.Subject_Name, d.Day_name, sb.SB_time, Classroom FROM `schedule_detail` sd 
+                        inner join subject s on sd.Subject_ID = s.Subject_ID
+                        inner join days d on sd.Day_ID = d.Day_ID
+                        inner join study_block sb on sd.SB_ID = sb.SB_ID
+                        WHERE d.Day_name like '%$thaiDayOfWeek%' ORDER BY d.Day_ID;";
+                        $testquery = mysqli_query($connect, $testsql);
+                        
                         while ($row = mysqli_fetch_assoc($testquery)) {
                             echo '<tr>';
                             echo '<td>' . $row['Schedule_ID'] . '</td>';
@@ -71,9 +72,9 @@
                         }
                         $thaiDateString = date("d-m-Y", strtotime($thaiDateString . "+1 days"));
                         $getloopday = strtotime($thaiDateString);
-                        $Days = checkDays($getloopday);
+                        $thaiDayOfWeek = checkDays($getloopday);
                         echo $thaiDateString;
-                        echo $Days;
+                        echo $thaiDayOfWeek;
                         echo $count."<br>";
                     }
                     ?>
@@ -121,9 +122,6 @@
         }
         ?>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <?php include "scripttest.php"; ?>
 </body>
 
 </html>
