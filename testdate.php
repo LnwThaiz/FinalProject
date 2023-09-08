@@ -74,14 +74,11 @@
                         $thaiDateString = date("d-m-Y", strtotime($thaiDateString . "+1 days"));
                         $getloopday = strtotime($thaiDateString);
                         $thaiDayOfWeek = checkDays($getloopday);
-                        echo $thaiDateString;
-                        echo $thaiDayOfWeek;
-                        echo $count . "<br>";
                     }
                     ?>
                 </tbody>
             </table>
-        <?php echo $Daysbetween;
+        <?php
         } // End of if (isset($_POST['testdate'])) 
         ?>
 
