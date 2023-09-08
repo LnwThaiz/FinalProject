@@ -26,5 +26,4 @@ if (isset($_POST['function']) && $_POST['function'] == 'subdistricts'){
     echo $result['zip_code'];
 }
 
-
 ?>

@@ -17,12 +17,13 @@
     <?php
     include "navbar.php";
     include "connect.php";
+    include "functionTest.php";
     ?>
     <div>
-        <form method="post">
+        <form method="post" id="dateform">
             <input type="date" class="form-control" style="width: 250px" name="startdate" id="startdate" value="<?php echo currentdate(); ?>"><br><br>
             <input type="date" class="form-control" style="width: 250px" name="enddate" id="enddate" value="<?php echo currentdate(); ?>"><br><br>
-            <button type="submit" name="testdate" style="width: 100px;height: 50px">บันทึก</button>
+            <button type="submit" name="testdate" id="testdate" style="width: 100px;height: 50px">บันทึก</button>
         </form>
 
         <?php
@@ -60,7 +61,7 @@
                         inner join study_block sb on sd.SB_ID = sb.SB_ID
                         WHERE d.Day_name like '%$thaiDayOfWeek%' ORDER BY d.Day_ID;";
                         $testquery = mysqli_query($connect, $testsql);
-                        
+
                         while ($row = mysqli_fetch_assoc($testquery)) {
                             echo '<tr>';
                             echo '<td>' . $row['Schedule_ID'] . '</td>';
@@ -75,7 +76,7 @@
                         $thaiDayOfWeek = checkDays($getloopday);
                         echo $thaiDateString;
                         echo $thaiDayOfWeek;
-                        echo $count."<br>";
+                        echo $count . "<br>";
                     }
                     ?>
                 </tbody>
@@ -84,44 +85,13 @@
         } // End of if (isset($_POST['testdate'])) 
         ?>
 
-        <?php
-        function currentdate()
-        {
-            $currentDate = date("Y-m-d");
-            return $currentDate;
-        }
+        <div id="testdiv">
 
-        function countDays($start, $end)
-        {
-            $startDate = new DateTime($start);
-            $endDate = new DateTime($end);
-            $interval = $startDate->diff($endDate);
-            return $interval->days;
-        }
-        function checkDays($asdf){
-            $thaiDayOfWeeks = '';
-            $dayOfWeek = date("D", $asdf);
-            if ($dayOfWeek === "Sun") {
-                $thaiDayOfWeeks = "วันอาทิตย์";
-            } elseif ($dayOfWeek === "Mon") {
-                $thaiDayOfWeeks = "วันจันทร์";
-            } elseif ($dayOfWeek === "Tue") {
-                $thaiDayOfWeeks = "วันอังคาร";
-            } elseif ($dayOfWeek === "Wed") {
-                $thaiDayOfWeeks = "วันพุธ";
-            } elseif ($dayOfWeek === "Thu") {
-                $thaiDayOfWeeks = "วันพฤหัสบดี";
-            } elseif ($dayOfWeek === "Fri") {
-                $thaiDayOfWeeks = "วันศุกร์";
-            } elseif ($dayOfWeek === "Sat") {
-                $thaiDayOfWeeks = "วันเสาร์";
-            } else {
-                $thaiDayOfWeeks = "ไม่สามารถระบุวันในสัปดาห์ได้";
-            }
-            return $thaiDayOfWeeks;
-        }
-        ?>
+        </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <?php include "scriptTest.php"; ?>
 </body>
 
 </html>
