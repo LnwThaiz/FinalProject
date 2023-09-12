@@ -81,11 +81,30 @@
         <?php
         } // End of if (isset($_POST['testdate'])) 
         ?>
-
-        <div id="testdiv">
-
-        </div>
     </div>
+
+    <form method="post">
+        <div id="testdiv">
+            <!-- wait data from ajax -->
+        </div>
+        <button type="submit" name="testCombo" id="testCombo" style="width: 100px;height: 50px">test</button>
+    </form>
+
+    <?php
+    if (isset($_POST['testCombo'])) {
+        $selected_subjects = $_POST['selected_subject'];
+
+        if (is_array($selected_subjects)) {
+            // นี่คือรายการของรายวิชาที่ถูกเลือก
+            $selected_subjects_string = implode(', ', $selected_subjects);
+            echo "รายวิชาที่ถูกเลือก: " . $selected_subjects_string;
+        } else {
+            echo "ยังไม่ได้เลือกรายวิชา";
+            echo $selected_subjects;
+        }
+    }
+
+    ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <?php include "scriptTest.php"; ?>
