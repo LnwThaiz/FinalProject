@@ -33,44 +33,22 @@
     }
     ?>
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background: #BA0900;">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mx-2">
-                <li class="nav-item ml-1">
-                    <img src="./img/TATC_Logo.png" width="70" class="rounded-circle border-10px">
-                </li>
-
-                <li class="nav-item mt-2 ml">
-                    <a class="nav-link text-white"  href="index.php">วิทยาลัยเทคนิคสัตหีบ</a>
-                </li>
-
-
-
-            </ul>
-
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-5">
-
-                </ul>
-                <ul class="navbar-nav mt-1">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background: #BA0900;">
+        <div class="container-fluid">
+            <img src="./img/TATC_Logo.png" width="70" class="rounded-circle border-10px">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                     
-                    <div class="sidebarToggle">
-                        <button id="sidebarToggle">☰</button>
-                    </div>
-     
+                        <a class="nav-link text-white" href="index.php">วิทยาลัยเทคนิคสัตหีบ</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
+    
     <?php
     include_once "footerBoostrapLogin.html";
     ?>
