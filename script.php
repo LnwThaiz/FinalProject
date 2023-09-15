@@ -68,6 +68,7 @@
             },
             success: function(data) {
                 $('#subject').html(data)
+                $('#enddate').val(id_startdate)
             }
         });
     });

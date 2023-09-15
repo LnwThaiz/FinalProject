@@ -27,7 +27,7 @@
 
     $sql_leave = "INSERT INTO leaves(leave_id,leave_type_id,std_id,start_leave_date,end_leave_date,leave_comment,leave_status_id,attach_medCerti)
                   VALUES ('$leaveid','$leavetype','$STD_ID','$startleave','$endleave','$comment','LS01','$attachfile')";
-                  
+
     // if query success
     if (mysqli_query($connect, $sql_leave)) {
 
@@ -44,14 +44,12 @@
         }
 
         echo "บันทึกข้อมูลสำเร็จ";
-
       } else {
 
         echo "ยังไม่ได้เลือกรายวิชา";
-
       }
+      echo "<script>alert('" . $sql . "')</script>";
       echo "<script>alert('insert success')</script>";
-
     } else {
       echo mysqli_error($connect);
     }
@@ -92,7 +90,7 @@
                         <?php
                         while ($type_fa = mysqli_fetch_assoc($query_type)) {
                         ?>
-                          <option value="<?=$type_fa['leave_type_id'] ?>"><?php echo $type_fa['leave_type_name'] ?></option>
+                          <option value="<?= $type_fa['leave_type_id'] ?>"><?php echo $type_fa['leave_type_name'] ?></option>
                         <?php
                         }
                         ?>
