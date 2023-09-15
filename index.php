@@ -16,20 +16,42 @@
   include "connect.php";
   include "functionTest.php";
 
-  if (isset($_POST['save'])) {
+  if (isset($_POST['submit'])) {
     $leaveid = $_POST['leaveid'];
     $startleave = $_POST['startleave'];
     $endleave = $_POST['endleave'];
-    $start_time = $_POST['start_time'];
-    $end_time = $_POST['end_time'];
     $comment = $_POST['comment'];
     $leavetype = $_POST['leavetype'];
     $attachfile = $_POST['attachfile'];
+    $selected_subjects = $_POST['selected_subject'];
 
     $sql_leave = "INSERT INTO leaves(leave_id,leave_type_id,std_id,start_leave_date,end_leave_date,leave_comment,leave_status_id,attach_medCerti)
-                  VALUES ('$leaveid','$leavetype','$STD_ID','$startleave $start_time','$endleave $end_time','$comment','LS01','$attachfile')";
+                  VALUES ('$leaveid','$leavetype','$STD_ID','$startleave','$endleave','$comment','LS01','$attachfile')";
+                  
+    // if query success
     if (mysqli_query($connect, $sql_leave)) {
+
+      //check data array subject is not empty
+      if (!empty($selected_subjects) && is_array($selected_subjects)) {
+
+        foreach ($selected_subjects as $subject_id) {
+          // สร้างคำสั่ง SQL สำหรับ Insert ข้อมูลลงในฐานข้อมูล
+          $sql = "INSERT INTO leave_detail (leave_id, subject_id) VALUES ('$leaveid', '$subject_id')";
+          $sql_q = mysqli_query($connect, $sql);
+
+          // ทำการ execute คำสั่ง SQL หรือใช้ mysqli_query หรือ PDO
+          // เช่น mysqli_query($connection, $sql) หรือ $pdo->query($sql)
+        }
+
+        echo "บันทึกข้อมูลสำเร็จ";
+
+      } else {
+
+        echo "ยังไม่ได้เลือกรายวิชา";
+
+      }
       echo "<script>alert('insert success')</script>";
+
     } else {
       echo mysqli_error($connect);
     }
@@ -42,22 +64,22 @@
         <div class=" w-100 justify-content-center ">
           <div class=" card shadow bg-200 mt-5 ">
             <div class=" card-body text-secondary" style="background-color: #F4F4F4;">
-              <form action="">
+              <form method="post">
                 <div class="row row-cols-2 gx-3">
                   <div class="col">
                     <div class=" row row-cols-2 ">
                       <div class=" col">
                         <label for="" class=" form-label">วันที่ลา</label>
-                        <input type="date" name="startleave" class=" form-control" value="<?php echo currentdate(); ?>">
+                        <input type="date" name="startleave" id="startdate" class=" form-control" value="<?php echo currentdate(); ?>">
                       </div>
                       <div class=" col">
                         <label for="" class=" form-label">ถึงวันที่</label>
-                        <input type="date" name="enddate" class=" form-control" value="<?php echo currentdate(); ?>">
+                        <input type="date" name="endleave" id="enddate" class=" form-control" value="<?php echo currentdate(); ?>">
                       </div>
                     </div>
                     <div class=" mt-3">
                       <label for="">เหตุผลการลา</label>
-                      <textarea name="comment" id="" class=" form-control w-50" placeholder="กรอกเหตุผลการลาเช่น ไม่สบาย, ทำธุระต่างจังหวัด"></textarea>
+                      <textarea name="comment" id="comment" class=" form-control w-50" placeholder="กรอกเหตุผลการลาเช่น ไม่สบาย, ทำธุระต่างจังหวัด"></textarea>
                     </div>
                     <div class=" mt-3">
                       <label for="">ประเภทการลา</label>
@@ -70,7 +92,7 @@
                         <?php
                         while ($type_fa = mysqli_fetch_assoc($query_type)) {
                         ?>
-                          <option value="<?php $type_fa['leave_type_id'] ?>"><?php echo $type_fa['leave_type_name'] ?></option>
+                          <option value="<?=$type_fa['leave_type_id'] ?>"><?php echo $type_fa['leave_type_name'] ?></option>
                         <?php
                         }
                         ?>
@@ -78,7 +100,7 @@
                     </div>
                     <div class="mt-3">
                       <label for="" class=" form-label">แนปไฟล์ใบรับรองแพทย์</label>
-                      <input type="file" class=" form-control" name="attachfile">
+                      <input type="file" class=" form-control" name="attachfile" id="attachfile">
                       <label for="" class=" form-label text-danger mt-2">** หมายเหตุ ในกรณีที่ลาป่วย 3
                         วันขึ้นไปให้แนบรูปใบรับรองแพทย์ **</label>
                     </div>
@@ -87,13 +109,13 @@
                     <div class=" d-flex align-content-end flex-column h-100">
                       รายวิชาที่สามารถลาได้
                       <div class=" table-responsive">
-                        <div class="overflow-auto mb-5" id="testdiv" style="height: 20rem;;">
+                        <div class="overflow-auto mb-5" id="subject" style="height: 20rem;;">
 
                         </div>
                       </div>
                       <div class=" mt-auto w-100 d-flex justify-content-end">
                         <input type="hidden" name="leaveid" value="<?php echo generateNewProvinceId($connect); ?>">
-                        <button class=" btn btn-success px-5" type="submit">ยืนยัน</button>
+                        <button class=" btn btn-success px-5" type="submit" name="submit">ยืนยัน</button>
                       </div>
                     </div>
                   </div>
@@ -124,6 +146,9 @@
     return $newLeaveId;
   }
   ?>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <?php include "script.php"; ?>
 </body>
 
 </html>

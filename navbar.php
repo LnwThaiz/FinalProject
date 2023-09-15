@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Leave System</title>
-    <link rel="stylesheet" href="forindex.css">
-</head>
-
-<body>
-    <?php
+<?php
     include_once "BSCss.html";
     session_start();
 
@@ -52,6 +42,3 @@
     <?php
     include_once "footerBoostrapLogin.html";
     ?>
-</body>
-
-</html>
