@@ -23,7 +23,7 @@
           <div class=" card shadow bg-200 mt-5 ">
             <div class=" card-body text-secondary" style="background-color: #F4F4F4;">
               <form method="post" id="formPost">
-                <div class="row row-cols-2 gx-3">
+                <div class="row row-cols-lg-2 row-cols-md-1 gx-3 ">
                   <div class="col">
                     <div class=" row row-cols-2 ">
                       <div class=" col">
@@ -64,16 +64,16 @@
                     </div>
                   </div>
                   <div class="col">
-                    <div class=" d-flex align-content-end flex-column h-100">
+                    <div class=" d-flex align-content-end flex-column h-100 mt-md-1">
                       รายวิชาที่สามารถลาได้
-                      <div class=" table-responsive">
-                        <div class="overflow-auto mb-5" id="subject" style="height: 20rem;;">
+                      <div class=" table-responsive overflow-auto">
+                        <div class="mb-4" id="subject" style="height: 20rem;;">
 
                         </div>
                       </div>
                       <div class=" mt-auto w-100 d-flex justify-content-end">
                         <input type="hidden" name="leaveid" id="leaveid" value="<?php echo generateNewProvinceId($connect); ?>">
-                        <button class=" btn btn-success px-5"  name="submit" onclick="subForm()">ยืนยัน</button>
+                        <button class=" btn btn-success px-5" type="submit" name="submit">ยืนยัน</button>
                       </div>
                     </div>
                   </div>
@@ -87,6 +87,7 @@
   </div>
 
   <?php
+  // include "insertForindex.php";
   function generateNewProvinceId($conn)
   {
     $increment = 1;
@@ -112,64 +113,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <Script src="https://code.jquery.com/jquery-3.7.1.min.js"></Script>
-
-  <script>
-    function subForm() {
-      Swal.fire({
-        title: 'ยืนยันการบันทึกหีหมา',
-        text: 'eiei',
-        icon: 'info',
-        showCancelButton: true,
-        confirmButtonText: 'บันทึก',
-        cancelButtonText: 'ยกเลิก'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          document.getElementById("formPost").submit();
-        }
-      });
-    };
-    // $(document).ready(function() {
-    //   $("form").submit(function(e) {
-    //     e.preventDefault();
-
-    //     // รับค่าจากฟอร์ม
-    //     var startleave = $("#startdate").val();
-    //     var endleave = $("#enddate").val();
-    //     var comment = $("#comment").val();
-    //     var leavetype = $("#leavetype option:selected").text();
-    //     var attachfile = $("#attachfile").val();
-
-    //     // สร้างข้อความที่จะแสดงใน SweetAlert
-    //     var message = `
-    //   วันที่ลา: ${startleave} ถึง ${endleave}
-    //   เหตุผลการลา: ${comment}
-    //   ประเภทการลา: ${leavetype}
-    //   ไฟล์แนบ: ${attachfile}
-    // `;
-
-    //     // แสดง SweetAlert
-    //     Swal.fire({
-    //       title: 'ยืนยันการบันทึก',
-    //       text: message,
-    //       icon: 'info',
-    //       showCancelButton: true,
-    //       confirmButtonText: 'บันทึก',
-    //       cancelButtonText: 'ยกเลิก'
-    //     }).then((result) => {
-    //       if (result.isConfirmed) {
-    //         var formObj = document.getElementById(formId);
-    //         document.getElementById("formPost").submit();
-    //         // หากผู้ใช้กด "บันทึก" ให้ส่งฟอร์มไปยังเซิร์ฟเวอร์
-    //         Swal.fire({
-    //           title: 'บันทึกสำเร็จ',
-    //           text: 'asdf',
-    //           icon: 'success'
-    //         })
-    //       }
-    //     });
-    //   });
-    // });
-  </script>
 
 </body>
 

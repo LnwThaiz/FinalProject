@@ -11,8 +11,8 @@ if (isset($_POST['submit'])) {
     $attachfile = $_POST['attachfile'];
     $selected_subjects = $_POST['selected_subject'];
 
-    $sql_leave = "INSERT INTO leaves(leave_id,leave_type_id,std_id,start_leave_date,end_leave_date,leave_comment,leave_status_id,attach_medCerti)
-                  VALUES ('$leaveid','$leavetype','$STD_ID','$startleave','$endleave','$comment','LS01','$attachfile')";
+    $sql_leave = sprintf("INSERT INTO leaves(leave_id,leave_type_id,std_id,start_leave_date,end_leave_date,leave_comment,leave_status_id,attach_medCerti)
+                VALUES ('$leaveid','$leavetype','$STD_ID','$startleave','$endleave','$comment','LS01','$attachfile')");
 
     // if query success
     if (mysqli_query($connect, $sql_leave)) {
@@ -28,21 +28,17 @@ if (isset($_POST['submit'])) {
                 // ทำการ execute คำสั่ง SQL หรือใช้ mysqli_query หรือ PDO
                 // เช่น mysqli_query($connection, $sql) หรือ $pdo->query($sql)
             }
-             //   echo "<script>alert('" . $sql . "')</script>";
-          echo "<script>
-          Swal.fire({
-            title: 'บันทึกสำเร็จ',
-            text: 'ข้อมูลถูกบันทึกลงในฐานข้อมูลแล้ว',
-            icon: 'success'
-          });
-          </script>";
+            echo "<script>";
+            echo "Swal.fire({
+                    title: 'บันทึกสำเร็จ',
+                    text: 'ข้อมูลถูกบันทึกลงในฐานข้อมูลแล้ว',
+                    icon: 'success'
+                    });";
+            echo "</script>";
         } else {
             echo "ยังไม่ได้เลือกรายวิชา";
         }
-?>
-<?php
     } else {
         echo mysqli_error($connect);
-    }
+    };
 }
-?>
