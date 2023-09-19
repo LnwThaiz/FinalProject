@@ -85,9 +85,9 @@ if (isset($_POST['function']) && $_POST['function'] == 'startdate') {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo '<tr>';
                 echo '<td>' . $row['Subject_ID'] . '</td>';
-                echo '<td>' . $row['Subject_Name'] . '</td>';
+                echo '<td style="width: 330px">' . $row['Subject_Name'] . '</td>';
                 echo '<td>' . $row['SB_time'] . '</td>';
-                echo '<td class="text-center"><input class="form-check-input" type="checkbox" name="selected_subject[]" value="' . $row['Subject_ID'] . '"></td>';
+                echo '<td class="text-center" ><input class="form-check-input" type="checkbox" name="selected_subject[]" id="selected_subject" value="' . $row['Subject_ID'] . '"></td>';
                 echo '</tr>';
             }
             echo '</tbody></table>';
@@ -154,9 +154,9 @@ if (isset($_POST['function']) && $_POST['function'] == 'enddate') {
                 while ($row = mysqli_fetch_assoc($testquery)) {
                     echo '<tr>';
                     echo '<td>' . $row['Subject_ID'] . '</td>';
-                    echo '<td>' . $row['Subject_Name'] . '</td>';
+                    echo '<td style="width: 330px">' . $row['Subject_Name'] . '</td>';
                     echo '<td>' . $row['SB_time'] . '</td>';
-                    echo '<td class="text-center"><input class="form-check-input" type="checkbox" name="selected_subject[]" value="' . $row['Subject_ID'] . '"></td>';
+                    echo '<td class="text-center""><input class="form-check-input" type="checkbox" name="selected_subject[]" value="' . $row['Subject_ID'] . '"></td>';
                     echo '</tr>';
                 }
 
