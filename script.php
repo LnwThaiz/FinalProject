@@ -67,6 +67,7 @@
                 function: 'startdate'
             },
             success: function(data) {
+                console.log(studentDataJSON);
                 $('#subject').html(data)
                 $('#enddate').val(id_startdate)
             }

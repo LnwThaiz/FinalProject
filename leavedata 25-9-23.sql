@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2023 at 06:43 AM
+-- Generation Time: Sep 25, 2023 at 10:36 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -1229,8 +1229,9 @@ CREATE TABLE `leaves` (
   `leave_id` varchar(5) NOT NULL,
   `leave_type_id` varchar(5) NOT NULL,
   `std_id` varchar(11) NOT NULL,
-  `start_leave_date` datetime NOT NULL,
-  `end_leave_date` datetime NOT NULL,
+  `write_date` date NOT NULL,
+  `start_leave_date` date NOT NULL,
+  `end_leave_date` date NOT NULL,
   `leave_comment` varchar(250) DEFAULT NULL,
   `std_admit` tinyint(1) NOT NULL,
   `parent_comment` varchar(250) DEFAULT NULL,
@@ -1238,20 +1239,20 @@ CREATE TABLE `leaves` (
   `teacher_comment` varchar(250) DEFAULT NULL,
   `teacher_admit` tinyint(1) NOT NULL,
   `leave_status_id` varchar(5) NOT NULL,
-  `attach_medCerti` varchar(200) DEFAULT NULL
+  `attach_medCerti` blob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `leaves`
 --
 
-INSERT INTO `leaves` (`leave_id`, `leave_type_id`, `std_id`, `start_leave_date`, `end_leave_date`, `leave_comment`, `std_admit`, `parent_comment`, `parent_admit`, `teacher_comment`, `teacher_admit`, `leave_status_id`, `attach_medCerti`) VALUES
-('L001', 'LT01', '65309010005', '2022-10-09 00:00:00', '2022-10-14 00:00:00', 'การลากิจเนื่องจากจะเดินทางไปทำธุระที่จังหวัดชลบุรี', 0, '', 0, '', 0, 'LS02', ''),
-('L002', 'LT02', '65309010005', '2022-11-06 00:00:00', '2022-11-07 00:00:00', 'การลาป่วยเนื่องจาก มีอาการโควิด', 0, '', 0, '', 0, 'LS02', ''),
-('L003', 'LT02', '65309010005', '2022-11-02 00:00:00', '2022-11-03 00:00:00', 'การลาป่วยเนื่องจาก มีอาการปวดท้องเป็นอย่างมาก', 0, '', 0, '', 0, 'LS02', ''),
-('L004', 'LT01', '65309010005', '2023-08-04 08:00:00', '2023-08-11 12:00:00', 'asdf', 0, NULL, 0, NULL, 0, 'LS01', ''),
-('L005', 'LT01', '65309010005', '2023-08-04 09:00:00', '2023-08-18 14:00:00', 'test', 0, NULL, 0, NULL, 0, 'LS01', ''),
-('L006', 'LT01', '65309010005', '2023-08-03 10:00:00', '2023-08-07 14:00:00', 'testett', 0, NULL, 0, NULL, 0, 'LS01', '');
+INSERT INTO `leaves` (`leave_id`, `leave_type_id`, `std_id`, `write_date`, `start_leave_date`, `end_leave_date`, `leave_comment`, `std_admit`, `parent_comment`, `parent_admit`, `teacher_comment`, `teacher_admit`, `leave_status_id`, `attach_medCerti`) VALUES
+('L001', 'LT02', '65309010005', '2023-09-24', '2023-09-12', '2023-09-12', 'test', 0, NULL, 0, NULL, 0, 'LS03', ''),
+('L002', 'LT01', '65309010005', '2023-09-24', '2023-09-06', '2023-09-06', 'test', 0, NULL, 0, NULL, 0, 'LS01', 0x3337393633333435305f313330303138383231333936303230345f333332303437313933353839373137333935315f6e202831292e6a7067),
+('L003', 'LT01', '65309010005', '2023-09-25', '2023-09-19', '2023-09-19', 'ทำธุระกับแม่', 0, NULL, 0, NULL, 0, 'LS01', ''),
+('L004', 'LT01', '65309010005', '2023-09-25', '2023-09-08', '2023-09-08', 'test', 0, NULL, 0, NULL, 0, 'LS01', ''),
+('L005', 'LT02', '65309010005', '2023-09-25', '2023-09-13', '2023-09-13', 'test', 0, NULL, 0, NULL, 0, 'LS01', ''),
+('L006', 'LT02', '65309010005', '2023-09-25', '2023-09-06', '2023-09-08', 'ป่วย', 0, NULL, 0, NULL, 0, 'LS02', 0x39623733636232326538623931316366343034396565633332633733613466652e6a7067);
 
 -- --------------------------------------------------------
 
@@ -1270,18 +1271,22 @@ CREATE TABLE `leave_detail` (
 --
 
 INSERT INTO `leave_detail` (`Leave_ID`, `Subject_ID`, `Admit`) VALUES
+('L001', 'st004', 0),
+('L001', 'st005', 0),
 ('L001', 'st006', 0),
 ('L002', 'st007', 0),
 ('L002', 'st008', 0),
-('L003', 'st009', 0),
-('L004', 'st004', 0),
-('L004', 'st006', 0),
-('L004', 'st008', 0),
-('L005', 'st004', 0),
-('L005', 'st005', 0),
-('L005', 'st006', 0),
+('L002', 'st009', 0),
+('L003', 'st004', 0),
+('L003', 'st005', 0),
+('L003', 'st006', 0),
+('L004', 'st001', 0),
+('L004', 'st002', 0),
+('L004', 'st003', 0),
+('L004', 'st009', 0),
 ('L005', 'st007', 0),
-('L006', 'st001', 0),
+('L005', 'st008', 0),
+('L005', 'st009', 0),
 ('L006', 'st007', 0),
 ('L006', 'st008', 0),
 ('L006', 'st009', 0);
@@ -1303,8 +1308,8 @@ CREATE TABLE `leave_status` (
 
 INSERT INTO `leave_status` (`leave_status_id`, `leave_status_name`) VALUES
 ('LS01', 'รอการอนุมัติ'),
-('LS02', 'อนุมัติ'),
-('LS03', 'ยกเลิก');
+('LS02', 'อนุมัติการลา'),
+('LS03', 'ยกเลิกการลา');
 
 -- --------------------------------------------------------
 
@@ -1652,8 +1657,8 @@ CREATE TABLE `std` (
 --
 
 INSERT INTO `std` (`STD_ID`, `Prefix_ID`, `STD_Name`, `STD_Lastname`, `STD_Birth`, `STD_Phone`, `Classlev_ID`, `Major_ID`, `Parent_Name`, `STD_Address`, `Group_ID`, `Password`, `provinces_id`, `district_id`, `subdistrict_id`) VALUES
-('65309010005', 'P001', 'ณัฐพัชร', 'ศรีพรหม', '2004-05-23', '0863414977', 'CV01', 'M010', 'ชนัญชิดา ศรีพรหม', '135/72 หมู่ 2', 6530901, '1234', 21, 2102, 210203),
-('65309010007', 'P001', 'ธนกร', 'พิชัย', '2006-03-06', '0018882485', 'CV01', 'M010', 'ชัชญา ปิติภัทร', '81/73 ชลบุรี บ้านบึง', 6540902, '1234', NULL, NULL, NULL),
+('65309010005', 'P001', 'ณัฐพัชร', 'ศรีพรหม', '2004-05-23', '0863414977', 'CV01', 'M010', 'ชนัญชิดา ศรีพรหม', '135/72 หมู่ 2', 6530901, '1234', 20, 2009, 200901),
+('65309010007', 'P001', 'ธนกร', 'พิชัย', '2006-03-06', '0018882485', 'CV01', 'M010', 'ชัชญา ปิติภัทร', '81/73 ชลบุรี บ้านบึง', 6530901, '1234', 21, 2102, 210203),
 ('65309010008', 'P001', 'พิชัย', 'พรต', '2004-12-07', '0159528823', 'CV01', 'M010', 'ลักษ์วิสา กร', '44/58 ชลบุรี บ้านบึง', 6540903, '1234', NULL, NULL, NULL),
 ('65309010009', 'P001', 'ชาลี', 'ชนวรรณ', '2006-01-03', '0146988151', 'CV01', 'M010', 'ธิญา ชาลี', '08/78 ชลบุรี สัตหีบ', 6540904, '1234', NULL, NULL, NULL),
 ('65309010010', 'P001', 'ขวัญทิพย์', 'พรพรรณ', '2005-12-09', '0371792017', 'CV01', 'M010', 'ภาดา ภัคธีมา', '02/85 ชลบุรี บางละมุง', 6540905, '1234', NULL, NULL, NULL),

@@ -7,25 +7,6 @@
     <title>Document</title>
 </head>
 <style>
-    .table-container {
-        padding-top: 10px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto
-    }
-
-    h3 {
-        padding-top: 50px;
-        margin: 73px;
-    }
-
-    .table {
-        border-collapse: collapse;
-        margin: 25px 0;
-        font-size: 0.9em;
-        width: 90%;
-    }
-
     .table thead tr th {
         background-color: #BA0900;
         color: #ffffff;
@@ -46,22 +27,23 @@
     include "navbar.php";
     include "connect.php";
 
-    $query = "SELECT leave_id, start_leave_date ,date(start_leave_date) as start_date_woTime ,
-              end_leave_date , time(start_leave_date) as start_time_woDate , lt.leave_type_name , 
-              date(end_leave_date) as end_date_woTime , time(end_leave_date) as end_time_woDate ,
-              leave_comment , ls.leave_status_name 
+    $query = "SELECT leave_id, write_date, start_leave_date ,
+              end_leave_date, lt.leave_type_id, lt.leave_type_name , 
+              leave_comment , ls.leave_status_id, ls.leave_status_name 
               FROM leaves
-              inner JOIN leave_type lt on leaves.leave_type_id=lt.leave_type_id AND std_id = '$STD_ID'
-              inner join leave_status ls on leaves.leave_status_id=ls.leave_status_id ";
+              inner JOIN leave_type lt on leaves.leave_type_id=lt.leave_type_id 
+              inner join leave_status ls on leaves.leave_status_id=ls.leave_status_id 
+              WHERE std_id = '$STD_ID'
+              order by write_date";
     $result = mysqli_query($connect, $query);
-
     ?>
 
-    <H3 class="align-left text-left mb-0">ประวัติการลา</H3>
-    <div class="table-container w-100 d-flex justify-content-center mt-0">
-        <table class="table table-striped m-0" style="width: 90%; font-size: 15px">
+    <H3 class="mt-5" style="margin-left: 6rem;">ประวัติการลา</H3>
+
+    <div class="table-container d-flex justify-content-center mt-0">
+        <table class="table table-striped m-0" style="width: 90%; font-size: 1rem">
             <thead>
-                <tr class="align-middle text-center">
+                <tr class="align-middle text-center text-white">
                     <th>วันที่ลง</th>
                     <th>การลา</th>
                     <th>วันที่ลา</th>
@@ -74,19 +56,38 @@
                 while ($row = mysqli_fetch_array($result)) {
                 ?>
                     <tr>
-                        <td><?php echo $row['leave_id'] ?></td>
+                        <td><?php echo $row['write_date'] ?></td>
                         <td><?php echo $row['leave_type_name'] ?></td>
                         <td><?php echo $row['start_leave_date'] . " - " . $row['end_leave_date'] ?></td>
-                        <td><?php echo $row['leave_status_name'] ?></td>
+                        <?php if ($row['leave_status_id'] == "LS01") { ?>
+                            <td>
+                                <div class=" rounded-3 bg-warning text-white d-flex align-items-center justify-content-center" style="height: 2.5rem;">
+                                    <label for=""><?php echo $row['leave_status_name'] ?></label>
+                                </div>
+                            </td>
+                        <?php } elseif ($row['leave_status_id'] == "LS02") { ?>
+                            <td>
+                                <div class=" rounded-3 bg-success text-white d-flex align-items-center justify-content-center" style="height: 2.5rem;">
+                                    <label for=""><?php echo $row['leave_status_name'] ?></label>
+                                </div>
+                            </td>
+                        <?php } else { ?>
+                            <td>
+                                <div class=" rounded-3 bg-danger text-white d-flex align-items-center justify-content-center" style="height: 2.5rem;">
+                                    <label for=""><?php echo $row['leave_status_name'] ?></label>
+                                </div>
+                            </td>
+                        <?php } ?>
                         <td>
                             <button type="button" class="btn " style="background-color: #BA0900; color:#ffffff" data-bs-toggle="modal" data-bs-target="#detail<?php echo $row['leave_id'] ?>"><i class="bi bi-info-circle-fill fs-5"></i></button>
+
                             <div class="modal fade" id="detail<?php echo $row['leave_id'] ?>" data-bs-keyboard="false" tabindex="-1">
-                                <div class="modal-dialog modal-dialog-centered modal-fullscreen py-4 px-5">
-                                    <div class="modal-content">
+                                <div class="modal-dialog modal-dialog-centered " style="max-width: 150vh;">
+                                    <div class="modal-content" style="max-width: 150vh;">
                                         <div class="modal-header d-flex flex-column border-0">
                                             <div class="d-flex justify-content-between w-100 px-3 align-items-center">
                                                 <i class="bi bi-file-text-fill fs-1"></i>
-                                                <h1 class="modal-title fs-4" id="staticBackdropLabel">รายละเอียดการลา <?php echo $row['leave_id'] ?></h1>
+                                                <h1 class="modal-title fs-4" id="staticBackdropLabel">รายละเอียดการลา</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="w-100">
@@ -94,106 +95,119 @@
                                             </div>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- row 1 -->
-                                            <div class=" d-flex flex-column">
-                                                <div class="row row-cols-1 " style="align-items: center;">
-                                                    <div class=" row row-cols-3 g-3">
-                                                        <div class=" col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <p class=" text-nowrap m-0">วันที่เริ่มลา :</p>
-                                                                <input type="text" id="start_date" name="start_date" class=" form-control shadow-none" value="<?php echo $row['start_date_woTime'] ?>" disabled>
+                                            <?php if ($row['leave_status_id'] == "LS01") { ?>
+                                                <div class="d-flex justify-content-end text-nowrap mt-0 mb-3">
+                                                    <div class="rounded-3 bg-warning d-flex align-items-center text-white" style="height: 2.5rem;">
+                                                        <div class="px-3">
+                                                            <div class="spinner-border" role="status" style="width: 20px;height: 20px;"></div>
+                                                        </div>
+                                                        <label for="">สถานะการลา : </label>
+                                                        <label for="" class="px-2"><?= $row['leave_status_name'] ?></label>
+                                                    </div>
+                                                </div>
+                                            <?php } elseif (($row['leave_status_id'] == "LS02")) { ?>
+                                                <div class="d-flex justify-content-end text-nowrap mt-0 mb-3">
+                                                    <div class=" rounded-3 bg-success d-flex align-items-center text-white" style="height: 2.5rem;">
+                                                        <div class="px-3">
+                                                            <i class="bi bi-check-lg fs-3"></i>
+                                                        </div>
+                                                        <label for="">สถานะการลา :</label>
+                                                        <label for="" class="px-2"><?= $row['leave_status_name'] ?></label>
+                                                    </div>
+                                                </div>
+                                            <?php } else { ?>
+                                                <div class="d-flex justify-content-end text-nowrap mt-0 mb-3">
+                                                    <div class=" rounded-3 bg-danger d-flex align-items-center text-white" style="height: 2.5rem;">
+                                                        <div class="px-3">
+                                                            <i class="bi bi-x-circle fs-3"></i>
+                                                        </div>
+                                                        <label for="">สถานะการลา :</label>
+                                                        <label for="" class="px-2"><?= $row['leave_status_name'] ?></label>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+                                            <div class=" align-content-md-start">
+                                                <div class="row ">
+                                                    <div class="col">
+                                                        <div class="row row-cols-3 row-cols-lg-3 row-cols-md-2 row-cols-xs-1">
+                                                            <div class=" col">
+                                                                <label for="">วันที่เริ่มลา :</label>
+                                                                <input type="date" class="form-control " value="<?php echo $row['start_leave_date'] ?>" disabled>
+                                                            </div>
+                                                            <div class="col">
+                                                                <label for="">ถึงวันที่ :</label>
+                                                                <input type="date" class="form-control" value="<?php echo $row['end_leave_date'] ?>" disabled>
+                                                            </div>
+                                                            <div class="col mt-lg-0 mt-md-3">
+                                                                <label for="">ประเภทการลา :</label>
+                                                                <?php
+                                                                $leave_type = $row['leave_type_id'];
+                                                                $sql_type = "SELECT * From leave_type Where leave_type_id = '$leave_type'";
+                                                                $q_type = mysqli_query($connect, $sql_type);
+                                                                $f_type = mysqli_fetch_assoc($q_type);
+                                                                ?>
+                                                                <input type="text" class=" form-control" value="<?= $f_type['leave_type_name'] ?>" disabled>
                                                             </div>
                                                         </div>
-                                                        <div class=" col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <p class=" text-nowrap m-0">เวลา :</p>
-                                                                <input type="text" id="time_start_date" name="time_start_date" class=" form-control shadow-none" value="<?php echo $row['start_time_woDate'] ?>" disabled>
-                                                            </div>
+                                                        <div class="mt-3">
+                                                            <label for="">เหตุผลการลา :</label>
+                                                            <textarea name="" id="" class=" form-control w-100" disabled><?php echo $row['leave_comment'] ?></textarea>
                                                         </div>
-                                                        <div class=" col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <p class=" text-nowrap m-0">ประเภทการลา :</p>
-                                                                <input type="text" id="leave_type" name="leave_type" class=" form-control shadow-none disabled" value="<?php echo $row['leave_type_name'] ?>" disabled>
-                                                            </div>
-                                                        </div>
-                                                        <div class=" col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <p class=" text-nowrap m-0">ถึงวันที่ :</p>
-                                                                <input type="text" id="end_date" name="end_date" class=" form-control shadow-none" value="<?php echo $row['end_date_woTime'] ?>" disabled>
-                                                            </div>
-                                                        </div>
-                                                        <div class=" col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <p class=" text-nowrap m-0">เวลา :</p>
-                                                                <input type="text" id="time_end_date" name="time_end_date" class=" form-control shadow-none" value="<?php echo $row['end_time_woDate'] ?>" disabled>
-                                                            </div>
-                                                        </div>
-                                                        <div class=" col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <p class=" text-nowrap m-0">วิชาที่ลาได้ :</p>
-                                                                <select name="" id="" class=" form-control" disabled>
-                                                                    <option value=""></option>
-                                                                </select>
-                                                            </div>
+                                                        <div class="mt-3">
+                                                            <label for="" class=" form-label">รูปภาพที่แนบ :</label>
+                                                            <input type="file" class=" form-control" disabled>
                                                         </div>
                                                     </div>
-                                                    <div class="d-flex flex-column">
-                                                        <div class="row row-cols-2">
-                                                            <div class=" col mt-3">
-                                                                <div class=" d-flex align-items-center m-0 text-nowrap">
-                                                                    <label for="exampleFormControlTextarea1" class="form-label">เหตุผลการลา :</label>
-                                                                    <input type="text" id="time_end_date" name="time_end_date" class=" form-control shadow-none" VALUE="<?php echo $row['leave_comment'] ?>" disabled>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mt-3 d-flex flex-column w-100 justify-content-center">
+                                                        วิชาที่ลา :
+                                                        <div class="table-responsive">
+                                                            <div class="overflow-y-scroll">
+                                                                <div class="table border border-1" style="height: 8rem;">
+                                                                    วันจันทร์
+                                                                    <table class=" table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td class=" fw-medium">รหัสวิชา</td>
+                                                                                <td class=" fw-medium">ชื่อวิชา</td>
+                                                                                <td class=" fw-medium">เวลา</td>
+                                                                                <td class=" fw-medium">ครูผู้สอน</td>
+                                                                                <td class=" fw-medium">สถานะ</td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <?php
+
+                                                                            ?>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <!-- row 2 -->
-                                            <div class=" d-flex flex-column mt-5">
-                                                <div class="row row-cols-1">
-                                                    <div class="row row-cols-2 d-flex justify-content-between">
-                                                        <div class="col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <label class=" text-nowrap m-0">วันที่ทำการลา :</label>
-                                                                <label class="mx-1" value="">xx/xx/xxxx</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class=" d-flex flex-column mt-1">
-                                                <div class="row row-cols-1">
-                                                    <div class="row row-cols-2 d-flex justify-content-between">
-                                                        <div class="col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <label class=" text-nowrap m-0">สถานะการดำเนินการ :</label>
-                                                                <label class="mx-1"><?php echo $row['leave_status_name'] ?></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
-
-                                        <div class="modal-footer d-flex justify-content-between border-0">
-                                            <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
-                                            <div>
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit_detail<?php echo $row['leave_id'] ?>">แก้ไขข้อมูล</button>
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิกการลา</button>
+                                        <?php if ($row['leave_status_id'] != 'LS03') { ?>
+                                            <div class="modal-footer d-flex justify-content-between border-0">
+                                                <button type="button" class="btn btn-dark">พิมพ์เอกสาร</button>
+                                                <?php if($row['leave_status_id'] != 'LS02') {?>
+                                                <div>
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit_detail<?php echo $row['leave_id'] ?>">แก้ไขข้อมูล</button>
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิกการลา</button>
+                                                </div>
+                                                <?php } ?>
                                             </div>
-                                        </div>
+                                        <?php } ?>
                                     </div>
-
                                 </div>
                             </div>
 
                             <!-- modal 2 -->
                             <div class="modal fade" id="edit_detail<?php echo $row['leave_id'] ?>" data-bs-keyboard="false" tabindex="-1">
-                                <div class="modal-dialog modal-dialog-centered modal-fullscreen py-4 px-5">
-                                    <div class="modal-content">
+                                <div class="modal-dialog modal-dialog-centered" style="max-width: 150vh;">
+                                    <div class="modal-content" style="max-width: 150vh;">
                                         <div class="modal-header d-flex flex-column border-0">
                                             <div class="d-flex justify-content-between w-100 px-3 align-items-center">
                                                 <i class="bi bi-file-text-fill fs-1"></i>
@@ -205,83 +219,81 @@
                                             </div>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- row 1 -->
-                                            <div class=" d-flex flex-column">
-                                                <div class="row row-cols-1 " style="align-items: center;">
-                                                    <div class=" row row-cols-3 g-3">
-                                                        <div class=" col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <p class=" text-nowrap m-0">วันที่เริ่มลา :</p>
-                                                                <input type="text" id="start_date" name="start_date" class=" form-control shadow-none" value="<?php echo $row['start_date_woTime'] ?>">
+                                            <div>
+                                                <div class="row ">
+                                                    <div class="col">
+                                                        <div class="row row-cols-3">
+                                                            <div class=" col">
+                                                                <label for="">วันที่เริ่มลา :</label>
+                                                                <input type="date" class="form-control " value="<?php echo $row['start_leave_date'] ?>">
                                                             </div>
-                                                        </div>
-                                                        <div class=" col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <p class=" text-nowrap m-0">เวลา :</p>
-                                                                <input type="text" id="time_start_date" name="time_start_date" class=" form-control shadow-none" value="<?php echo $row['start_time_woDate'] ?>">
+                                                            <div class="col">
+                                                                <label for="">ถึงวันที่ :</label>
+                                                                <input type="date" class="form-control" value="<?php echo $row['end_leave_date'] ?>">
                                                             </div>
-                                                        </div>
-                                                        <div class=" col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <p class=" text-nowrap m-0">ประเภทการลา :</p>
-                                                                <input type="text" id="leave_type" name="leave_type" class=" form-control shadow-none disabled" value="<?php echo $row['leave_type_name'] ?>">
-                                                            </div>
-                                                        </div>
-                                                        <div class=" col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <p class=" text-nowrap m-0">ถึงวันที่ :</p>
-                                                                <input type="text" id="end_date" name="end_date" class=" form-control shadow-none" value="<?php echo $row['end_date_woTime'] ?>">
-                                                            </div>
-                                                        </div>
-                                                        <div class=" col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <p class=" text-nowrap m-0">เวลา :</p>
-                                                                <input type="text" id="time_end_date" name="time_end_date" class=" form-control shadow-none" value="<?php echo $row['end_time_woDate'] ?>">
-                                                            </div>
-                                                        </div>
-                                                        <div class=" col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <p class=" text-nowrap m-0">วิชาที่ลาได้ :</p>
-                                                                <select name="" id="" class=" form-control" disabled>
-                                                                    <option value=""></option>
+                                                            <div class="col">
+                                                                <label for="">ประเภทการลา</label>
+                                                                <select name="" id="" class=" form-control">
+                                                                    <option value="" selected disabled>กรุณาเลือกประเภทการลา</option>
+                                                                    <option value="">ลากิจ</option>
+                                                                    <option value="">ลาป่วย</option>
                                                                 </select>
                                                             </div>
                                                         </div>
+                                                        <div class="mt-3">
+                                                            <label for="">เหตุผลการลา</label>
+                                                            <textarea name="" id="" cols="30" rows="5" class=" form-control w-100" placeholder="กรอกเหตุผลการลาเช่น ไม่สบาย, ทำธุระต่างจังหวัด"><?php echo $row['leave_comment'] ?></textarea>
+                                                        </div>
+                                                        <div class="mt-3">
+                                                            <label for="" class=" form-label">รูปภาพที่แนบ</label>
+                                                            <input type="file" class=" form-control">
+                                                        </div>
                                                     </div>
-                                                    <div class="d-flex flex-column">
-                                                        <div class="row row-cols-2">
-                                                            <div class=" col mt-3">
-                                                                <div class=" d-flex align-items-center m-0 text-nowrap">
-                                                                    <label for="exampleFormControlTextarea1" class="form-label">เหตุผลการลา :</label>
-                                                                    <input type="text" id="time_end_date" name="time_end_date" class=" form-control shadow-none" VALUE="<?php echo $row['leave_comment'] ?>">
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mt-3 d-flex flex-column w-100 justify-content-center">
+                                                        วิชาที่ลา
+                                                        <div class="table-responsive">
+                                                            <div class="overflow-y-scroll">
+                                                                <div class="table border border-1" style="height: 8rem;">
+                                                                    วันจันทร์
+                                                                    <table class=" table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <td>รหัสวิชา</td>
+                                                                                <td>ชื่อวิชา</td>
+                                                                                <td>เวลา</td>
+                                                                                <td>เลือกวิชาที่จะลา</td>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>1001</td>
+                                                                                <td>คณิต</td>
+                                                                                <td>08:00-10:00</td>
+                                                                                <td class=" ">
+                                                                                    <input type="checkbox" class=" form-check-input">
+                                                                                </td>
+                                                                            <tr>
+                                                                            <tr>
+                                                                                <td>1001</td>
+                                                                                <td>คณิต</td>
+                                                                                <td>08:00-10:00</td>
+                                                                                <td class=" ">
+                                                                                    <input type="checkbox" class=" form-check-input">
+                                                                                </td>
+                                                                            <tr>
+                                                                            <tr>
+                                                                                <td>1001</td>
+                                                                                <td>คณิต</td>
+                                                                                <td>08:00-10:00</td>
+                                                                                <td class=" ">
+                                                                                    <input type="checkbox" class=" form-check-input">
+                                                                                </td>
+                                                                            <tr>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- row 2 -->
-                                            <div class=" d-flex flex-column mt-5">
-                                                <div class="row row-cols-1">
-                                                    <div class="row row-cols-2 d-flex justify-content-between">
-                                                        <div class="col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <label class=" text-nowrap m-0">วันที่ทำการลา :</label>
-                                                                <label class="mx-1" value="">xx/xx/xxxx</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class=" d-flex flex-column mt-1">
-                                                <div class="row row-cols-1">
-                                                    <div class="row row-cols-2 d-flex justify-content-between">
-                                                        <div class="col">
-                                                            <div class=" d-flex align-items-center m-0">
-                                                                <label class=" text-nowrap m-0">สถานะการดำเนินการ :</label>
-                                                                <label class="mx-1"><?php echo $row['leave_status_name'] ?></label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -301,6 +313,7 @@
                 <?php } ?>
             </tbody>
         </table>
+    </div>
 </body>
 
 </html>

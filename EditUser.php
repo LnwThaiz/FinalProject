@@ -17,7 +17,8 @@ ob_start(); // เริ่ม Output Buffering
     <?php
     include_once "navbar.php";
     include_once "connect.php";
-
+    include "sidebar.php";
+    
     if (isset($_POST['update'])) {
         // Get the updated values from the form submission
         $updatedSTD_Birth = $_POST['birthdate'];
@@ -117,13 +118,13 @@ ob_start(); // เริ่ม Output Buffering
                         $query_all = mysqli_query($connect, $sql_all);
                         $fetch_all = mysqli_fetch_assoc($query_all);
 
-                        $sql_provinces = "SELECT * FROM provinces";
+                        $sql_provinces = "SELECT * FROM provinces order by name_th";
                         $sql_provinces_q = mysqli_query($connect, $sql_provinces);
 
-                        $sql_district = "SELECT * FROM district WHERE provinces_id=$Provinces_ID";
+                        $sql_district = "SELECT * FROM district WHERE provinces_id=$Provinces_ID order by d_name_th";
                         $sql_district_q = mysqli_query($connect, $sql_district);
 
-                        $sql_subdistrict = "SELECT * FROM subdistrict WHERE district_id=$District_ID";
+                        $sql_subdistrict = "SELECT * FROM subdistrict WHERE district_id=$District_ID order by s_name_th";
                         $sql_subdistrict_q = mysqli_query($connect, $sql_subdistrict);
                         ?>
                         <select name="provinces" id="provinces" class=" form-control" style="margin-left: 13px;">

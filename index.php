@@ -13,6 +13,7 @@
   include "connect.php";
   include "functionTest.php";
   include "insertForindex.php";
+  include "sidebar.php";
   ?>
 
   <div class="content mt-5">
@@ -23,8 +24,9 @@
           <div class=" card shadow bg-200 mt-5 ">
             <div class=" card-body text-secondary" style="background-color: #F4F4F4;">
               <form method="post" id="formPost">
-                <div class="row row-cols-lg-2 row-cols-md-1 gx-3 ">
-                  <div class="col">
+                <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 gx-3 ">
+                  <!-- Left -->
+                  <div class="col col-12 col-sm-6">
                     <div class=" row row-cols-2 ">
                       <div class=" col">
                         <label class=" form-label">วันที่ลา</label>
@@ -63,8 +65,9 @@
                         วันขึ้นไปให้แนบรูปใบรับรองแพทย์ **</label>
                     </div>
                   </div>
-                  <div class="col">
-                    <div class=" d-flex align-content-end flex-column h-100 mt-md-1">
+                  <!-- Right -->
+                  <div class="col col-12 col-md-6 col-sm-6">
+                    <div class=" d-flex align-content-end flex-column h-100">
                       รายวิชาที่สามารถลาได้
                       <div class=" table-responsive overflow-auto">
                         <div class="mb-4" id="subject" style="height: 20rem;;">
@@ -73,6 +76,7 @@
                       </div>
                       <div class=" mt-auto w-100 d-flex justify-content-end">
                         <input type="hidden" name="leaveid" id="leaveid" value="<?php echo generateNewProvinceId($connect); ?>">
+                        <input type="hidden" name="writedate" id="writedate" value="<?php echo currentdate(); ?>">
                         <button class=" btn btn-success px-5" type="submit" name="submit">ยืนยัน</button>
                       </div>
                     </div>

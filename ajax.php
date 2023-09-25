@@ -5,7 +5,7 @@ include "functionTest.php";
 //for user.php and editUser.php
 if (isset($_POST['function']) && $_POST['function'] == 'provinces'){
     $provinces_id = $_POST['provinces_id'];
-    $sql = "SELECT * from district WHERE provinces_id=$provinces_id";
+    $sql = "SELECT * from district WHERE provinces_id=$provinces_id order by d_name_th";
     $query = mysqli_query($connect, $sql);
     echo '<option selected disabled>-กรุณาเลือกตำบล-</option>';
     foreach($query as $data){
@@ -14,7 +14,7 @@ if (isset($_POST['function']) && $_POST['function'] == 'provinces'){
 }
 if (isset($_POST['function']) && $_POST['function'] == 'districts'){
     $district_id = $_POST['district_id'];
-    $sql = "SELECT * from subdistrict WHERE district_id=$district_id";
+    $sql = "SELECT * from subdistrict WHERE district_id=$district_id order by s_name_th";
     $query = mysqli_query($connect, $sql);
     echo '<option selected disabled>-กรุณาเลือกอำเภอ-</option>';
     foreach($query as $data){
@@ -50,6 +50,7 @@ if (isset($_POST['function']) && $_POST['function'] == 'startdate') {
     $end_semester = $fa_check_date['end_semester'];
 
     if ($startdate_id < $start_semester or $startdate_id > $end_semester) {
+        echo $sql_check_date ;
         echo "กรุณากรอกวันที่ภายในเทอมที่เรียนเท่านั้น";
     } else {
         // Convert the selected date to Thai day of the week using your existing function
@@ -58,7 +59,7 @@ if (isset($_POST['function']) && $_POST['function'] == 'startdate') {
 
 
         // Perform the SQL query to fetch schedule data
-        $sql = "SELECT sd.Schedule_id, sd.Subject_ID, s.Subject_Name, d.Day_name, sb.SB_time
+        $sql = "SELECT sd.Schedule_id, sd.Subject_ID, s.Subject_Name, d.Day_name, sb.SB_ID, sb.SB_time
         FROM `schedule_detail` sd
         INNER JOIN subject s ON sd.Subject_ID = s.Subject_ID
         INNER JOIN days d ON sd.Day_ID = d.Day_ID
@@ -71,7 +72,7 @@ if (isset($_POST['function']) && $_POST['function'] == 'startdate') {
         // Generate the HTML for the schedule table
         if (mysqli_num_rows($result) > 0) {
             echo $thaiDayOfWeek . ' ที่ ' . $thaiDateString;
-            echo '<table>
+            echo '<table class"table">
         <thead>
             <tr>
                 <td class=" fw-medium">รหัสวิชา</td>
@@ -87,6 +88,7 @@ if (isset($_POST['function']) && $_POST['function'] == 'startdate') {
                 echo '<td>' . $row['Subject_ID'] . '</td>';
                 echo '<td style="width: 330px">' . $row['Subject_Name'] . '</td>';
                 echo '<td>' . $row['SB_time'] . '</td>';
+                echo '<input type="hidden" name="selected_subject_sb_id[]" value="' . $row['SB_ID'] . '">';
                 echo '<td class="text-center" ><input class="form-check-input" type="checkbox" name="selected_subject[]" id="selected_subject" value="' . $row['Subject_ID'] . '"></td>';
                 echo '</tr>';
             }
@@ -142,7 +144,7 @@ if (isset($_POST['function']) && $_POST['function'] == 'enddate') {
             if (mysqli_num_rows($testquery) > 0) {
                 // Generate the HTML for the schedule table
                 echo $thaiDayOfWeek . ' ที่ ' . $thaiDateString;
-                echo '<table>
+                echo '<table class"table">
                 <thead>
                     <td class=" fw-medium">รหัสวิชา</td>
                     <td class=" fw-medium">ชื่อวิชา</td>
