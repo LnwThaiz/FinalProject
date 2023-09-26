@@ -127,11 +127,11 @@ ob_start(); // เริ่ม Output Buffering
                                 <input type="text" class="form-control" id="parent-name" value="<?php echo "$Parent_Name"; ?>" disabled>
                             </div>
                             <div class="form-group d-flex">
-                                <label for="district" class=" text-nowrap">ตำบล :</label>
+                                <label for="district" class=" text-nowrap">อำเภอ :</label>
                                 <!-- <select name="districts" id="districts" class=" form-control" style="margin-left: 13px;"></select> -->
                                 <input type="text" class="form-control form " name="districts" id="districts" style="margin-left: 10px;" value="<?php echo $fetch_all['d_name_th']; ?>" disabled>
 
-                                <label for="subdistrict" class=" text-nowrap" style="margin-left: 8px;">อำเภอ :</label>
+                                <label for="subdistrict" class=" text-nowrap" style="margin-left: 8px;">ตำบล :</label>
                                 <!-- <select name="subdistricts" id="subdistrict" class=" form-control" style="margin-left: 13px;"></select> -->
                                 <input type="text" class="form-control form " name="subdistricts" id="subdistricts" style="margin-left: 10px;" value="<?php echo $fetch_all['s_name_th']; ?>" disabled>
                             </div>

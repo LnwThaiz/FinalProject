@@ -12,36 +12,28 @@ if (isset($_POST['submit'])) {
     $attachfile = $_POST['attachfile'];
     $selected_subjects = $_POST['selected_subject'];
     $selected_subject_sb_id = $_POST['selected_subject_sb_id'];
+    $selectedDays = $_POST['selectedDays'];
 
     $sql_leave = sprintf("INSERT INTO leaves(leave_id,leave_type_id,std_id,write_date,start_leave_date,end_leave_date,leave_comment,leave_status_id,attach_medCerti)
                 VALUES ('$leaveid','$leavetype','$STD_ID','$writedate','$startleave','$endleave','$comment','LS01','$attachfile')");
 
-    // // if query success
     if (mysqli_query($connect, $sql_leave)) {
 
-        //check data array subject is not empty
         // ตรวจสอบว่าข้อมูลไม่ว่างและเป็นอาร์เรย์
         if (!empty($selected_subjects) && is_array($selected_subjects)) {
 
-            // ตรวจสอบว่าอาร์เรย์มีขนาดเท่ากัน
-            if (count($selected_subjects) === count($selected_subject_sb_id)) {
+            // เริ่มต้นการวนลูปเพื่อเพิ่มข้อมูลในฐานข้อมูล
+            for ($i = 0; $i < count($selected_subjects); $i++) {
+                $subject_id = $selected_subjects[$i];
+                $sb_id = $selected_subject_sb_id[$i];
 
-                // เริ่มต้นการวนลูปเพื่อเพิ่มข้อมูลในฐานข้อมูล
-                for ($i = 0; $i < count($selected_subjects); $i++) {
-                    $subject_id = $selected_subjects[$i];
-                    $sb_id = $selected_subject_sb_id[$i];
+                // สร้างคำสั่ง SQL สำหรับ Insert ข้อมูลลงในฐานข้อมูล
+                $sql = "INSERT INTO leave_detail (leave_id, subject_id, sb_id) VALUES ('$leaveid', '$subject_id', '$sb_id')";
+                $sql_query = mysqli_query($connect, $sql);
+            }
 
-                    // สร้างคำสั่ง SQL สำหรับ Insert ข้อมูลลงในฐานข้อมูล
-                    $sql = "INSERT INTO leave_detail (leave_id, subject_id, sb_id) VALUES ('$leaveid', '$subject_id', '$sb_id')";
-                    $sql_query = mysqli_query($connect, $sql);
-
-                    // ทำการ execute คำสั่ง SQL หรือใช้ mysqli_query หรือ PDO
-                    // เช่น mysqli_query($connection, $sql) หรือ $pdo->query($sql)
-                }
-
-                // ต่อมาคุณสามารถแสดงข้อความหลังจากเสร็จสิ้นการเพิ่มข้อมูลได้
-                echo "<script>";
-                echo "Swal.fire({
+            echo "<script>";
+            echo "Swal.fire({
             title: 'บันทึกสำเร็จ',
             text: 'ข้อมูลถูกบันทึกลงในฐานข้อมูลแล้ว',
             icon: 'success',
@@ -51,16 +43,13 @@ if (isset($_POST['submit'])) {
                 window.location.href = 'LeaveHistory.php';
             }
         });";
-                echo "</script>";
-            } else {
-                // กรณีที่ขนาดของอาร์เรย์ไม่เท่ากัน
-                echo "ข้อผิดพลาด: ข้อมูลรายวิชาไม่ถูกต้อง";
-            }
+            echo "</script>";
         } else {
             // กรณีที่ไม่มีรายวิชาถูกเลือก
+            echo mysqli_error($connect);
             echo "ยังไม่ได้เลือกรายวิชา";
         }
     } else {
         echo mysqli_error($connect);
-    };
+    }
 }

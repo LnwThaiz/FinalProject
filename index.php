@@ -94,29 +94,35 @@
   // include "insertForindex.php";
   function generateNewProvinceId($conn)
   {
-    $increment = 1;
+    $sql = "SELECT * FROM leaves";
+    $query = mysqli_query($conn, $sql);
 
-    $sql_max_id = "SELECT MAX(leave_id) AS max_id FROM leaves";
-    $result = mysqli_query($conn, $sql_max_id);
-    $row = mysqli_fetch_assoc($result);
-    $lastLeaveId = $row['max_id'];
+    if (mysqli_num_rows($query) > 0) {
+      $increment = 1;
 
-    if ($lastLeaveId !== null) {
-      $numberPart = (int)substr($lastLeaveId, 1);
-      $newNumberPart = $numberPart + $increment;
+      $sql_max_id = "SELECT MAX(leave_id) AS max_id FROM leaves";
+      $result = mysqli_query($conn, $sql_max_id);
+      $row = mysqli_fetch_assoc($result);
+      $lastLeaveId = $row['max_id'];
 
-      $newLeaveId = "L" . str_pad($newNumberPart, 3, '0', STR_PAD_LEFT);
+      if ($lastLeaveId !== null) {
+        $numberPart = (int)substr($lastLeaveId, 1);
+        $newNumberPart = $numberPart + $increment;
+
+        $newLeaveId = "L" . str_pad($newNumberPart, 3, '0', STR_PAD_LEFT);
+      }
+      return $newLeaveId;
+    } else {
+      $newLeaveId = "L001";
+      return $newLeaveId;
     }
-    return $newLeaveId;
   }
   ?>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <?php include "script.php"; ?>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <Script src="https://code.jquery.com/jquery-3.7.1.min.js"></Script>
+
 
 </body>
 

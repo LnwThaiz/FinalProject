@@ -93,6 +93,8 @@ if (isset($_POST['function']) && $_POST['function'] == 'startdate') {
                 echo '</tr>';
             }
             echo '</tbody></table>';
+            $selectedDays[] = $thaiDayOfWeek;
+            echo '<input type="hidden" name="selectedDays[]" value="<?php echo $selectedDays; ?>">';
         } else {
             // Handle the case where there are no results.
             echo 'ไม่มีข้อมูลตารางเรียน';
@@ -133,7 +135,7 @@ if (isset($_POST['function']) && $_POST['function'] == 'enddate') {
         for ($count = 0; $count <= $Daybetween; $count++) {
             $thaiDayOfWeek = checkDays(strtotime($thaiDateString));
 
-            $testsql = "SELECT sd.Subject_ID, s.Subject_Name, d.Day_name, sb.SB_time FROM `schedule_detail` sd 
+            $testsql = "SELECT sd.Subject_ID, s.Subject_Name, d.Day_name, sd.SB_ID, sb.SB_time FROM `schedule_detail` sd 
                         INNER JOIN subject s ON sd.Subject_ID = s.Subject_ID
                         INNER JOIN days d ON sd.Day_ID = d.Day_ID
                         INNER JOIN study_block sb ON sd.SB_ID = sb.SB_ID
@@ -158,16 +160,33 @@ if (isset($_POST['function']) && $_POST['function'] == 'enddate') {
                     echo '<td>' . $row['Subject_ID'] . '</td>';
                     echo '<td style="width: 330px">' . $row['Subject_Name'] . '</td>';
                     echo '<td>' . $row['SB_time'] . '</td>';
+                    echo '<input type="hidden" name="selected_subject_sb_id[]" value="' . $row['SB_ID'] . '">';
                     echo '<td class="text-center""><input class="form-check-input" type="checkbox" name="selected_subject[]" value="' . $row['Subject_ID'] . '"></td>';
                     echo '</tr>';
                 }
-
+                $selectedDays[] = $thaiDayOfWeek;
+                echo '<input type="hidden" name="selectedDays[]" value="<?php echo $selectedDays; ?>">';
+                
                 $thaiDateString = date("d-M-Y", strtotime($thaiDateString . "+1 days"));
                 echo '</tbody></table><br>';
             } else {
                 $thaiDateString = date("d-M-Y", strtotime($thaiDateString . "+1 days"));
             }
         }
+    }
+}
+
+if (isset($_POST['leave_id'])) {
+    $leave_id = $_POST['leave_id'];
+
+    // ทำการอัปเดตฐานข้อมูล
+    $update_status = "UPDATE leaves SET leave_status_id = 'LS03' WHERE leave_id = '$leave_id'";
+    $query = mysqli_query($connect, $update_status);
+
+    if ($query) {
+        echo 'success';
+    } else {
+        echo 'error';
     }
 }
 
